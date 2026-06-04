@@ -721,11 +721,15 @@ async function _doMasking(){
   if(banner){ banner.style.display='flex'; }
 
   try {
-    const CHUNK = 50;
+    const CHUNK = 20;  // Gemini 무료 TPM 한도 고려
     const maskedMap = {};
+    const delay = ms => new Promise(r => setTimeout(r, ms));
 
     for(let i=0; i<allTexts.length; i+=CHUNK){
       const chunk = allTexts.slice(i, i+CHUNK);
+
+      // 첫 번째 이후 요청은 2초 대기 (Gemini rate limit 회피)
+      if(i > 0) await delay(2000);
 
       // Vercel API Route 경유 (CORS·API키 서버에서 처리)
       const res = await fetch('/api/mask', {
