@@ -307,38 +307,51 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
   </div>
 
   <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('tab1',this)">📊 종합 점수</button>
-    <button class="tab-btn" onclick="switchTab('tab2',this)">⭐ 평점 분포</button>
+    <button class="tab-btn active" onclick="switchTab('tab1',this)">📊 평가 현황</button>
     <button class="tab-btn" onclick="switchTab('tab3',this)">💬 의견 분석</button>
     <button class="tab-btn" onclick="switchTab('tab4',this)">📋 개인별 리포트</button>
   </div>
 
-  <!-- Tab1: 종합점수 -->
+  <!-- Tab1: 평가 현황 (종합점수 + 평점분포 통합) -->
   <div class="tab-pane active" id="tab1">
+
     <div class="formula-box">
-      📐 <strong>계산 공식</strong> &nbsp;|&nbsp; 
+      📐 <strong>계산 공식</strong> &nbsp;|&nbsp;
       만족도점수(50점) = 만족도평균 / 100 × 50 &nbsp;|&nbsp;
       처리건수점수(50점) = 처리건수 / 월평균처리건수 × 50 (최대 50점) &nbsp;|&nbsp;
       종합점수 = 만족도점수 + 처리건수점수
     </div>
+
+    <!-- KPI -->
     <div class="sec-title">1. 평가 개요</div>
     <div class="kpi-row" id="kpi-row"></div>
-    <div class="sec-title">2. 상담원별 만족도 및 처리건수</div>
+
+    <!-- 실적 비교 그래프 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+      <div style="background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);border-left:3px solid var(--c-orange);padding:16px 20px;">
+        <div style="font-size:11px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">처리건수 (월평균 기준선)</div>
+        <div style="position:relative;height:200px;"><canvas id="chart-cnt" style="position:absolute;inset:0;width:100%!important;height:100%!important;"></canvas></div>
+      </div>
+      <div style="background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);border-left:3px solid var(--c-orange);padding:16px 20px;">
+        <div style="font-size:11px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">만족도점수 (50점 환산 · 전체 평균선)</div>
+        <div style="position:relative;height:200px;"><canvas id="chart-sat" style="position:absolute;inset:0;width:100%!important;height:100%!important;"></canvas></div>
+      </div>
+    </div>
+
+    <!-- 평가 결과 테이블 -->
+    <div class="sec-title">2. 상담원별 평가 결과</div>
     <div class="table-card">
       <table id="score-table"></table>
     </div>
 
-  </div>
-
-  <!-- Tab2: 평점 분포 -->
-  <div class="tab-pane" id="tab2">
-    <div class="sec-title">3-1. 만족도 점수 상세 (평점 분포)</div>
+    <!-- 평점 분포 테이블 -->
+    <div class="sec-title">3. 평점 분포</div>
     <div class="table-card">
       <table id="dist-table-el"></table>
     </div>
 
-    <div class="sec-title">3-2. 상담원별 평점 분포 차트</div>
-    <div style="background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);border-top:none;border-left:3px solid var(--c-orange);padding:16px 20px;margin-bottom:16px;">
+    <!-- 평점 분포 차트 -->
+    <div style="background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);border-left:3px solid var(--c-orange);padding:16px 20px;margin-bottom:16px;">
       <div id="dist-chart-btns" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;max-width:100%;overflow:hidden;">
         <div style="position:relative;height:240px;">
@@ -349,6 +362,7 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
         </div>
       </div>
     </div>
+
   </div>
 
 
