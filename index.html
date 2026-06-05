@@ -99,7 +99,7 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 .meta-bar{background:#fff;border-radius:16px;padding:14px 20px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
 .meta-item{display:flex;align-items:center;gap:8px;}
 .meta-item label{font-size:11px;color:#aaa;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
-.meta-item input[type=text],.meta-item input[type=number]{padding:6px 12px;border:1.5px solid #ebebeb;border-radius:10px;font-size:12px;font-family:inherit;color:#222;background:#f9f9f9;width:160px;}
+.meta-item input[type=text],.meta-item input[type=number]{padding:6px 12px;border:1.5px solid #ebebeb;border-radius:10px;font-size:12px;font-family:inherit;color:#222;background:#f9f9f9;width:min(160px,100%);}
 .meta-item input[type=number]{width:90px;}
 .meta-item input:focus{outline:none;border-color:var(--c-orange);background:#fff;}
 .btn{padding:8px 20px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;transition:all .15s;}
@@ -112,6 +112,7 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 /* KPI row */
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
 @media(max-width:700px){.kpi-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.kpi-row{grid-template-columns:1fr 1fr;gap:8px;}}
 .kpi{background:#fff;border-radius:16px;padding:18px 16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);text-align:center;position:relative;overflow:hidden;}
 .kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;}
 .kpi.blue::after{background:var(--c-navy);}
@@ -125,7 +126,7 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 .kpi .kl{font-size:11px;color:#aaa;margin-top:5px;}
 
 /* Main score table */
-.table-card{background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);overflow:hidden;margin-bottom:16px;}
+.table-card{background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);overflow:hidden;margin-bottom:16px;}.table-card-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .table-card table{width:100%;border-collapse:collapse;}
 .table-card th{background:#f8f8f8;color:#666;font-size:11px;font-weight:700;padding:11px 14px;border-bottom:1px solid #ebebeb;text-align:center;white-space:nowrap;letter-spacing:.2px;}
 .table-card th.left{text-align:left;}
@@ -184,13 +185,31 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 .tab-pane{display:none;}.tab-pane.active{display:block;}
 
 .note{font-size:11px;color:#ccc;margin-top:8px;font-style:italic;}
+
+/* ── 모바일 반응형 ── */
+@media(max-width:600px){
+  .main{padding:12px 10px;}
+  .page-header{padding:0 14px;}
+  .page-header .title{font-size:13px;}
+  .meta-bar{gap:10px;padding:10px 12px;}
+  .meta-item input[type=text]{width:120px;}
+  .tab-btn{padding:9px 12px;font-size:11px;}
+  .kpi-row{grid-template-columns:1fr 1fr;gap:8px;}
+  .kpi .kv{font-size:20px;}
+  .opinion-layout{grid-template-columns:1fr;}
+  .opinion-ctrl-bar{flex-direction:column;}
+}
+@media(max-width:480px){
+  .tab-btn{padding:8px 10px;font-size:10px;}
+  .kpi-row{grid-template-columns:1fr 1fr;}
+}
 .formula-box{background:#fff8f4;border:1px solid #fdd9c4;border-radius:12px;padding:10px 14px;font-size:11px;color:#c05000;margin-bottom:16px;}
 
 /* Opinion tab */
 .opinion-ctrl-bar{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 1px 6px rgba(0,0,0,0.06);margin-bottom:16px;}
 .opinion-ctrl-left,.opinion-ctrl-right{display:flex;flex-direction:column;gap:8px;}
 .ctrl-label{font-size:11px;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:.5px;}
-.agent-btn-group{display:flex;gap:6px;flex-wrap:wrap;}
+.agent-btn-group{display:flex;gap:6px;flex-wrap:wrap;max-width:100%;}
 .agent-op-btn{padding:5px 16px;border-radius:20px;border:1.5px solid #ebebeb;background:#f9f9f9;color:#aaa;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}
 .agent-op-btn.active{background:var(--c-orange);color:#fff;border-color:var(--c-orange);}
 .star-btn-group{display:flex;gap:6px;}
@@ -248,7 +267,7 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
   <div class="loading-bar-wrap"><div class="loading-bar-fill" id="loadingBar"></div></div>
 </div>
 <div class="page-header">
-  <div style="display:flex;align-items:center;gap:18px;padding:14px 0 10px;">
+  <div style="display:flex;align-items:center;gap:12px;padding:12px 0 10px;flex-wrap:wrap;">
     <div style="background:var(--hw-orange);width:4px;height:38px;border-radius:2px;flex-shrink:0;"></div>
     <div>
       <div class="title">앱상담 품질평가 대시보드</div>
@@ -327,7 +346,7 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
     <div class="kpi-row" id="kpi-row"></div>
 
     <!-- 실적 비교 그래프 -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:16px;">
       <div style="background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);border-left:3px solid var(--c-orange);padding:16px 20px;">
         <div style="font-size:11px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">처리건수 (월평균 기준선)</div>
         <div style="position:relative;height:200px;"><canvas id="chart-cnt" style="position:absolute;inset:0;width:100%!important;height:100%!important;"></canvas></div>
@@ -340,20 +359,16 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 
     <!-- 평가 결과 테이블 -->
     <div class="sec-title">2. 상담원별 평가 결과</div>
-    <div class="table-card">
-      <table id="score-table"></table>
-    </div>
+    <div class="table-card"><div class="table-card-scroll"><table id="score-table"></table></div></div>
 
     <!-- 평점 분포 테이블 -->
     <div class="sec-title">3. 평점 분포</div>
-    <div class="table-card">
-      <table id="dist-table-el"></table>
-    </div>
+    <div class="table-card"><div class="table-card-scroll"><table id="dist-table-el"></table></div></div>
 
     <!-- 평점 분포 차트 -->
     <div style="background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);border-left:3px solid var(--c-orange);padding:16px 20px;margin-bottom:16px;">
       <div id="dist-chart-btns" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;max-width:100%;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;align-items:center;max-width:100%;overflow:hidden;">
         <div style="position:relative;height:240px;">
           <canvas id="chart-donut" style="position:absolute;inset:0;width:100%!important;height:100%!important;"></canvas>
         </div>
@@ -1319,7 +1334,7 @@ function renderReport(name){
       </div>
 
       <!-- 실적 지표 그리드 -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:20px;">
         ${metricBox('처리건수', (d.cnt||0).toLocaleString()+'건')}
         ${metricBox('평가건수', (totalEval||0)+'건')}
         ${metricBox('만족도 평균', (d.satAvg||0).toFixed(1)+'점')}
