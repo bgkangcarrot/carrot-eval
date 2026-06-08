@@ -1264,6 +1264,21 @@ async function triggerMasking(){
   await _doMasking();
 }
 
+function maskTextRegex(text){
+  if(!text) return text;
+  return text
+    // 전화번호 (010-1234-5678 / 01012345678 / 02-123-4567 등)
+    .replace(/(\d{2,3})-?(\d{3,4})-?(\d{4})/g, (m,a,b,c) => a + '-****-' + c)
+    // 이메일
+    .replace(/([a-zA-Z0-9._%+\-]{1,3})[a-zA-Z0-9._%+\-]*@([a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})/g, '$1***@$2')
+    // 주민등록번호
+    .replace(/(\d{6})-?(\d{7})/g, '$1-*******')
+    // 차량번호 (12가1234 / 123가4567)
+    .replace(/(\d{2,3})[가-힣](\d{4})/g, (m,a,b) => a + '○' + '****')
+    // 계좌번호 (숫자-숫자-숫자 형태)
+    .replace(/(\d{3,6})-(\d{2,6})-(\d{2,8})/g, '$1-****-$3');
+}
+
 async function _doMasking(){
   const data = window._opData;
   const allTexts = [];
@@ -1279,32 +1294,9 @@ async function _doMasking(){
   if(banner){ banner.style.display='flex'; }
 
   try {
-    const CHUNK = 20;  // Gemini 무료 TPM 한도 고려
+    // 정규식 마스킹 (API 불필요, 즉시 처리)
     const maskedMap = {};
-    const delay = ms => new Promise(r => setTimeout(r, ms));
-
-    for(let i=0; i<allTexts.length; i+=CHUNK){
-      const chunk = allTexts.slice(i, i+CHUNK);
-
-      // 첫 번째 이후 요청은 2초 대기 (Gemini rate limit 회피)
-      if(i > 0) await delay(2000);
-
-      // Vercel API Route 경유 (CORS·API키 서버에서 처리)
-      const res = await fetch('/api/mask', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ texts: chunk })
-      });
-
-      if(!res.ok){
-        const errText = await res.text();
-        throw new Error(`마스킹 API 오류 ${res.status}: ${errText}`);
-      }
-
-      const json = await res.json();
-      const results = json.results || chunk;
-      chunk.forEach((t, idx) => { maskedMap[t] = results[idx] || t; });
-    }
+    allTexts.forEach(t => { maskedMap[t] = maskTextRegex(t); });
 
     Object.values(data).forEach(agent=>{
       [1,2,3,4,5].forEach(s=>{
@@ -1983,20 +1975,18 @@ function renderReport(name){
       +'<div id="report-feedback-'+name.replace(/\s/g,'_')+'" style="background:#ffffff;border-radius:12px;border-left:3px solid #ece6dd;padding:14px 16px;font-size:14px;line-height:1.7;color:#333;min-height:60px;">'
         +(cached ? '<span>'+cached+'</span>'
           : allTexts.length === 0 ? '<span style="color:#aaa;">분석할 의견 데이터가 없습니다.</span>'
-          : '<div style="display:flex;align-items:center;gap:10px;">'
-              +'<div style="width:16px;height:16px;border:2.5px solid #ece6dd;border-top-color:#e3672b;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;"></div>'
-              +'<span style="color:#aaa;font-size:14px;">AI가 의견을 분석 중입니다...</span>'
+          : '<div style="display:flex;align-items:center;gap:12px;">'
+              +'<button onclick="startAIAnalysis(this)" data-name="'+name+'" data-month="'+selMonth+'" data-cache-key="'+name+(isMonthMode?'_'+selMonth:'')+'" style="padding:9px 20px;background:#F89B6C;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;">🤖 AI 분석하기</button>'
+              +'<span style="font-size:13px;color:#aaa;">의견 '+allTexts.length+'건 기반 자동 분석</span>'
             +'</div>')
       +'</div>'
     +'</div>'
 
     +'</div>';
 
-  // AI 피드백 (캐시키: 이름+월)
+  // AI 피드백: 캐시 있으면 자동 표시, 없으면 버튼 대기
   const cacheKey = name + (isMonthMode ? '_'+selMonth : '');
-  if(!_reportCache[cacheKey] && allTexts.length > 0){
-    generateFeedbackWithKey(cacheKey, name, allTexts, starDist, d, isMonthMode ? selMonth : null);
-  }
+  window._pendingAnalysis = { cacheKey, name, allTexts, starDist, d, selMonth: isMonthMode ? selMonth : null };
 
   // 월별 추이 차트
   if(allMonthData.length >= 2){
@@ -2085,6 +2075,33 @@ function metricBox(label, value){
     <div style="font-size:20px;font-weight:800;color:var(--c-dark);">${value}</div>
     <div style="font-size:17px;color:var(--muted);margin-top:2px;">${label}</div>
   </div>`;
+}
+
+
+// ── AI 분석하기 버튼 핸들러 ──────────────────────────────────────
+function startAIAnalysis(btn){
+  const name     = btn.getAttribute('data-name');
+  const selMonth = btn.getAttribute('data-month');
+  const cacheKey = btn.getAttribute('data-cache-key');
+  const p = window._pendingAnalysis || {};
+
+  const allTexts = p.allTexts || [];
+  const starDist = p.starDist || [];
+  const d        = p.d || (window._opData && window._opData[name]) || {};
+
+  if(!allTexts.length){
+    btn.parentElement.innerHTML = '<span style="color:#aaa;font-size:14px;">분석할 의견 데이터가 없습니다.</span>';
+    return;
+  }
+
+  // 버튼 → 로딩 스피너로 교체
+  btn.parentElement.innerHTML =
+    '<div style="display:flex;align-items:center;gap:10px;">'
+    + '<div style="width:16px;height:16px;border:2.5px solid #ece6dd;border-top-color:#F89B6C;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;"></div>'
+    + '<span style="font-size:14px;color:#aaa;">AI가 의견을 분석 중입니다...</span>'
+    + '</div>';
+
+  generateFeedbackWithKey(cacheKey, name, allTexts, starDist, d, selMonth || null);
 }
 
 async function generateFeedbackWithKey(cacheKey, name, texts, starDist, d, monthLabel){
