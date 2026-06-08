@@ -85,13 +85,20 @@ body{
 }
 .upload-area:hover,.upload-area.drag{border-color:var(--orange);background:#fff;}
 .upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;}
-.upload-area .u-icon{
-  width:52px;height:52px;margin:0 auto 18px;border-radius:13px;
-  border:2px solid var(--line-2);position:relative;color:var(--orange);
-  display:flex;align-items:center;justify-content:center;font-size:0;
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  40%{transform:translateY(-14px);}
+  65%{transform:translateY(-6px);}
+  80%{transform:translateY(-10px);}
+  93%{transform:translateY(-2px);}
 }
-.upload-area .u-icon::before{content:"";width:18px;height:2px;background:currentColor;position:absolute;}
-.upload-area .u-icon::after{content:"";width:2px;height:18px;background:currentColor;position:absolute;}
+.upload-area .u-icon{
+  width:56px;height:56px;margin:0 auto 20px;border-radius:50%;
+  background:var(--orange);
+  display:flex;align-items:center;justify-content:center;
+  animation:bounce 1.6s ease infinite;
+  box-shadow:0 4px 16px rgba(232,102,43,0.25);
+}
 .upload-area h2{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--ink);letter-spacing:-.01em;}
 .upload-area p{color:var(--faint);font-size:13px;font-weight:500;}
 
@@ -319,10 +326,24 @@ body{
   * { box-shadow:none !important; }
 }
 
+
+/* ── 평점분포 커스텀 툴팁 ── */
+.dist-tooltip{
+  position:fixed;display:none;
+  background:rgba(0,0,0,0.8);
+  color:#fff;
+  padding:8px 12px;border-radius:4px;font-size:12px;font-weight:400;
+  pointer-events:none;z-index:9999;white-space:nowrap;
+  box-shadow:0 2px 8px rgba(0,0,0,0.25);
+  line-height:1.6;
+}
+.dist-tooltip .tip-item{display:flex;align-items:center;gap:7px;}
+.dist-tooltip .tip-swatch{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
+<div class="dist-tooltip" id="dist-tooltip"></div>
 <div class="loading-overlay" id="loadingOverlay">
   <div class="loading-spinner"></div>
   <div class="loading-label" id="loadingLabel">처리 중...</div>
@@ -349,7 +370,12 @@ body{
 <div id="upload-wrap">
   <div class="upload-area" id="dropZone">
     <input type="file" id="fileInput" accept=".xlsx,.xls,.csv">
-    <div class="u-icon"></div>
+    <div class="u-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"/>
+        <polyline points="5 12 12 5 19 12"/>
+      </svg>
+    </div>
     <h2>VOC 엑셀 파일을 드래그하거나 클릭하여 업로드</h2>
     <p>처리자명 / 만족도1 점수 / 만족도2 점수 컬럼이 포함된 파일</p>
   </div>
@@ -1016,7 +1042,7 @@ function renderTabsWithAgentList(agentList, avgCnt){
       var total = [1,2,3,4,5].reduce(function(s,k){return s+(a.dist1[k]||0);},0);
       var bar = [1,2,3,4,5].map(function(s){
         var c=a.dist1[s]||0; if(!c||!total) return '';
-        return '<span title="'+s+'점 '+c+'건" style="width:'+(c/total*100)+'%;background:'+ramp[s-1]+'"></span>';
+        return '<span data-tip="'+s+'점 '+c+'건" data-pct="'+(c/total*100).toFixed(1)+'%" data-color="'+ramp[s-1]+'" style="width:'+(c/total*100)+'%;background:'+ramp[s-1]+';cursor:pointer;"></span>';
       }).join('');
       return '<div class="distrow"><div class="dn">'+a.name+'</div>'
         + '<div class="dbar">'+bar+'</div>'
@@ -1252,6 +1278,37 @@ function switchTab(id,btn){
   if(id==='tab3') triggerMasking();
   if(id==='tab4') initReportTab();
 }
+
+
+// ── 평점분포 커스텀 툴팁 ──────────────────────────────────────────
+(function(){
+  var tip = null;
+  document.addEventListener('mouseover', function(e){
+    var t = e.target.closest('[data-tip]');
+    if(!t) return;
+    if(!tip) tip = document.getElementById('dist-tooltip');
+    if(!tip) return;
+    var label = t.getAttribute('data-tip');
+    var pct   = t.getAttribute('data-pct') || '';
+    var color = t.getAttribute('data-color') || '#aaa';
+    tip.innerHTML = '<div class="tip-item">'
+      + '<span class="tip-swatch" style="background:'+color+'"></span>'
+      + '<span>'+label+'&nbsp;&nbsp;'+pct+'</span>'
+      + '</div>';
+    tip.style.display = 'block';
+  });
+  document.addEventListener('mousemove', function(e){
+    if(!tip || tip.style.display === 'none') return;
+    tip.style.left = (e.clientX - tip.offsetWidth/2) + 'px';
+    tip.style.top  = (e.clientY - tip.offsetHeight - 10) + 'px';
+  });
+  document.addEventListener('mouseout', function(e){
+    if(!tip) return;
+    var t = e.target.closest('[data-tip]');
+    if(!t) return;
+    tip.style.display = 'none';
+  });
+})();
 
 // ── 개인정보 마스킹 (Claude API) ──────────────────────────────────
 let _maskingDone = false;
