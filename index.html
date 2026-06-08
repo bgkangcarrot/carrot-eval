@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>앱상담 품질평가 대시보드</title>
+<title>디지털상담 AI 품질평가툴</title>
 <script>/*! xlsx.js (C) 2013-present SheetJS -- http://sheetjs.com */
 var XLSX={};function make_xlsx_lib(e){e.version="0.18.5";var r=1200,t=1252;var a=[874,932,936,949,950,1250,1251,1252,1253,1254,1255,1256,1257,1258,1e4];var n={0:1252,1:65001,2:65001,77:1e4,128:932,129:949,130:1361,134:936,136:950,161:1253,162:1254,163:1258,177:1255,178:1256,186:1257,204:1251,222:874,238:1250,255:1252,69:6969};var i=function(e){if(a.indexOf(e)==-1)return;t=n[0]=e};function s(){i(1252)}var l=function(e){r=e;i(e)};function o(){l(1200);s()}function c(e){var r=[];for(var t=0,a=e.length;t<a;++t)r[t]=e.charCodeAt(t);return r}function f(e){var r=[];for(var t=0;t<e.length>>1;++t)r[t]=String.fromCharCode(e.charCodeAt(2*t)+(e.charCodeAt(2*t+1)<<8));return r.join("")}function u(e){var r=[];for(var t=0;t<e.length>>1;++t)r[t]=String.fromCharCode(e.charCodeAt(2*t+1)+(e.charCodeAt(2*t)<<8));return r.join("")}var h=function(e){var r=e.charCodeAt(0),t=e.charCodeAt(1);if(r==255&&t==254)return f(e.slice(2));if(r==254&&t==255)return u(e.slice(2));if(r==65279)return e.slice(1);return e};var p=function xc(e){return String.fromCharCode(e)};var d=function Sc(e){return String.fromCharCode(e)};var m=null;var v=true;var g="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";function b(e){var r="";var t=0,a=0,n=0,i=0,s=0,l=0,o=0;for(var c=0;c<e.length;){t=e.charCodeAt(c++);i=t>>2;a=e.charCodeAt(c++);s=(t&3)<<4|a>>4;n=e.charCodeAt(c++);l=(a&15)<<2|n>>6;o=n&63;if(isNaN(a)){l=o=64}else if(isNaN(n)){o=64}r+=g.charAt(i)+g.charAt(s)+g.charAt(l)+g.charAt(o)}return r}function w(e){var r="";var t=0,a=0,n=0,i=0,s=0,l=0,o=0;e=e.replace(/[^\w\+\/\=]/g,"");for(var c=0;c<e.length;){i=g.indexOf(e.charAt(c++));s=g.indexOf(e.charAt(c++));t=i<<2|s>>4;r+=String.fromCharCode(t);l=g.indexOf(e.charAt(c++));a=(s&15)<<4|l>>2;if(l!==64){r+=String.fromCharCode(a)}o=g.indexOf(e.charAt(c++));n=(l&3)<<6|o;if(o!==64){r+=String.fromCharCode(n)}}return r}var y=function(){return typeof Buffer!=="undefined"&&typeof undefined!=="undefined"&&typeof{}!=="undefined"&&!!{}.node}();var k=function(){if(typeof Buffer!=="undefined"){var e=!Buffer.from;if(!e)try{Buffer.from("foo","utf8")}catch(r){e=true}return e?function(e,r){return r?new Buffer(e,r):new Buffer(e)}:Buffer.from.bind(Buffer)}return function(){}}();function x(e){if(y)return Buffer.alloc?Buffer.alloc(e):new Buffer(e);return typeof Uint8Array!="undefined"?new Uint8Array(e):new Array(e)}function S(e){if(y)return Buffer.allocUnsafe?Buffer.allocUnsafe(e):new Buffer(e);return typeof Uint8Array!="undefined"?new Uint8Array(e):new Array(e)}var C=function Cc(e){if(y)return k(e,"binary");return e.split("").map(function(e){return e.charCodeAt(0)&255})};function _(e){if(typeof ArrayBuffer==="undefined")return C(e);var r=new ArrayBuffer(e.length),t=new Uint8Array(r);for(var a=0;a!=e.length;++a)t[a]=e.charCodeAt(a)&255;return r}function A(e){if(Array.isArray(e))return e.map(function(e){return String.fromCharCode(e)}).join("");var r=[];for(var t=0;t<e.length;++t)r[t]=String.fromCharCode(e[t]);return r.join("")}function T(e){if(typeof Uint8Array==="undefined")throw new Error("Unsupported");return new Uint8Array(e)}function E(e){if(typeof ArrayBuffer=="undefined")throw new Error("Unsupported");if(e instanceof ArrayBuffer)return E(new Uint8Array(e));var r=new Array(e.length);for(var t=0;t<e.length;++t)r[t]=e[t];return r}var F=y?function(e){return Buffer.concat(e.map(function(e){return Buffer.isBuffer(e)?e:k(e)}))}:function(e){if(typeof Uint8Array!=="undefined"){var r=0,t=0;for(r=0;r<e.length;++r)t+=e[r].length;var a=new Uint8Array(t);var n=0;for(r=0,t=0;r<e.length;t+=n,++r){n=e[r].length;if(e[r]instanceof Uint8Array)a.set(e[r],t);else if(typeof e[r]=="string"){throw"wtf"}else a.set(new Uint8Array(e[r]),t)}return a}return[].concat.apply([],e.map(function(e){return Array.isArray(e)?e:[].slice.call(e)}))};function D(e){var r=[],t=0,a=e.length+250;var n=x(e.length+255);for(var i=0;i<e.length;++i){var s=e.charCodeAt(i);if(s<128)n[t++]=s;else if(s<2048){n[t++]=192|s>>6&31;n[t++]=128|s&63}else if(s>=55296&&s<57344){s=(s&1023)+64;var l=e.charCodeAt(++i)&1023;n[t++]=240|s>>8&7;n[t++]=128|s>>2&63;n[t++]=128|l>>6&15|(s&3)<<4;n[t++]=128|l&63}else{n[t++]=224|s>>12&15;n[t++]=128|s>>6&63;n[t++]=128|s&63}if(t>a){r.push(n.slice(0,t));t=0;n=x(65535);a=65530}}r.push(n.slice(0,t));return F(r)}var O=/\u0000/g,M=/[\u0001-\u0006]/g;function N(e){var r="",t=e.length-1;while(t>=0)r+=e.charAt(t--);return r}function P(e,r){var t=""+e;return t.length>=r?t:br("0",r-t.length)+t}function I(e,r){var t=""+e;return t.length>=r?t:br(" ",r-t.length)+t}function R(e,r){var t=""+e;return t.length>=r?t:t+br(" ",r-t.length)}function L(e,r){var t=""+Math.round(e);return t.length>=r?t:br("0",r-t.length)+t}function B(e,r){var t=""+e;return t.length>=r?t:br("0",r-t.length)+t}var z=Math.pow(2,32);function U(e,r){if(e>z||e<-z)return L(e,r);var t=Math.round(e);return B(t,r)}function W(e,r){r=r||0;return e.length>=7+r&&(e.charCodeAt(r)|32)===103&&(e.charCodeAt(r+1)|32)===101&&(e.charCodeAt(r+2)|32)===110&&(e.charCodeAt(r+3)|32)===101&&(e.charCodeAt(r+4)|32)===114&&(e.charCodeAt(r+5)|32)===97&&(e.charCodeAt(r+6)|32)===108}var j=[["Sun","Sunday"],["Mon","Monday"],["Tue","Tuesday"],["Wed","Wednesday"],["Thu","Thursday"],["Fri","Friday"],["Sat","Saturday"]];var H=[["J","Jan","January"],["F","Feb","February"],["M","Mar","March"],["A","Apr","April"],["M","May","May"],["J","Jun","June"],["J","Jul","July"],["A","Aug","August"],["S","Sep","September"],["O","Oct","October"],["N","Nov","November"],["D","Dec","December"]];function V(e){if(!e)e={};e[0]="General";e[1]="0";e[2]="0.00";e[3]="#,##0";e[4]="#,##0.00";e[9]="0%";e[10]="0.00%";e[11]="0.00E+00";e[12]="# ?/?";e[13]="# ??/??";e[14]="m/d/yy";e[15]="d-mmm-yy";e[16]="d-mmm";e[17]="mmm-yy";e[18]="h:mm AM/PM";e[19]="h:mm:ss AM/PM";e[20]="h:mm";e[21]="h:mm:ss";e[22]="m/d/yy h:mm";e[37]="#,##0 ;(#,##0)";e[38]="#,##0 ;[Red](#,##0)";e[39]="#,##0.00;(#,##0.00)";e[40]="#,##0.00;[Red](#,##0.00)";e[45]="mm:ss";e[46]="[h]:mm:ss";e[47]="mmss.0";e[48]="##0.0E+0";e[49]="@";e[56]='"上午/下午 "hh"時"mm"分"ss"秒 "';return e}var X={0:"General",1:"0",2:"0.00",3:"#,##0",4:"#,##0.00",9:"0%",10:"0.00%",11:"0.00E+00",12:"# ?/?",13:"# ??/??",14:"m/d/yy",15:"d-mmm-yy",16:"d-mmm",17:"mmm-yy",18:"h:mm AM/PM",19:"h:mm:ss AM/PM",20:"h:mm",21:"h:mm:ss",22:"m/d/yy h:mm",37:"#,##0 ;(#,##0)",38:"#,##0 ;[Red](#,##0)",39:"#,##0.00;(#,##0.00)",40:"#,##0.00;[Red](#,##0.00)",45:"mm:ss",46:"[h]:mm:ss",47:"mmss.0",48:"##0.0E+0",49:"@",56:'"上午/下午 "hh"時"mm"分"ss"秒 "'};var G={5:37,6:38,7:39,8:40,23:0,24:0,25:0,26:0,27:14,28:14,29:14,30:14,31:14,50:14,51:14,52:14,53:14,54:14,55:14,56:14,57:14,58:14,59:1,60:2,61:3,62:4,67:9,68:10,69:12,70:13,71:14,72:14,73:15,74:16,75:17,76:20,77:21,78:22,79:45,80:46,81:47,82:0};var Y={5:'"$"#,##0_);\\("$"#,##0\\)',63:'"$"#,##0_);\\("$"#,##0\\)',6:'"$"#,##0_);[Red]\\("$"#,##0\\)',64:'"$"#,##0_);[Red]\\("$"#,##0\\)',7:'"$"#,##0.00_);\\("$"#,##0.00\\)',65:'"$"#,##0.00_);\\("$"#,##0.00\\)',8:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',66:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',41:'_(* #,##0_);_(* \\(#,##0\\);_(* "-"_);_(@_)',42:'_("$"* #,##0_);_("$"* \\(#,##0\\);_("$"* "-"_);_(@_)',43:'_(* #,##0.00_);_(* \\(#,##0.00\\);_(* "-"??_);_(@_)',44:'_("$"* #,##0.00_);_("$"* \\(#,##0.00\\);_("$"* "-"??_);_(@_)'};function J(e,r,t){var a=e<0?-1:1;var n=e*a;var i=0,s=1,l=0;var o=1,c=0,f=0;var u=Math.floor(n);while(c<r){u=Math.floor(n);l=u*s+i;f=u*c+o;if(n-u<5e-8)break;n=1/(n-u);i=s;s=l;o=c;c=f}if(f>r){if(c>r){f=o;l=i}else{f=c;l=s}}if(!t)return[0,a*l,f];var h=Math.floor(a*l/f);return[h,a*l-h*f,f]}function K(e,r,t){if(e>2958465||e<0)return null;var a=e|0,n=Math.floor(86400*(e-a)),i=0;var s=[];var l={D:a,T:n,u:86400*(e-a)-n,y:0,m:0,d:0,H:0,M:0,S:0,q:0};if(Math.abs(l.u)<1e-6)l.u=0;if(r&&r.date1904)a+=1462;if(l.u>.9999){l.u=0;if(++n==86400){l.T=n=0;++a;++l.D}}if(a===60){s=t?[1317,10,29]:[1900,2,29];i=3}else if(a===0){s=t?[1317,8,29]:[1900,1,0];i=6}else{if(a>60)--a;var o=new Date(1900,0,1);o.setDate(o.getDate()+a-1);s=[o.getFullYear(),o.getMonth()+1,o.getDate()];i=o.getDay();if(a<60)i=(i+6)%7;if(t)i=le(o,s)}l.y=s[0];l.m=s[1];l.d=s[2];l.S=n%60;n=Math.floor(n/60);l.M=n%60;n=Math.floor(n/60);l.H=n;l.q=i;return l}var q=new Date(1899,11,31,0,0,0);var Z=q.getTime();var Q=new Date(1900,2,1,0,0,0);function ee(e,r){var t=e.getTime();if(r)t-=1461*24*60*60*1e3;else if(e>=Q)t+=24*60*60*1e3;return(t-(Z+(e.getTimezoneOffset()-q.getTimezoneOffset())*6e4))/(24*60*60*1e3)}function re(e){return e.indexOf(".")==-1?e:e.replace(/(?:\.0*|(\.\d*[1-9])0+)$/,"$1")}function te(e){if(e.indexOf("E")==-1)return e;return e.replace(/(?:\.0*|(\.\d*[1-9])0+)[Ee]/,"$1E").replace(/(E[+-])(\d)$/,"$10$2")}function ae(e){var r=e<0?12:11;var t=re(e.toFixed(12));if(t.length<=r)return t;t=e.toPrecision(10);if(t.length<=r)return t;return e.toExponential(5)}function ne(e){var r=re(e.toFixed(11));return r.length>(e<0?12:11)||r==="0"||r==="-0"?e.toPrecision(6):r}function ie(e){var r=Math.floor(Math.log(Math.abs(e))*Math.LOG10E),t;if(r>=-4&&r<=-1)t=e.toPrecision(10+r);else if(Math.abs(r)<=9)t=ae(e);else if(r===10)t=e.toFixed(10).substr(0,12);else t=ne(e);return re(te(t.toUpperCase()))}function se(e,r){switch(typeof e){case"string":return e;case"boolean":return e?"TRUE":"FALSE";case"number":return(e|0)===e?e.toString(10):ie(e);case"undefined":return"";case"object":if(e==null)return"";if(e instanceof Date)return Be(14,ee(e,r&&r.date1904),r);}throw new Error("unsupported value in General format: "+e)}function le(e,r){r[0]-=581;var t=e.getDay();if(e<60)t=(t+6)%7;return t}function oe(e,r,t,a){var n="",i=0,s=0,l=t.y,o,c=0;switch(e){case 98:l=t.y+543;case 121:switch(r.length){case 1:;case 2:o=l%100;c=2;break;default:o=l%1e4;c=4;break;}break;case 109:switch(r.length){case 1:;case 2:o=t.m;c=r.length;break;case 3:return H[t.m-1][1];case 5:return H[t.m-1][0];default:return H[t.m-1][2];}break;case 100:switch(r.length){case 1:;case 2:o=t.d;c=r.length;break;case 3:return j[t.q][0];default:return j[t.q][1];}break;case 104:switch(r.length){case 1:;case 2:o=1+(t.H+11)%12;c=r.length;break;default:throw"bad hour format: "+r;}break;case 72:switch(r.length){case 1:;case 2:o=t.H;c=r.length;break;default:throw"bad hour format: "+r;}break;case 77:switch(r.length){case 1:;case 2:o=t.M;c=r.length;break;default:throw"bad minute format: "+r;}break;case 115:if(r!="s"&&r!="ss"&&r!=".0"&&r!=".00"&&r!=".000")throw"bad second format: "+r;if(t.u===0&&(r=="s"||r=="ss"))return P(t.S,r.length);if(a>=2)s=a===3?1e3:100;else s=a===1?10:1;i=Math.round(s*(t.S+t.u));if(i>=60*s)i=0;if(r==="s")return i===0?"0":""+i/s;n=P(i,2+a);if(r==="ss")return n.substr(0,2);return"."+n.substr(2,r.length-1);case 90:switch(r){case"[h]":;case"[hh]":o=t.D*24+t.H;break;case"[m]":;case"[mm]":o=(t.D*24+t.H)*60+t.M;break;case"[s]":;case"[ss]":o=((t.D*24+t.H)*60+t.M)*60+Math.round(t.S+t.u);break;default:throw"bad abstime format: "+r;}c=r.length===3?1:2;break;case 101:o=l;c=1;break;}var f=c>0?P(o,c):"";return f}function ce(e){var r=3;if(e.length<=r)return e;var t=e.length%r,a=e.substr(0,t);for(;t!=e.length;t+=r)a+=(a.length>0?",":"")+e.substr(t,r);return a}var fe=/%/g;function ue(e,r,t){var a=r.replace(fe,""),n=r.length-a.length;return De(e,a,t*Math.pow(10,2*n))+br("%",n)}function he(e,r,t){var a=r.length-1;while(r.charCodeAt(a-1)===44)--a;return De(e,r.substr(0,a),t/Math.pow(10,3*(r.length-a)))}function pe(e,r){var t;var a=e.indexOf("E")-e.indexOf(".")-1;if(e.match(/^#+0.0E\+0$/)){if(r==0)return"0.0E+0";else if(r<0)return"-"+pe(e,-r);var n=e.indexOf(".");if(n===-1)n=e.indexOf("E");var i=Math.floor(Math.log(r)*Math.LOG10E)%n;if(i<0)i+=n;t=(r/Math.pow(10,i)).toPrecision(a+1+(n+i)%n);if(t.indexOf("e")===-1){var s=Math.floor(Math.log(r)*Math.LOG10E);if(t.indexOf(".")===-1)t=t.charAt(0)+"."+t.substr(1)+"E+"+(s-t.length+i);else t+="E+"+(s-i);while(t.substr(0,2)==="0."){t=t.charAt(0)+t.substr(2,n)+"."+t.substr(2+n);t=t.replace(/^0+([1-9])/,"$1").replace(/^0+\./,"0.")}t=t.replace(/\+-/,"-")}t=t.replace(/^([+-]?)(\d*)\.(\d*)[Ee]/,function(e,r,t,a){return r+t+a.substr(0,(n+i)%n)+"."+a.substr(i)+"E"})}else t=r.toExponential(a);if(e.match(/E\+00$/)&&t.match(/e[+-]\d$/))t=t.substr(0,t.length-1)+"0"+t.charAt(t.length-1);if(e.match(/E\-/)&&t.match(/e\+/))t=t.replace(/e\+/,"e");return t.replace("e","E")}var de=/# (\?+)( ?)\/( ?)(\d+)/;function me(e,r,t){var a=parseInt(e[4],10),n=Math.round(r*a),i=Math.floor(n/a);var s=n-i*a,l=a;return t+(i===0?"":""+i)+" "+(s===0?br(" ",e[1].length+1+e[4].length):I(s,e[1].length)+e[2]+"/"+e[3]+P(l,e[4].length))}function ve(e,r,t){return t+(r===0?"":""+r)+br(" ",e[1].length+2+e[4].length)}var ge=/^#*0*\.([0#]+)/;var be=/\).*[0#]/;var we=/\(###\) ###\\?-####/;function ye(e){var r="",t;for(var a=0;a!=e.length;++a)switch(t=e.charCodeAt(a)){case 35:break;case 63:r+=" ";break;case 48:r+="0";break;default:r+=String.fromCharCode(t);}return r}function ke(e,r){var t=Math.pow(10,r);return""+Math.round(e*t)/t}function xe(e,r){var t=e-Math.floor(e),a=Math.pow(10,r);if(r<(""+Math.round(t*a)).length)return 0;return Math.round(t*a)}function Se(e,r){if(r<(""+Math.round((e-Math.floor(e))*Math.pow(10,r))).length){return 1}return 0}function Ce(e){if(e<2147483647&&e>-2147483648)return""+(e>=0?e|0:e-1|0);return""+Math.floor(e)}function _e(e,r,t){if(e.charCodeAt(0)===40&&!r.match(be)){var a=r.replace(/\( */,"").replace(/ \)/,"").replace(/\)/,"");if(t>=0)return _e("n",a,t);return"("+_e("n",a,-t)+")"}if(r.charCodeAt(r.length-1)===44)return he(e,r,t);if(r.indexOf("%")!==-1)return ue(e,r,t);if(r.indexOf("E")!==-1)return pe(r,t);if(r.charCodeAt(0)===36)return"$"+_e(e,r.substr(r.charAt(1)==" "?2:1),t);var n;var i,s,l,o=Math.abs(t),c=t<0?"-":"";if(r.match(/^00+$/))return c+U(o,r.length);if(r.match(/^[#?]+$/)){n=U(t,0);if(n==="0")n="";return n.length>r.length?n:ye(r.substr(0,r.length-n.length))+n}if(i=r.match(de))return me(i,o,c);if(r.match(/^#+0+$/))return c+U(o,r.length-r.indexOf("0"));if(i=r.match(ge)){n=ke(t,i[1].length).replace(/^([^\.]+)$/,"$1."+ye(i[1])).replace(/\.$/,"."+ye(i[1])).replace(/\.(\d*)$/,function(e,r){return"."+r+br("0",ye(i[1]).length-r.length)});return r.indexOf("0.")!==-1?n:n.replace(/^0\./,".")}r=r.replace(/^#+([0.])/,"$1");if(i=r.match(/^(0*)\.(#*)$/)){return c+ke(o,i[2].length).replace(/\.(\d*[1-9])0*$/,".$1").replace(/^(-?\d*)$/,"$1.").replace(/^0\./,i[1].length?"0.":".")}if(i=r.match(/^#{1,3},##0(\.?)$/))return c+ce(U(o,0));if(i=r.match(/^#,##0\.([#0]*0)$/)){return t<0?"-"+_e(e,r,-t):ce(""+(Math.floor(t)+Se(t,i[1].length)))+"."+P(xe(t,i[1].length),i[1].length)}if(i=r.match(/^#,#*,#0/))return _e(e,r.replace(/^#,#*,/,""),t);if(i=r.match(/^([0#]+)(\\?-([0#]+))+$/)){n=N(_e(e,r.replace(/[\\-]/g,""),t));s=0;return N(N(r.replace(/\\/g,"")).replace(/[0#]/g,function(e){return s<n.length?n.charAt(s++):e==="0"?"0":""}))}if(r.match(we)){n=_e(e,"##########",t);return"("+n.substr(0,3)+") "+n.substr(3,3)+"-"+n.substr(6)}var f="";if(i=r.match(/^([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(i[4].length,7);l=J(o,Math.pow(10,s)-1,false);n=""+c;f=De("n",i[1],l[1]);if(f.charAt(f.length-1)==" ")f=f.substr(0,f.length-1)+"0";n+=f+i[2]+"/"+i[3];f=R(l[2],s);if(f.length<i[4].length)f=ye(i[4].substr(i[4].length-f.length))+f;n+=f;return n}if(i=r.match(/^# ([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(Math.max(i[1].length,i[4].length),7);l=J(o,Math.pow(10,s)-1,true);return c+(l[0]||(l[1]?"":"0"))+" "+(l[1]?I(l[1],s)+i[2]+"/"+i[3]+R(l[2],s):br(" ",2*s+1+i[2].length+i[3].length))}if(i=r.match(/^[#0?]+$/)){n=U(t,0);if(r.length<=n.length)return n;return ye(r.substr(0,r.length-n.length))+n}if(i=r.match(/^([#0?]+)\.([#0]+)$/)){n=""+t.toFixed(Math.min(i[2].length,10)).replace(/([^0])0+$/,"$1");s=n.indexOf(".");var u=r.indexOf(".")-s,h=r.length-n.length-u;return ye(r.substr(0,u)+n+r.substr(r.length-h))}if(i=r.match(/^00,000\.([#0]*0)$/)){s=xe(t,i[1].length);return t<0?"-"+_e(e,r,-t):ce(Ce(t)).replace(/^\d,\d{3}$/,"0$&").replace(/^\d*$/,function(e){return"00,"+(e.length<3?P(0,3-e.length):"")+e})+"."+P(s,i[1].length)}switch(r){case"###,##0.00":return _e(e,"#,##0.00",t);case"###,###":;case"##,###":;case"#,###":var p=ce(U(o,0));return p!=="0"?c+p:"";case"###,###.00":return _e(e,"###,##0.00",t).replace(/^0\./,".");case"#,###.00":return _e(e,"#,##0.00",t).replace(/^0\./,".");default:;}throw new Error("unsupported format |"+r+"|")}function Ae(e,r,t){var a=r.length-1;while(r.charCodeAt(a-1)===44)--a;return De(e,r.substr(0,a),t/Math.pow(10,3*(r.length-a)))}function Te(e,r,t){var a=r.replace(fe,""),n=r.length-a.length;return De(e,a,t*Math.pow(10,2*n))+br("%",n)}function Ee(e,r){var t;var a=e.indexOf("E")-e.indexOf(".")-1;if(e.match(/^#+0.0E\+0$/)){if(r==0)return"0.0E+0";else if(r<0)return"-"+Ee(e,-r);var n=e.indexOf(".");if(n===-1)n=e.indexOf("E");var i=Math.floor(Math.log(r)*Math.LOG10E)%n;if(i<0)i+=n;t=(r/Math.pow(10,i)).toPrecision(a+1+(n+i)%n);if(!t.match(/[Ee]/)){var s=Math.floor(Math.log(r)*Math.LOG10E);if(t.indexOf(".")===-1)t=t.charAt(0)+"."+t.substr(1)+"E+"+(s-t.length+i);else t+="E+"+(s-i);t=t.replace(/\+-/,"-")}t=t.replace(/^([+-]?)(\d*)\.(\d*)[Ee]/,function(e,r,t,a){return r+t+a.substr(0,(n+i)%n)+"."+a.substr(i)+"E"})}else t=r.toExponential(a);if(e.match(/E\+00$/)&&t.match(/e[+-]\d$/))t=t.substr(0,t.length-1)+"0"+t.charAt(t.length-1);if(e.match(/E\-/)&&t.match(/e\+/))t=t.replace(/e\+/,"e");return t.replace("e","E")}function Fe(e,r,t){if(e.charCodeAt(0)===40&&!r.match(be)){var a=r.replace(/\( */,"").replace(/ \)/,"").replace(/\)/,"");if(t>=0)return Fe("n",a,t);return"("+Fe("n",a,-t)+")"}if(r.charCodeAt(r.length-1)===44)return Ae(e,r,t);if(r.indexOf("%")!==-1)return Te(e,r,t);if(r.indexOf("E")!==-1)return Ee(r,t);if(r.charCodeAt(0)===36)return"$"+Fe(e,r.substr(r.charAt(1)==" "?2:1),t);var n;var i,s,l,o=Math.abs(t),c=t<0?"-":"";if(r.match(/^00+$/))return c+P(o,r.length);if(r.match(/^[#?]+$/)){n=""+t;if(t===0)n="";return n.length>r.length?n:ye(r.substr(0,r.length-n.length))+n}if(i=r.match(de))return ve(i,o,c);if(r.match(/^#+0+$/))return c+P(o,r.length-r.indexOf("0"));if(i=r.match(ge)){n=(""+t).replace(/^([^\.]+)$/,"$1."+ye(i[1])).replace(/\.$/,"."+ye(i[1]));n=n.replace(/\.(\d*)$/,function(e,r){return"."+r+br("0",ye(i[1]).length-r.length)});return r.indexOf("0.")!==-1?n:n.replace(/^0\./,".")}r=r.replace(/^#+([0.])/,"$1");if(i=r.match(/^(0*)\.(#*)$/)){return c+(""+o).replace(/\.(\d*[1-9])0*$/,".$1").replace(/^(-?\d*)$/,"$1.").replace(/^0\./,i[1].length?"0.":".")}if(i=r.match(/^#{1,3},##0(\.?)$/))return c+ce(""+o);if(i=r.match(/^#,##0\.([#0]*0)$/)){return t<0?"-"+Fe(e,r,-t):ce(""+t)+"."+br("0",i[1].length)}if(i=r.match(/^#,#*,#0/))return Fe(e,r.replace(/^#,#*,/,""),t);if(i=r.match(/^([0#]+)(\\?-([0#]+))+$/)){n=N(Fe(e,r.replace(/[\\-]/g,""),t));s=0;return N(N(r.replace(/\\/g,"")).replace(/[0#]/g,function(e){return s<n.length?n.charAt(s++):e==="0"?"0":""}))}if(r.match(we)){n=Fe(e,"##########",t);return"("+n.substr(0,3)+") "+n.substr(3,3)+"-"+n.substr(6)}var f="";if(i=r.match(/^([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(i[4].length,7);l=J(o,Math.pow(10,s)-1,false);n=""+c;f=De("n",i[1],l[1]);if(f.charAt(f.length-1)==" ")f=f.substr(0,f.length-1)+"0";n+=f+i[2]+"/"+i[3];f=R(l[2],s);if(f.length<i[4].length)f=ye(i[4].substr(i[4].length-f.length))+f;n+=f;return n}if(i=r.match(/^# ([#0?]+)( ?)\/( ?)([#0?]+)/)){s=Math.min(Math.max(i[1].length,i[4].length),7);l=J(o,Math.pow(10,s)-1,true);return c+(l[0]||(l[1]?"":"0"))+" "+(l[1]?I(l[1],s)+i[2]+"/"+i[3]+R(l[2],s):br(" ",2*s+1+i[2].length+i[3].length))}if(i=r.match(/^[#0?]+$/)){n=""+t;if(r.length<=n.length)return n;return ye(r.substr(0,r.length-n.length))+n}if(i=r.match(/^([#0]+)\.([#0]+)$/)){n=""+t.toFixed(Math.min(i[2].length,10)).replace(/([^0])0+$/,"$1");s=n.indexOf(".");var u=r.indexOf(".")-s,h=r.length-n.length-u;return ye(r.substr(0,u)+n+r.substr(r.length-h))}if(i=r.match(/^00,000\.([#0]*0)$/)){return t<0?"-"+Fe(e,r,-t):ce(""+t).replace(/^\d,\d{3}$/,"0$&").replace(/^\d*$/,function(e){return"00,"+(e.length<3?P(0,3-e.length):"")+e})+"."+P(0,i[1].length)}switch(r){case"###,###":;case"##,###":;case"#,###":var p=ce(""+o);return p!=="0"?c+p:"";default:if(r.match(/\.[0#?]*$/))return Fe(e,r.slice(0,r.lastIndexOf(".")),t)+ye(r.slice(r.lastIndexOf(".")));}throw new Error("unsupported format |"+r+"|")}function De(e,r,t){return(t|0)===t?Fe(e,r,t):_e(e,r,t)}function Oe(e){var r=[];var t=false;for(var a=0,n=0;a<e.length;++a)switch(e.charCodeAt(a)){case 34:t=!t;break;case 95:;case 42:;case 92:++a;break;case 59:r[r.length]=e.substr(n,a-n);n=a+1;}r[r.length]=e.substr(n);if(t===true)throw new Error("Format |"+e+"| unterminated string ");return r}var Me=/\[[HhMmSs\u0E0A\u0E19\u0E17]*\]/;function Ne(e){var r=0,t="",a="";while(r<e.length){switch(t=e.charAt(r)){case"G":if(W(e,r))r+=6;r++;break;case'"':for(;e.charCodeAt(++r)!==34&&r<e.length;){}++r;break;case"\\":r+=2;break;case"_":r+=2;break;case"@":++r;break;case"B":;case"b":if(e.charAt(r+1)==="1"||e.charAt(r+1)==="2")return true;case"M":;case"D":;case"Y":;case"H":;case"S":;case"E":;case"m":;case"d":;case"y":;case"h":;case"s":;case"e":;case"g":return true;case"A":;case"a":;case"上":if(e.substr(r,3).toUpperCase()==="A/P")return true;if(e.substr(r,5).toUpperCase()==="AM/PM")return true;if(e.substr(r,5).toUpperCase()==="上午/下午")return true;++r;break;case"[":a=t;while(e.charAt(r++)!=="]"&&r<e.length)a+=e.charAt(r);if(a.match(Me))return true;break;case".":;case"0":;case"#":while(r<e.length&&("0#?.,E+-%".indexOf(t=e.charAt(++r))>-1||t=="\\"&&e.charAt(r+1)=="-"&&"0#".indexOf(e.charAt(r+2))>-1)){}break;case"?":while(e.charAt(++r)===t){}break;case"*":++r;if(e.charAt(r)==" "||e.charAt(r)=="*")++r;break;case"(":;case")":++r;break;case"1":;case"2":;case"3":;case"4":;case"5":;case"6":;case"7":;case"8":;case"9":while(r<e.length&&"0123456789".indexOf(e.charAt(++r))>-1){}break;case" ":++r;break;default:++r;break;}}return false}function Pe(e,r,t,a){var n=[],i="",s=0,l="",o="t",c,f,u;var h="H";while(s<e.length){switch(l=e.charAt(s)){case"G":if(!W(e,s))throw new Error("unrecognized character "+l+" in "+e);n[n.length]={t:"G",v:"General"};s+=7;break;case'"':for(i="";(u=e.charCodeAt(++s))!==34&&s<e.length;)i+=String.fromCharCode(u);n[n.length]={t:"t",v:i};++s;break;case"\\":var p=e.charAt(++s),d=p==="("||p===")"?p:"t";n[n.length]={t:d,v:p};++s;break;case"_":n[n.length]={t:"t",v:" "};s+=2;break;case"@":n[n.length]={t:"T",v:r};++s;break;case"B":;case"b":if(e.charAt(s+1)==="1"||e.charAt(s+1)==="2"){if(c==null){c=K(r,t,e.charAt(s+1)==="2");if(c==null)return""}n[n.length]={t:"X",v:e.substr(s,2)};o=l;s+=2;break};case"M":;case"D":;case"Y":;case"H":;case"S":;case"E":l=l.toLowerCase();case"m":;case"d":;case"y":;case"h":;case"s":;case"e":;case"g":if(r<0)return"";if(c==null){c=K(r,t);if(c==null)return""}i=l;while(++s<e.length&&e.charAt(s).toLowerCase()===l)i+=l;if(l==="m"&&o.toLowerCase()==="h")l="M";if(l==="h")l=h;n[n.length]={t:l,v:i};o=l;break;case"A":;case"a":;case"上":var m={t:l,v:l};if(c==null)c=K(r,t);if(e.substr(s,3).toUpperCase()==="A/P"){if(c!=null)m.v=c.H>=12?"P":"A";m.t="T";h="h";s+=3}else if(e.substr(s,5).toUpperCase()==="AM/PM"){if(c!=null)m.v=c.H>=12?"PM":"AM";m.t="T";s+=5;h="h"}else if(e.substr(s,5).toUpperCase()==="上午/下午"){if(c!=null)m.v=c.H>=12?"下午":"上午";m.t="T";s+=5;h="h"}else{m.t="t";++s}if(c==null&&m.t==="T")return"";n[n.length]=m;o=l;break;case"[":i=l;while(e.charAt(s++)!=="]"&&s<e.length)i+=e.charAt(s);if(i.slice(-1)!=="]")throw'unterminated "[" block: |'+i+"|";if(i.match(Me)){if(c==null){c=K(r,t);if(c==null)return""}n[n.length]={t:"Z",v:i.toLowerCase()};o=i.charAt(1)}else if(i.indexOf("$")>-1){i=(i.match(/\$([^-\[\]]*)/)||[])[1]||"$";if(!Ne(e))n[n.length]={t:"t",v:i}}break;case".":if(c!=null){i=l;while(++s<e.length&&(l=e.charAt(s))==="0")i+=l;n[n.length]={t:"s",v:i};break};case"0":;case"#":i=l;while(++s<e.length&&"0#?.,E+-%".indexOf(l=e.charAt(s))>-1)i+=l;n[n.length]={t:"n",v:i};break;case"?":i=l;while(e.charAt(++s)===l)i+=l;n[n.length]={t:l,v:i};o=l;break;case"*":++s;if(e.charAt(s)==" "||e.charAt(s)=="*")++s;break;case"(":;case")":n[n.length]={t:a===1?"t":l,v:l};++s;break;case"1":;case"2":;case"3":;case"4":;case"5":;case"6":;case"7":;case"8":;case"9":i=l;while(s<e.length&&"0123456789".indexOf(e.charAt(++s))>-1)i+=e.charAt(s);n[n.length]={t:"D",v:i};break;case" ":n[n.length]={t:l,v:l};++s;break;case"$":n[n.length]={t:"t",v:"$"};++s;break;default:if(",$-+/():!^&'~{}<>=€acfijklopqrtuvwxzP".indexOf(l)===-1)throw new Error("unrecognized character "+l+" in "+e);n[n.length]={t:"t",v:l};++s;break;}}var v=0,g=0,b;for(s=n.length-1,o="t";s>=0;--s){switch(n[s].t){case"h":;case"H":n[s].t=h;o="h";if(v<1)v=1;break;case"s":if(b=n[s].v.match(/\.0+$/))g=Math.max(g,b[0].length-1);if(v<3)v=3;case"d":;case"y":;case"M":;case"e":o=n[s].t;break;case"m":if(o==="s"){n[s].t="M";if(v<2)v=2}break;case"X":break;case"Z":if(v<1&&n[s].v.match(/[Hh]/))v=1;if(v<2&&n[s].v.match(/[Mm]/))v=2;if(v<3&&n[s].v.match(/[Ss]/))v=3;}}switch(v){case 0:break;case 1:if(c.u>=.5){c.u=0;++c.S}if(c.S>=60){c.S=0;++c.M}if(c.M>=60){c.M=0;++c.H}break;case 2:if(c.u>=.5){c.u=0;++c.S}if(c.S>=60){c.S=0;++c.M}break;}var w="",y;for(s=0;s<n.length;++s){switch(n[s].t){case"t":;case"T":;case" ":;case"D":break;case"X":n[s].v="";n[s].t=";";break;case"d":;case"m":;case"y":;case"h":;case"H":;case"M":;case"s":;case"e":;case"b":;case"Z":n[s].v=oe(n[s].t.charCodeAt(0),n[s].v,c,g);n[s].t="t";break;case"n":;case"?":y=s+1;while(n[y]!=null&&((l=n[y].t)==="?"||l==="D"||(l===" "||l==="t")&&n[y+1]!=null&&(n[y+1].t==="?"||n[y+1].t==="t"&&n[y+1].v==="/")||n[s].t==="("&&(l===" "||l==="n"||l===")")||l==="t"&&(n[y].v==="/"||n[y].v===" "&&n[y+1]!=null&&n[y+1].t=="?"))){n[s].v+=n[y].v;n[y]={v:"",t:";"};++y}w+=n[s].v;s=y-1;break;case"G":n[s].t="t";n[s].v=se(r,t);break;}}var k="",x,S;if(w.length>0){if(w.charCodeAt(0)==40){x=r<0&&w.charCodeAt(0)===45?-r:r;S=De("n",w,x)}else{x=r<0&&a>1?-r:r;S=De("n",w,x);if(x<0&&n[0]&&n[0].t=="t"){S=S.substr(1);n[0].v="-"+n[0].v}}y=S.length-1;var C=n.length;for(s=0;s<n.length;++s)if(n[s]!=null&&n[s].t!="t"&&n[s].v.indexOf(".")>-1){C=s;break}var _=n.length;if(C===n.length&&S.indexOf("E")===-1){for(s=n.length-1;s>=0;--s){if(n[s]==null||"n?".indexOf(n[s].t)===-1)continue;if(y>=n[s].v.length-1){y-=n[s].v.length;n[s].v=S.substr(y+1,n[s].v.length)}else if(y<0)n[s].v="";else{n[s].v=S.substr(0,y+1);y=-1}n[s].t="t";_=s}if(y>=0&&_<n.length)n[_].v=S.substr(0,y+1)+n[_].v}else if(C!==n.length&&S.indexOf("E")===-1){y=S.indexOf(".")-1;for(s=C;s>=0;--s){if(n[s]==null||"n?".indexOf(n[s].t)===-1)continue;f=n[s].v.indexOf(".")>-1&&s===C?n[s].v.indexOf(".")-1:n[s].v.length-1;k=n[s].v.substr(f+1);for(;f>=0;--f){if(y>=0&&(n[s].v.charAt(f)==="0"||n[s].v.charAt(f)==="#"))k=S.charAt(y--)+k}n[s].v=k;n[s].t="t";_=s}if(y>=0&&_<n.length)n[_].v=S.substr(0,y+1)+n[_].v;y=S.indexOf(".")+1;for(s=C;s<n.length;++s){if(n[s]==null||"n?(".indexOf(n[s].t)===-1&&s!==C)continue;f=n[s].v.indexOf(".")>-1&&s===C?n[s].v.indexOf(".")+1:0;k=n[s].v.substr(0,f);for(;f<n[s].v.length;++f){if(y<S.length)k+=S.charAt(y++)}n[s].v=k;n[s].t="t";_=s}}}for(s=0;s<n.length;++s)if(n[s]!=null&&"n?".indexOf(n[s].t)>-1){x=a>1&&r<0&&s>0&&n[s-1].v==="-"?-r:r;n[s].v=De(n[s].t,n[s].v,x);n[s].t="t"}var A="";for(s=0;s!==n.length;++s)if(n[s]!=null)A+=n[s].v;return A}var Ie=/\[(=|>[=]?|<[>=]?)(-?\d+(?:\.\d*)?)\]/;function Re(e,r){if(r==null)return false;var t=parseFloat(r[2]);switch(r[1]){case"=":if(e==t)return true;break;case">":if(e>t)return true;break;case"<":if(e<t)return true;break;case"<>":if(e!=t)return true;break;case">=":if(e>=t)return true;break;case"<=":if(e<=t)return true;break;}return false}function Le(e,r){var t=Oe(e);var a=t.length,n=t[a-1].indexOf("@");if(a<4&&n>-1)--a;if(t.length>4)throw new Error("cannot find right format for |"+t.join("|")+"|");if(typeof r!=="number")return[4,t.length===4||n>-1?t[t.length-1]:"@"];switch(t.length){case 1:t=n>-1?["General","General","General",t[0]]:[t[0],t[0],t[0],"@"];break;case 2:t=n>-1?[t[0],t[0],t[0],t[1]]:[t[0],t[1],t[0],"@"];break;case 3:t=n>-1?[t[0],t[1],t[0],t[2]]:[t[0],t[1],t[2],"@"];break;case 4:break;}var i=r>0?t[0]:r<0?t[1]:t[2];if(t[0].indexOf("[")===-1&&t[1].indexOf("[")===-1)return[a,i];if(t[0].match(/\[[=<>]/)!=null||t[1].match(/\[[=<>]/)!=null){var s=t[0].match(Ie);var l=t[1].match(Ie);return Re(r,s)?[a,t[0]]:Re(r,l)?[a,t[1]]:[a,t[s!=null&&l!=null?2:1]]}return[a,i]}function Be(e,r,t){if(t==null)t={};var a="";switch(typeof e){case"string":if(e=="m/d/yy"&&t.dateNF)a=t.dateNF;else a=e;break;case"number":if(e==14&&t.dateNF)a=t.dateNF;else a=(t.table!=null?t.table:X)[e];if(a==null)a=t.table&&t.table[G[e]]||X[G[e]];if(a==null)a=Y[e]||"General";break;}if(W(a,0))return se(r,t);if(r instanceof Date)r=ee(r,t.date1904);var n=Le(a,r);if(W(n[1]))return se(r,t);if(r===true)r="TRUE";else if(r===false)r="FALSE";else if(r===""||r==null)return"";return Pe(n[1],r,t,n[0])}function $e(e,r){if(typeof r!="number"){r=+r||-1;for(var t=0;t<392;++t){if(X[t]==undefined){if(r<0)r=t;continue}if(X[t]==e){r=t;break}}if(r<0)r=391}X[r]=e;return r}function ze(e){for(var r=0;r!=392;++r)if(e[r]!==undefined)$e(e[r],r)}function Ue(){X=V()}var We={format:Be,load:$e,_table:X,load_table:ze,parse_date_code:K,is_date:Ne,get_table:function _c(){return We._table=X}};var je={5:'"$"#,##0_);\\("$"#,##0\\)',6:'"$"#,##0_);[Red]\\("$"#,##0\\)',7:'"$"#,##0.00_);\\("$"#,##0.00\\)',8:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',23:"General",24:"General",25:"General",26:"General",27:"m/d/yy",28:"m/d/yy",29:"m/d/yy",30:"m/d/yy",31:"m/d/yy",32:"h:mm:ss",33:"h:mm:ss",34:"h:mm:ss",35:"h:mm:ss",36:"m/d/yy",41:'_(* #,##0_);_(* (#,##0);_(* "-"_);_(@_)',42:'_("$"* #,##0_);_("$"* (#,##0);_("$"* "-"_);_(@_)',43:'_(* #,##0.00_);_(* (#,##0.00);_(* "-"??_);_(@_)',44:'_("$"* #,##0.00_);_("$"* (#,##0.00);_("$"* "-"??_);_(@_)',50:"m/d/yy",51:"m/d/yy",52:"m/d/yy",53:"m/d/yy",54:"m/d/yy",55:"m/d/yy",56:"m/d/yy",57:"m/d/yy",58:"m/d/yy",59:"0",60:"0.00",61:"#,##0",62:"#,##0.00",63:'"$"#,##0_);\\("$"#,##0\\)',64:'"$"#,##0_);[Red]\\("$"#,##0\\)',65:'"$"#,##0.00_);\\("$"#,##0.00\\)',66:'"$"#,##0.00_);[Red]\\("$"#,##0.00\\)',67:"0%",68:"0.00%",69:"# ?/?",70:"# ??/??",71:"m/d/yy",72:"m/d/yy",73:"d-mmm-yy",74:"d-mmm",75:"mmm-yy",76:"h:mm",77:"h:mm:ss",78:"m/d/yy h:mm",79:"mm:ss",80:"[h]:mm:ss",81:"mmss.0"};var He=/[dD]+|[mM]+|[yYeE]+|[Hh]+|[Ss]+/g;function Ve(e){var r=typeof e=="number"?X[e]:e;r=r.replace(He,"(\\d+)");return new RegExp("^"+r+"$")}function Xe(e,r,t){var a=-1,n=-1,i=-1,s=-1,l=-1,o=-1;(r.match(He)||[]).forEach(function(e,r){var c=parseInt(t[r+1],10);switch(e.toLowerCase().charAt(0)){case"y":a=c;break;case"d":i=c;break;case"h":s=c;break;case"s":o=c;break;case"m":if(s>=0)l=c;else n=c;break;}});if(o>=0&&l==-1&&n>=0){l=n;n=-1}var c=(""+(a>=0?a:(new Date).getFullYear())).slice(-4)+"-"+("00"+(n>=1?n:1)).slice(-2)+"-"+("00"+(i>=1?i:1)).slice(-2);if(c.length==7)c="0"+c;if(c.length==8)c="20"+c;var f=("00"+(s>=0?s:0)).slice(-2)+":"+("00"+(l>=0?l:0)).slice(-2)+":"+("00"+(o>=0?o:0)).slice(-2);if(s==-1&&l==-1&&o==-1)return c;if(a==-1&&n==-1&&i==-1)return f;return c+"T"+f}var Ge=function(){var e={};e.version="1.2.0";function r(){var e=0,r=new Array(256);for(var t=0;t!=256;++t){e=t;e=e&1?-306674912^e>>>1:e>>>1;e=e&1?-306674912^e>>>1:e>>>1;e=e&1?-306674912^e>>>1:e>>>1;e=e&1?-306674912^e>>>1:e>>>1;e=e&1?-306674912^e>>>1:e>>>1;e=e&1?-306674912^e>>>1:e>>>1;e=e&1?-306674912^e>>>1:e>>>1;e=e&1?-306674912^e>>>1:e>>>1;r[t]=e}return typeof Int32Array!=="undefined"?new Int32Array(r):r}var t=r();function a(e){var r=0,t=0,a=0,n=typeof Int32Array!=="undefined"?new Int32Array(4096):new Array(4096);for(a=0;a!=256;++a)n[a]=e[a];for(a=0;a!=256;++a){t=e[a];for(r=256+a;r<4096;r+=256)t=n[r]=t>>>8^e[t&255]}var i=[];for(a=1;a!=16;++a)i[a-1]=typeof Int32Array!=="undefined"?n.subarray(a*256,a*256+256):n.slice(a*256,a*256+256);return i}var n=a(t);var i=n[0],s=n[1],l=n[2],o=n[3],c=n[4];var f=n[5],u=n[6],h=n[7],p=n[8],d=n[9];var m=n[10],v=n[11],g=n[12],b=n[13],w=n[14];function y(e,r){var a=r^-1;for(var n=0,i=e.length;n<i;)a=a>>>8^t[(a^e.charCodeAt(n++))&255];return~a}function k(e,r){var a=r^-1,n=e.length-15,y=0;for(;y<n;)a=w[e[y++]^a&255]^b[e[y++]^a>>8&255]^g[e[y++]^a>>16&255]^v[e[y++]^a>>>24]^m[e[y++]]^d[e[y++]]^p[e[y++]]^h[e[y++]]^u[e[y++]]^f[e[y++]]^c[e[y++]]^o[e[y++]]^l[e[y++]]^s[e[y++]]^i[e[y++]]^t[e[y++]];n+=15;while(y<n)a=a>>>8^t[(a^e[y++])&255];return~a}function x(e,r){var a=r^-1;for(var n=0,i=e.length,s=0,l=0;n<i;){
 s=e.charCodeAt(n++);if(s<128){a=a>>>8^t[(a^s)&255]}else if(s<2048){a=a>>>8^t[(a^(192|s>>6&31))&255];a=a>>>8^t[(a^(128|s&63))&255]}else if(s>=55296&&s<57344){s=(s&1023)+64;l=e.charCodeAt(n++)&1023;a=a>>>8^t[(a^(240|s>>8&7))&255];a=a>>>8^t[(a^(128|s>>2&63))&255];a=a>>>8^t[(a^(128|l>>6&15|(s&3)<<4))&255];a=a>>>8^t[(a^(128|l&63))&255]}else{a=a>>>8^t[(a^(224|s>>12&15))&255];a=a>>>8^t[(a^(128|s>>6&63))&255];a=a>>>8^t[(a^(128|s&63))&255]}}return~a}e.table=t;e.bstr=y;e.buf=k;e.str=x;return e}();var Ye=function Ac(){var e={};e.version="1.2.1";function r(e,r){var t=e.split("/"),a=r.split("/");for(var n=0,i=0,s=Math.min(t.length,a.length);n<s;++n){if(i=t[n].length-a[n].length)return i;if(t[n]!=a[n])return t[n]<a[n]?-1:1}return t.length-a.length}function t(e){if(e.charAt(e.length-1)=="/")return e.slice(0,-1).indexOf("/")===-1?e:t(e.slice(0,-1));var r=e.lastIndexOf("/");return r===-1?e:e.slice(0,r+1)}function a(e){if(e.charAt(e.length-1)=="/")return a(e.slice(0,-1));var r=e.lastIndexOf("/");return r===-1?e:e.slice(r+1)}function n(e,r){if(typeof r==="string")r=new Date(r);var t=r.getHours();t=t<<6|r.getMinutes();t=t<<5|r.getSeconds()>>>1;e._W(2,t);var a=r.getFullYear()-1980;a=a<<4|r.getMonth()+1;a=a<<5|r.getDate();e._W(2,a)}function i(e){var r=e._R(2)&65535;var t=e._R(2)&65535;var a=new Date;var n=t&31;t>>>=5;var i=t&15;t>>>=4;a.setMilliseconds(0);a.setFullYear(t+1980);a.setMonth(i-1);a.setDate(n);var s=r&31;r>>>=5;var l=r&63;r>>>=6;a.setHours(r);a.setMinutes(l);a.setSeconds(s<<1);return a}function s(e){ca(e,0);var r={};var t=0;while(e.l<=e.length-4){var a=e._R(2);var n=e._R(2),i=e.l+n;var s={};switch(a){case 21589:{t=e._R(1);if(t&1)s.mtime=e._R(4);if(n>5){if(t&2)s.atime=e._R(4);if(t&4)s.ctime=e._R(4)}if(s.mtime)s.mt=new Date(s.mtime*1e3)}break;}e.l=i;r[a]=s}return r}var l;function o(){return l||(l=undefined)}function c(e,r){if(e[0]==80&&e[1]==75)return Oe(e,r);if((e[0]|32)==109&&(e[1]|32)==105)return ze(e,r);if(e.length<512)throw new Error("CFB file size "+e.length+" < 512");var t=3;var a=512;var n=0;var i=0;var s=0;var l=0;var o=0;var c=[];var d=e.slice(0,512);ca(d,0);var v=f(d);t=v[0];switch(t){case 3:a=512;break;case 4:a=4096;break;case 0:if(v[1]==0)return Oe(e,r);default:throw new Error("Major Version: Expected 3 or 4 saw "+t);}if(a!==512){d=e.slice(0,a);ca(d,28)}var b=e.slice(0,a);u(d,t);var w=d._R(4,"i");if(t===3&&w!==0)throw new Error("# Directory Sectors: Expected 0 saw "+w);d.l+=4;s=d._R(4,"i");d.l+=4;d.chk("00100000","Mini Stream Cutoff Size: ");l=d._R(4,"i");n=d._R(4,"i");o=d._R(4,"i");i=d._R(4,"i");for(var y=-1,k=0;k<109;++k){y=d._R(4,"i");if(y<0)break;c[k]=y}var x=h(e,a);m(o,i,x,a,c);var S=g(x,s,c,a);S[s].name="!Directory";if(n>0&&l!==B)S[l].name="!MiniFAT";S[c[0]].name="!FAT";S.fat_addrs=c;S.ssz=a;var C={},A=[],T=[],E=[];_(s,S,x,A,n,C,T,l);p(T,E,A);A.shift();var F={FileIndex:T,FullPaths:E};if(r&&r.raw)F.raw={header:b,sectors:x};return F}function f(e){if(e[e.l]==80&&e[e.l+1]==75)return[0,0];e.chk($,"Header Signature: ");e.l+=16;var r=e._R(2,"u");return[e._R(2,"u"),r]}function u(e,r){var t=9;e.l+=2;switch(t=e._R(2)){case 9:if(r!=3)throw new Error("Sector Shift: Expected 9 saw "+t);break;case 12:if(r!=4)throw new Error("Sector Shift: Expected 12 saw "+t);break;default:throw new Error("Sector Shift: Expected 9 or 12 saw "+t);}e.chk("0600","Mini Sector Shift: ");e.chk("000000000000","Reserved: ")}function h(e,r){var t=Math.ceil(e.length/r)-1;var a=[];for(var n=1;n<t;++n)a[n-1]=e.slice(n*r,(n+1)*r);a[t-1]=e.slice(t*r);return a}function p(e,r,t){var a=0,n=0,i=0,s=0,l=0,o=t.length;var c=[],f=[];for(;a<o;++a){c[a]=f[a]=a;r[a]=t[a]}for(;l<f.length;++l){a=f[l];n=e[a].L;i=e[a].R;s=e[a].C;if(c[a]===a){if(n!==-1&&c[n]!==n)c[a]=c[n];if(i!==-1&&c[i]!==i)c[a]=c[i]}if(s!==-1)c[s]=a;if(n!==-1&&a!=c[a]){c[n]=c[a];if(f.lastIndexOf(n)<l)f.push(n)}if(i!==-1&&a!=c[a]){c[i]=c[a];if(f.lastIndexOf(i)<l)f.push(i)}}for(a=1;a<o;++a)if(c[a]===a){if(i!==-1&&c[i]!==i)c[a]=c[i];else if(n!==-1&&c[n]!==n)c[a]=c[n]}for(a=1;a<o;++a){if(e[a].type===0)continue;l=a;if(l!=c[l])do{l=c[l];r[a]=r[l]+"/"+r[a]}while(l!==0&&-1!==c[l]&&l!=c[l]);c[a]=-1}r[0]+="/";for(a=1;a<o;++a){if(e[a].type!==2)r[a]+="/"}}function d(e,r,t){var a=e.start,n=e.size;var i=[];var s=a;while(t&&n>0&&s>=0){i.push(r.slice(s*L,s*L+L));n-=L;s=ra(t,s*4)}if(i.length===0)return ua(0);return F(i).slice(0,e.size)}function m(e,r,t,a,n){var i=B;if(e===B){if(r!==0)throw new Error("DIFAT chain shorter than expected")}else if(e!==-1){var s=t[e],l=(a>>>2)-1;if(!s)return;for(var o=0;o<l;++o){if((i=ra(s,o*4))===B)break;n.push(i)}m(ra(s,a-4),r-1,t,a,n)}}function v(e,r,t,a,n){var i=[],s=[];if(!n)n=[];var l=a-1,o=0,c=0;for(o=r;o>=0;){n[o]=true;i[i.length]=o;s.push(e[o]);var f=t[Math.floor(o*4/a)];c=o*4&l;if(a<4+c)throw new Error("FAT boundary crossed: "+o+" 4 "+a);if(!e[f])break;o=ra(e[f],c)}return{nodes:i,data:Dt([s])}}function g(e,r,t,a){var n=e.length,i=[];var s=[],l=[],o=[];var c=a-1,f=0,u=0,h=0,p=0;for(f=0;f<n;++f){l=[];h=f+r;if(h>=n)h-=n;if(s[h])continue;o=[];var d=[];for(u=h;u>=0;){d[u]=true;s[u]=true;l[l.length]=u;o.push(e[u]);var m=t[Math.floor(u*4/a)];p=u*4&c;if(a<4+p)throw new Error("FAT boundary crossed: "+u+" 4 "+a);if(!e[m])break;u=ra(e[m],p);if(d[u])break}i[h]={nodes:l,data:Dt([o])}}return i}function _(e,r,t,a,n,i,s,l){var o=0,c=a.length?2:0;var f=r[e].data;var u=0,h=0,p;for(;u<f.length;u+=128){var m=f.slice(u,u+128);ca(m,64);h=m._R(2);p=Mt(m,0,h-c);a.push(p);var g={name:p,type:m._R(1),color:m._R(1),L:m._R(4,"i"),R:m._R(4,"i"),C:m._R(4,"i"),clsid:m._R(16),state:m._R(4,"i"),start:0,size:0};var b=m._R(2)+m._R(2)+m._R(2)+m._R(2);if(b!==0)g.ct=A(m,m.l-8);var w=m._R(2)+m._R(2)+m._R(2)+m._R(2);if(w!==0)g.mt=A(m,m.l-8);g.start=m._R(4,"i");g.size=m._R(4,"i");if(g.size<0&&g.start<0){g.size=g.type=0;g.start=B;g.name=""}if(g.type===5){o=g.start;if(n>0&&o!==B)r[o].name="!StreamData"}else if(g.size>=4096){g.storage="fat";if(r[g.start]===undefined)r[g.start]=v(t,g.start,r.fat_addrs,r.ssz);r[g.start].name=g.name;g.content=r[g.start].data.slice(0,g.size)}else{g.storage="minifat";if(g.size<0)g.size=0;else if(o!==B&&g.start!==B&&r[o]){g.content=d(g,r[o].data,(r[l]||{}).data)}}if(g.content)ca(g.content,0);i[p]=g;s.push(g)}}function A(e,r){return new Date((ea(e,r+4)/1e7*Math.pow(2,32)+ea(e,r)/1e7-11644473600)*1e3)}function T(e,r){o();return c(l.readFileSync(e),r)}function E(e,r){var t=r&&r.type;if(!t){if(y&&Buffer.isBuffer(e))t="buffer"}switch(t||"base64"){case"file":return T(e,r);case"base64":return c(C(w(e)),r);case"binary":return c(C(e),r);}return c(e,r)}function D(e,r){var t=r||{},a=t.root||"Root Entry";if(!e.FullPaths)e.FullPaths=[];if(!e.FileIndex)e.FileIndex=[];if(e.FullPaths.length!==e.FileIndex.length)throw new Error("inconsistent CFB structure");if(e.FullPaths.length===0){e.FullPaths[0]=a+"/";e.FileIndex[0]={name:a,type:5}}if(t.CLSID)e.FileIndex[0].clsid=t.CLSID;N(e)}function N(e){var r="Sh33tJ5";if(Ye.find(e,"/"+r))return;var t=ua(4);t[0]=55;t[1]=t[3]=50;t[2]=54;e.FileIndex.push({name:r,type:2,content:t,size:4,L:69,R:69,C:69});e.FullPaths.push(e.FullPaths[0]+r);P(e)}function P(e,n){D(e);var i=false,s=false;for(var l=e.FullPaths.length-1;l>=0;--l){var o=e.FileIndex[l];switch(o.type){case 0:if(s)i=true;else{e.FileIndex.pop();e.FullPaths.pop()}break;case 1:;case 2:;case 5:s=true;if(isNaN(o.R*o.L*o.C))i=true;if(o.R>-1&&o.L>-1&&o.R==o.L)i=true;break;default:i=true;break;}}if(!i&&!n)return;var c=new Date(1987,1,19),f=0;var u=Object.create?Object.create(null):{};var h=[];for(l=0;l<e.FullPaths.length;++l){u[e.FullPaths[l]]=true;if(e.FileIndex[l].type===0)continue;h.push([e.FullPaths[l],e.FileIndex[l]])}for(l=0;l<h.length;++l){var p=t(h[l][0]);s=u[p];if(!s){h.push([p,{name:a(p).replace("/",""),type:1,clsid:U,ct:c,mt:c,content:null}]);u[p]=true}}h.sort(function(e,t){return r(e[0],t[0])});e.FullPaths=[];e.FileIndex=[];for(l=0;l<h.length;++l){e.FullPaths[l]=h[l][0];e.FileIndex[l]=h[l][1]}for(l=0;l<h.length;++l){var d=e.FileIndex[l];var m=e.FullPaths[l];d.name=a(m).replace("/","");d.L=d.R=d.C=-(d.color=1);d.size=d.content?d.content.length:0;d.start=0;d.clsid=d.clsid||U;if(l===0){d.C=h.length>1?1:-1;d.size=0;d.type=5}else if(m.slice(-1)=="/"){for(f=l+1;f<h.length;++f)if(t(e.FullPaths[f])==m)break;d.C=f>=h.length?-1:f;for(f=l+1;f<h.length;++f)if(t(e.FullPaths[f])==t(m))break;d.R=f>=h.length?-1:f;d.type=1}else{if(t(e.FullPaths[l+1]||"")==t(m))d.R=l+1;d.type=2}}}function I(e,r){var t=r||{};if(t.fileType=="mad")return Ue(e,t);P(e);switch(t.fileType){case"zip":return Ne(e,t);}var a=function(e){var r=0,t=0;for(var a=0;a<e.FileIndex.length;++a){var n=e.FileIndex[a];if(!n.content)continue;var i=n.content.length;if(i>0){if(i<4096)r+=i+63>>6;else t+=i+511>>9}}var s=e.FullPaths.length+3>>2;var l=r+7>>3;var o=r+127>>7;var c=l+t+s+o;var f=c+127>>7;var u=f<=109?0:Math.ceil((f-109)/127);while(c+f+u+127>>7>f)u=++f<=109?0:Math.ceil((f-109)/127);var h=[1,u,f,o,s,t,r,0];e.FileIndex[0].size=r<<6;h[7]=(e.FileIndex[0].start=h[0]+h[1]+h[2]+h[3]+h[4]+h[5])+(h[6]+7>>3);return h}(e);var n=ua(a[7]<<9);var i=0,s=0;{for(i=0;i<8;++i)n._W(1,z[i]);for(i=0;i<8;++i)n._W(2,0);n._W(2,62);n._W(2,3);n._W(2,65534);n._W(2,9);n._W(2,6);for(i=0;i<3;++i)n._W(2,0);n._W(4,0);n._W(4,a[2]);n._W(4,a[0]+a[1]+a[2]+a[3]-1);n._W(4,0);n._W(4,1<<12);n._W(4,a[3]?a[0]+a[1]+a[2]-1:B);n._W(4,a[3]);n._W(-4,a[1]?a[0]-1:B);n._W(4,a[1]);for(i=0;i<109;++i)n._W(-4,i<a[2]?a[1]+i:-1)}if(a[1]){for(s=0;s<a[1];++s){for(;i<236+s*127;++i)n._W(-4,i<a[2]?a[1]+i:-1);n._W(-4,s===a[1]-1?B:s+1)}}var l=function(e){for(s+=e;i<s-1;++i)n._W(-4,i+1);if(e){++i;n._W(-4,B)}};s=i=0;for(s+=a[1];i<s;++i)n._W(-4,W.DIFSECT);for(s+=a[2];i<s;++i)n._W(-4,W.FATSECT);l(a[3]);l(a[4]);var o=0,c=0;var f=e.FileIndex[0];for(;o<e.FileIndex.length;++o){f=e.FileIndex[o];if(!f.content)continue;c=f.content.length;if(c<4096)continue;f.start=s;l(c+511>>9)}l(a[6]+7>>3);while(n.l&511)n._W(-4,W.ENDOFCHAIN);s=i=0;for(o=0;o<e.FileIndex.length;++o){f=e.FileIndex[o];if(!f.content)continue;c=f.content.length;if(!c||c>=4096)continue;f.start=s;l(c+63>>6)}while(n.l&511)n._W(-4,W.ENDOFCHAIN);for(i=0;i<a[4]<<2;++i){var u=e.FullPaths[i];if(!u||u.length===0){for(o=0;o<17;++o)n._W(4,0);for(o=0;o<3;++o)n._W(4,-1);for(o=0;o<12;++o)n._W(4,0);continue}f=e.FileIndex[i];if(i===0)f.start=f.size?f.start-1:B;var h=i===0&&t.root||f.name;c=2*(h.length+1);n._W(64,h,"utf16le");n._W(2,c);n._W(1,f.type);n._W(1,f.color);n._W(-4,f.L);n._W(-4,f.R);n._W(-4,f.C);if(!f.clsid)for(o=0;o<4;++o)n._W(4,0);else n._W(16,f.clsid,"hex");n._W(4,f.state||0);n._W(4,0);n._W(4,0);n._W(4,0);n._W(4,0);n._W(4,f.start);n._W(4,f.size);n._W(4,0)}for(i=1;i<e.FileIndex.length;++i){f=e.FileIndex[i];if(f.size>=4096){n.l=f.start+1<<9;if(y&&Buffer.isBuffer(f.content)){f.content.copy(n,n.l,0,f.size);n.l+=f.size+511&-512}else{for(o=0;o<f.size;++o)n._W(1,f.content[o]);for(;o&511;++o)n._W(1,0)}}}for(i=1;i<e.FileIndex.length;++i){f=e.FileIndex[i];if(f.size>0&&f.size<4096){if(y&&Buffer.isBuffer(f.content)){f.content.copy(n,n.l,0,f.size);n.l+=f.size+63&-64}else{for(o=0;o<f.size;++o)n._W(1,f.content[o]);for(;o&63;++o)n._W(1,0)}}}if(y){n.l=n.length}else{while(n.l<n.length)n._W(1,0)}return n}function R(e,r){var t=e.FullPaths.map(function(e){return e.toUpperCase()});var a=t.map(function(e){var r=e.split("/");return r[r.length-(e.slice(-1)=="/"?2:1)]});var n=false;if(r.charCodeAt(0)===47){n=true;r=t[0].slice(0,-1)+r}else n=r.indexOf("/")!==-1;var i=r.toUpperCase();var s=n===true?t.indexOf(i):a.indexOf(i);if(s!==-1)return e.FileIndex[s];var l=!i.match(M);i=i.replace(O,"");if(l)i=i.replace(M,"!");for(s=0;s<t.length;++s){if((l?t[s].replace(M,"!"):t[s]).replace(O,"")==i)return e.FileIndex[s];if((l?a[s].replace(M,"!"):a[s]).replace(O,"")==i)return e.FileIndex[s]}return null}var L=64;var B=-2;var $="d0cf11e0a1b11ae1";var z=[208,207,17,224,161,177,26,225];var U="00000000000000000000000000000000";var W={MAXREGSECT:-6,DIFSECT:-4,FATSECT:-3,ENDOFCHAIN:B,FREESECT:-1,HEADER_SIGNATURE:$,HEADER_MINOR_VERSION:"3e00",MAXREGSID:-6,NOSTREAM:-1,HEADER_CLSID:U,EntryTypes:["unknown","storage","stream","lockbytes","property","root"]};function j(e,r,t){o();var a=I(e,t);l.writeFileSync(r,a)}function H(e){var r=new Array(e.length);for(var t=0;t<e.length;++t)r[t]=String.fromCharCode(e[t]);return r.join("")}function V(e,r){var t=I(e,r);switch(r&&r.type||"buffer"){case"file":o();l.writeFileSync(r.filename,t);return t;case"binary":return typeof t=="string"?t:H(t);case"base64":return b(typeof t=="string"?t:H(t));case"buffer":if(y)return Buffer.isBuffer(t)?t:k(t);case"array":return typeof t=="string"?C(t):t;}return t}var X;function G(e){try{var r=e.InflateRaw;var t=new r;t._processChunk(new Uint8Array([3,0]),t._finishFlushFlag);if(t.bytesRead)X=e;else throw new Error("zlib does not expose bytesRead")}catch(a){console.error("cannot use native zlib: "+(a.message||a))}}function Y(e,r){if(!X)return Fe(e,r);var t=X.InflateRaw;var a=new t;var n=a._processChunk(e.slice(e.l),a._finishFlushFlag);e.l+=a.bytesRead;return n}function J(e){return X?X.deflateRawSync(e):ke(e)}var K=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15];var q=[3,4,5,6,7,8,9,10,11,13,15,17,19,23,27,31,35,43,51,59,67,83,99,115,131,163,195,227,258];var Z=[1,2,3,4,5,7,9,13,17,25,33,49,65,97,129,193,257,385,513,769,1025,1537,2049,3073,4097,6145,8193,12289,16385,24577];function Q(e){var r=(e<<1|e<<11)&139536|(e<<5|e<<15)&558144;return(r>>16|r>>8|r)&255}var ee=typeof Uint8Array!=="undefined";var re=ee?new Uint8Array(1<<8):[];for(var te=0;te<1<<8;++te)re[te]=Q(te);function ae(e,r){var t=re[e&255];if(r<=8)return t>>>8-r;t=t<<8|re[e>>8&255];if(r<=16)return t>>>16-r;t=t<<8|re[e>>16&255];return t>>>24-r}function ne(e,r){var t=r&7,a=r>>>3;return(e[a]|(t<=6?0:e[a+1]<<8))>>>t&3}function ie(e,r){var t=r&7,a=r>>>3;return(e[a]|(t<=5?0:e[a+1]<<8))>>>t&7}function se(e,r){var t=r&7,a=r>>>3;return(e[a]|(t<=4?0:e[a+1]<<8))>>>t&15}function le(e,r){var t=r&7,a=r>>>3;return(e[a]|(t<=3?0:e[a+1]<<8))>>>t&31}function oe(e,r){var t=r&7,a=r>>>3;return(e[a]|(t<=1?0:e[a+1]<<8))>>>t&127}function ce(e,r,t){var a=r&7,n=r>>>3,i=(1<<t)-1;var s=e[n]>>>a;if(t<8-a)return s&i;s|=e[n+1]<<8-a;if(t<16-a)return s&i;s|=e[n+2]<<16-a;if(t<24-a)return s&i;s|=e[n+3]<<24-a;return s&i}function fe(e,r,t){var a=r&7,n=r>>>3;if(a<=5)e[n]|=(t&7)<<a;else{e[n]|=t<<a&255;e[n+1]=(t&7)>>8-a}return r+3}function ue(e,r,t){var a=r&7,n=r>>>3;t=(t&1)<<a;e[n]|=t;return r+1}function he(e,r,t){var a=r&7,n=r>>>3;t<<=a;e[n]|=t&255;t>>>=8;e[n+1]=t;return r+8}function pe(e,r,t){var a=r&7,n=r>>>3;t<<=a;e[n]|=t&255;t>>>=8;e[n+1]=t&255;e[n+2]=t>>>8;return r+16}function de(e,r){var t=e.length,a=2*t>r?2*t:r+5,n=0;if(t>=r)return e;if(y){var i=S(a);if(e.copy)e.copy(i);else for(;n<e.length;++n)i[n]=e[n];return i}else if(ee){var s=new Uint8Array(a);if(s.set)s.set(e);else for(;n<t;++n)s[n]=e[n];return s}e.length=a;return e}function me(e){var r=new Array(e);for(var t=0;t<e;++t)r[t]=0;return r}function ve(e,r,t){var a=1,n=0,i=0,s=0,l=0,o=e.length;var c=ee?new Uint16Array(32):me(32);for(i=0;i<32;++i)c[i]=0;for(i=o;i<t;++i)e[i]=0;o=e.length;var f=ee?new Uint16Array(o):me(o);for(i=0;i<o;++i){c[n=e[i]]++;if(a<n)a=n;f[i]=0}c[0]=0;for(i=1;i<=a;++i)c[i+16]=l=l+c[i-1]<<1;for(i=0;i<o;++i){l=e[i];if(l!=0)f[i]=c[l+16]++}var u=0;for(i=0;i<o;++i){u=e[i];if(u!=0){l=ae(f[i],a)>>a-u;for(s=(1<<a+4-u)-1;s>=0;--s)r[l|s<<u]=u&15|i<<4}}return a}var ge=ee?new Uint16Array(512):me(512);var be=ee?new Uint16Array(32):me(32);if(!ee){for(var we=0;we<512;++we)ge[we]=0;for(we=0;we<32;++we)be[we]=0}(function(){var e=[];var r=0;for(;r<32;r++)e.push(5);ve(e,be,32);var t=[];r=0;for(;r<=143;r++)t.push(8);for(;r<=255;r++)t.push(9);for(;r<=279;r++)t.push(7);for(;r<=287;r++)t.push(8);ve(t,ge,288)})();var ye=function Je(){var e=ee?new Uint8Array(32768):[];var r=0,t=0;for(;r<Z.length-1;++r){for(;t<Z[r+1];++t)e[t]=r}for(;t<32768;++t)e[t]=29;var a=ee?new Uint8Array(259):[];for(r=0,t=0;r<q.length-1;++r){for(;t<q[r+1];++t)a[t]=r}function n(e,r){var t=0;while(t<e.length){var a=Math.min(65535,e.length-t);var n=t+a==e.length;r._W(1,+n);r._W(2,a);r._W(2,~a&65535);while(a-- >0)r[r.l++]=e[t++]}return r.l}function i(r,t){var n=0;var i=0;var s=ee?new Uint16Array(32768):[];while(i<r.length){var l=Math.min(65535,r.length-i);if(l<10){n=fe(t,n,+!!(i+l==r.length));if(n&7)n+=8-(n&7);t.l=n/8|0;t._W(2,l);t._W(2,~l&65535);while(l-- >0)t[t.l++]=r[i++];n=t.l*8;continue}n=fe(t,n,+!!(i+l==r.length)+2);var o=0;while(l-- >0){var c=r[i];o=(o<<5^c)&32767;var f=-1,u=0;if(f=s[o]){f|=i&~32767;if(f>i)f-=32768;if(f<i)while(r[f+u]==r[i+u]&&u<250)++u}if(u>2){c=a[u];if(c<=22)n=he(t,n,re[c+1]>>1)-1;else{he(t,n,3);n+=5;he(t,n,re[c-23]>>5);n+=3}var h=c<8?0:c-4>>2;if(h>0){pe(t,n,u-q[c]);n+=h}c=e[i-f];n=he(t,n,re[c]>>3);n-=3;var p=c<4?0:c-2>>1;if(p>0){pe(t,n,i-f-Z[c]);n+=p}for(var d=0;d<u;++d){s[o]=i&32767;o=(o<<5^r[i])&32767;++i}l-=u-1}else{if(c<=143)c=c+48;else n=ue(t,n,1);n=he(t,n,re[c]);s[o]=i&32767;++i}}n=he(t,n,0)-1}t.l=(n+7)/8|0;return t.l}return function s(e,r){if(e.length<8)return n(e,r);return i(e,r)}}();function ke(e){var r=ua(50+Math.floor(e.length*1.1));var t=ye(e,r);return r.slice(0,t)}var xe=ee?new Uint16Array(32768):me(32768);var Se=ee?new Uint16Array(32768):me(32768);var Ce=ee?new Uint16Array(128):me(128);var _e=1,Ae=1;function Te(e,r){var t=le(e,r)+257;r+=5;var a=le(e,r)+1;r+=5;var n=se(e,r)+4;r+=4;var i=0;var s=ee?new Uint8Array(19):me(19);var l=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];var o=1;var c=ee?new Uint8Array(8):me(8);var f=ee?new Uint8Array(8):me(8);var u=s.length;for(var h=0;h<n;++h){s[K[h]]=i=ie(e,r);if(o<i)o=i;c[i]++;r+=3}var p=0;c[0]=0;for(h=1;h<=o;++h)f[h]=p=p+c[h-1]<<1;for(h=0;h<u;++h)if((p=s[h])!=0)l[h]=f[p]++;var d=0;for(h=0;h<u;++h){d=s[h];if(d!=0){p=re[l[h]]>>8-d;for(var m=(1<<7-d)-1;m>=0;--m)Ce[p|m<<d]=d&7|h<<3}}var v=[];o=1;for(;v.length<t+a;){p=Ce[oe(e,r)];r+=p&7;switch(p>>>=3){case 16:i=3+ne(e,r);r+=2;p=v[v.length-1];while(i-- >0)v.push(p);break;case 17:i=3+ie(e,r);r+=3;while(i-- >0)v.push(0);break;case 18:i=11+oe(e,r);r+=7;while(i-- >0)v.push(0);break;default:v.push(p);if(o<p)o=p;break;}}var g=v.slice(0,t),b=v.slice(t);for(h=t;h<286;++h)g[h]=0;for(h=a;h<30;++h)b[h]=0;_e=ve(g,xe,286);Ae=ve(b,Se,30);return r}function Ee(e,r){if(e[0]==3&&!(e[1]&3)){return[x(r),2]}var t=0;var a=0;var n=S(r?r:1<<18);var i=0;var s=n.length>>>0;var l=0,o=0;while((a&1)==0){a=ie(e,t);t+=3;if(a>>>1==0){if(t&7)t+=8-(t&7);var c=e[t>>>3]|e[(t>>>3)+1]<<8;t+=32;if(c>0){if(!r&&s<i+c){n=de(n,i+c);s=n.length}while(c-- >0){n[i++]=e[t>>>3];t+=8}}continue}else if(a>>1==1){l=9;o=5}else{t=Te(e,t);l=_e;o=Ae}for(;;){if(!r&&s<i+32767){n=de(n,i+32767);s=n.length}var f=ce(e,t,l);var u=a>>>1==1?ge[f]:xe[f];t+=u&15;u>>>=4;if((u>>>8&255)===0)n[i++]=u;else if(u==256)break;else{u-=257;var h=u<8?0:u-4>>2;if(h>5)h=0;var p=i+q[u];if(h>0){p+=ce(e,t,h);t+=h}f=ce(e,t,o);u=a>>>1==1?be[f]:Se[f];t+=u&15;u>>>=4;var d=u<4?0:u-2>>1;var m=Z[u];if(d>0){m+=ce(e,t,d);t+=d}if(!r&&s<p){n=de(n,p+100);s=n.length}while(i<p){n[i]=n[i-m];++i}}}}if(r)return[n,t+7>>>3];return[n.slice(0,i),t+7>>>3]}function Fe(e,r){var t=e.slice(e.l||0);var a=Ee(t,r);e.l+=a[1];return a[0]}function De(e,r){if(e){if(typeof console!=="undefined")console.error(r)}else throw new Error(r)}function Oe(e,r){var t=e;ca(t,0);var a=[],n=[];var i={FileIndex:a,FullPaths:n};D(i,{root:r.root});var l=t.length-4;while((t[l]!=80||t[l+1]!=75||t[l+2]!=5||t[l+3]!=6)&&l>=0)--l;t.l=l+4;t.l+=4;var o=t._R(2);t.l+=6;var c=t._R(4);t.l=c;for(l=0;l<o;++l){t.l+=20;var f=t._R(4);var u=t._R(4);var h=t._R(2);var p=t._R(2);var d=t._R(2);t.l+=8;var m=t._R(4);var v=s(t.slice(t.l+h,t.l+h+p));t.l+=h+p+d;var g=t.l;t.l=m+4;Me(t,f,u,i,v);t.l=g}return i}function Me(e,r,t,a,n){e.l+=2;var l=e._R(2);var o=e._R(2);var c=i(e);if(l&8257)throw new Error("Unsupported ZIP encryption");var f=e._R(4);var u=e._R(4);var h=e._R(4);var p=e._R(2);var d=e._R(2);var m="";for(var v=0;v<p;++v)m+=String.fromCharCode(e[e.l++]);if(d){var g=s(e.slice(e.l,e.l+d));if((g[21589]||{}).mt)c=g[21589].mt;if(((n||{})[21589]||{}).mt)c=n[21589].mt}e.l+=d;var b=e.slice(e.l,e.l+u);switch(o){case 8:b=Y(e,h);break;case 0:break;default:throw new Error("Unsupported ZIP Compression method "+o);}var w=false;if(l&8){f=e._R(4);if(f==134695760){f=e._R(4);w=true}u=e._R(4);h=e._R(4)}if(u!=r)De(w,"Bad compressed size: "+r+" != "+u);if(h!=t)De(w,"Bad uncompressed size: "+t+" != "+h);je(a,m,b,{unsafe:true,mt:c})}function Ne(e,r){var t=r||{};var a=[],i=[];var s=ua(1);var l=t.compression?8:0,o=0;var c=false;if(c)o|=8;var f=0,u=0;var h=0,p=0;var d=e.FullPaths[0],m=d,v=e.FileIndex[0];var g=[];var b=0;for(f=1;f<e.FullPaths.length;++f){m=e.FullPaths[f].slice(d.length);v=e.FileIndex[f];if(!v.size||!v.content||m=="Sh33tJ5")continue;var w=h;var y=ua(m.length);for(u=0;u<m.length;++u)y._W(1,m.charCodeAt(u)&127);y=y.slice(0,y.l);g[p]=Ge.buf(v.content,0);var k=v.content;if(l==8)k=J(k);s=ua(30);s._W(4,67324752);s._W(2,20);s._W(2,o);s._W(2,l);if(v.mt)n(s,v.mt);else s._W(4,0);s._W(-4,o&8?0:g[p]);s._W(4,o&8?0:k.length);s._W(4,o&8?0:v.content.length);s._W(2,y.length);s._W(2,0);h+=s.length;a.push(s);h+=y.length;a.push(y);h+=k.length;a.push(k);if(o&8){s=ua(12);s._W(-4,g[p]);s._W(4,k.length);s._W(4,v.content.length);h+=s.l;a.push(s)}s=ua(46);s._W(4,33639248);s._W(2,0);s._W(2,20);s._W(2,o);s._W(2,l);s._W(4,0);s._W(-4,g[p]);s._W(4,k.length);s._W(4,v.content.length);s._W(2,y.length);s._W(2,0);s._W(2,0);s._W(2,0);s._W(2,0);s._W(4,0);s._W(4,w);b+=s.l;i.push(s);b+=y.length;i.push(y);++p}s=ua(22);s._W(4,101010256);s._W(2,0);s._W(2,0);s._W(2,p);s._W(2,p);s._W(4,b);s._W(4,h);s._W(2,0);return F([F(a),F(i),s])}var Pe={htm:"text/html",xml:"text/xml",gif:"image/gif",jpg:"image/jpeg",png:"image/png",mso:"application/x-mso",thmx:"application/vnd.ms-officetheme",sh33tj5:"application/octet-stream"};function Ie(e,r){if(e.ctype)return e.ctype;var t=e.name||"",a=t.match(/\.([^\.]+)$/);if(a&&Pe[a[1]])return Pe[a[1]];if(r){a=(t=r).match(/[\.\\]([^\.\\])+$/);if(a&&Pe[a[1]])return Pe[a[1]]}return"application/octet-stream"}function Re(e){var r=b(e);var t=[];for(var a=0;a<r.length;a+=76)t.push(r.slice(a,a+76));return t.join("\r\n")+"\r\n"}function Le(e){var r=e.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7E-\xFF=]/g,function(e){var r=e.charCodeAt(0).toString(16).toUpperCase();return"="+(r.length==1?"0"+r:r)});r=r.replace(/ $/gm,"=20").replace(/\t$/gm,"=09");if(r.charAt(0)=="\n")r="=0D"+r.slice(1);r=r.replace(/\r(?!\n)/gm,"=0D").replace(/\n\n/gm,"\n=0A").replace(/([^\r\n])\n/gm,"$1=0A");var t=[],a=r.split("\r\n");for(var n=0;n<a.length;++n){var i=a[n];if(i.length==0){t.push("");continue}for(var s=0;s<i.length;){var l=76;var o=i.slice(s,s+l);if(o.charAt(l-1)=="=")l--;else if(o.charAt(l-2)=="=")l-=2;else if(o.charAt(l-3)=="=")l-=3;o=i.slice(s,s+l);s+=l;if(s<i.length)o+="=";t.push(o)}}return t.join("\r\n")}function Be(e){var r=[];for(var t=0;t<e.length;++t){var a=e[t];while(t<=e.length&&a.charAt(a.length-1)=="=")a=a.slice(0,a.length-1)+e[++t];r.push(a)}for(var n=0;n<r.length;++n)r[n]=r[n].replace(/[=][0-9A-Fa-f]{2}/g,function(e){return String.fromCharCode(parseInt(e.slice(1),16))});return C(r.join("\r\n"))}function $e(e,r,t){var a="",n="",i="",s;var l=0;for(;l<10;++l){var o=r[l];if(!o||o.match(/^\s*$/))break;var c=o.match(/^(.*?):\s*([^\s].*)$/);if(c)switch(c[1].toLowerCase()){case"content-location":a=c[2].trim();break;case"content-type":i=c[2].trim();break;case"content-transfer-encoding":n=c[2].trim();break;}}++l;switch(n.toLowerCase()){case"base64":s=C(w(r.slice(l).join("")));break;case"quoted-printable":s=Be(r.slice(l));break;default:throw new Error("Unsupported Content-Transfer-Encoding "+n);}var f=je(e,a.slice(t.length),s,{unsafe:true});if(i)f.ctype=i}function ze(e,r){if(H(e.slice(0,13)).toLowerCase()!="mime-version:")throw new Error("Unsupported MAD header");var t=r&&r.root||"";var a=(y&&Buffer.isBuffer(e)?e.toString("binary"):H(e)).split("\r\n");var n=0,i="";for(n=0;n<a.length;++n){i=a[n];if(!/^Content-Location:/i.test(i))continue;i=i.slice(i.indexOf("file"));if(!t)t=i.slice(0,i.lastIndexOf("/")+1);if(i.slice(0,t.length)==t)continue;while(t.length>0){t=t.slice(0,t.length-1);t=t.slice(0,t.lastIndexOf("/")+1);if(i.slice(0,t.length)==t)break}}var s=(a[1]||"").match(/boundary="(.*?)"/);if(!s)throw new Error("MAD cannot find boundary");var l="--"+(s[1]||"");var o=[],c=[];var f={FileIndex:o,FullPaths:c};D(f);var u,h=0;for(n=0;n<a.length;++n){var p=a[n];if(p!==l&&p!==l+"--")continue;if(h++)$e(f,a.slice(u,n),t);u=n}return f}function Ue(e,r){var t=r||{};var a=t.boundary||"SheetJS";a="------="+a;var n=["MIME-Version: 1.0",'Content-Type: multipart/related; boundary="'+a.slice(2)+'"',"","",""];var i=e.FullPaths[0],s=i,l=e.FileIndex[0];for(var o=1;o<e.FullPaths.length;++o){s=e.FullPaths[o].slice(i.length);l=e.FileIndex[o];if(!l.size||!l.content||s=="Sh33tJ5")continue;s=s.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7E-\xFF]/g,function(e){return"_x"+e.charCodeAt(0).toString(16)+"_"}).replace(/[\u0080-\uFFFF]/g,function(e){return"_u"+e.charCodeAt(0).toString(16)+"_"});var c=l.content;var f=y&&Buffer.isBuffer(c)?c.toString("binary"):H(c);var u=0,h=Math.min(1024,f.length),p=0;for(var d=0;d<=h;++d)if((p=f.charCodeAt(d))>=32&&p<128)++u;var m=u>=h*4/5;n.push(a);n.push("Content-Location: "+(t.root||"file:///C:/SheetJS/")+s);n.push("Content-Transfer-Encoding: "+(m?"quoted-printable":"base64"));n.push("Content-Type: "+Ie(l,s));n.push("");n.push(m?Le(f):Re(f))}n.push(a+"--\r\n");return n.join("\r\n")}function We(e){var r={};D(r,e);return r}function je(e,r,t,n){var i=n&&n.unsafe;if(!i)D(e);var s=!i&&Ye.find(e,r);if(!s){var l=e.FullPaths[0];if(r.slice(0,l.length)==l)l=r;else{if(l.slice(-1)!="/")l+="/";l=(l+r).replace("//","/")}s={name:a(r),type:2};e.FileIndex.push(s);e.FullPaths.push(l);if(!i)Ye.utils.cfb_gc(e)}s.content=t;s.size=t?t.length:0;if(n){if(n.CLSID)s.clsid=n.CLSID;if(n.mt)s.mt=n.mt;if(n.ct)s.ct=n.ct}return s}function He(e,r){D(e);var t=Ye.find(e,r);if(t)for(var a=0;a<e.FileIndex.length;++a)if(e.FileIndex[a]==t){e.FileIndex.splice(a,1);e.FullPaths.splice(a,1);return true}return false}function Ve(e,r,t){D(e);var n=Ye.find(e,r);if(n)for(var i=0;i<e.FileIndex.length;++i)if(e.FileIndex[i]==n){e.FileIndex[i].name=a(t);e.FullPaths[i]=t;return true}return false}function Xe(e){P(e,true)}e.find=R;e.read=E;e.parse=c;e.write=V;e.writeFile=j;e.utils={cfb_new:We,cfb_add:je,cfb_del:He,cfb_mov:Ve,cfb_gc:Xe,ReadShift:aa,CheckField:oa,prep_blob:ca,bconcat:F,use_zlib:G,_deflateRaw:ke,_inflateRaw:Fe,consts:W};return e}();var Je;if(typeof require!=="undefined")try{Je=undefined}catch(Ke){}function qe(e){if(typeof e==="string")return _(e);if(Array.isArray(e))return T(e);return e}function Ze(e,r,t){if(typeof Je!=="undefined"&&Je.writeFileSync)return t?Je.writeFileSync(e,r,t):Je.writeFileSync(e,r);if(typeof Deno!=="undefined"){if(t&&typeof r=="string")switch(t){case"utf8":r=new TextEncoder(t).encode(r);break;case"binary":r=_(r);break;default:throw new Error("Unsupported encoding "+t);}return Deno.writeFileSync(e,r)}var a=t=="utf8"?ct(r):r;if(typeof IE_SaveFile!=="undefined")return IE_SaveFile(a,e);if(typeof Blob!=="undefined"){var n=new Blob([qe(a)],{type:"application/octet-stream"});if(typeof navigator!=="undefined"&&navigator.msSaveBlob)return navigator.msSaveBlob(n,e);if(typeof saveAs!=="undefined")return saveAs(n,e);if(typeof URL!=="undefined"&&typeof document!=="undefined"&&document.createElement&&URL.createObjectURL){var i=URL.createObjectURL(n);if(typeof chrome==="object"&&typeof(chrome.downloads||{}).download=="function"){if(URL.revokeObjectURL&&typeof setTimeout!=="undefined")setTimeout(function(){URL.revokeObjectURL(i)},6e4);return chrome.downloads.download({url:i,filename:e,saveAs:true})}var s=document.createElement("a");if(s.download!=null){s.download=e;s.href=i;document.body.appendChild(s);s.click();document.body.removeChild(s);if(URL.revokeObjectURL&&typeof setTimeout!=="undefined")setTimeout(function(){URL.revokeObjectURL(i)},6e4);return i}}}if(typeof $!=="undefined"&&typeof File!=="undefined"&&typeof Folder!=="undefined")try{var l=File(e);l.open("w");l.encoding="binary";if(Array.isArray(r))r=A(r);l.write(r);l.close();return r}catch(o){if(!o.message||!o.message.match(/onstruct/))throw o}throw new Error("cannot save file "+e)}function Qe(e){if(typeof Je!=="undefined")return Je.readFileSync(e);if(typeof Deno!=="undefined")return Deno.readFileSync(e);if(typeof $!=="undefined"&&typeof File!=="undefined"&&typeof Folder!=="undefined")try{var r=File(e);r.open("r");r.encoding="binary";var t=r.read();r.close();return t}catch(a){if(!a.message||!a.message.match(/onstruct/))throw a}throw new Error("Cannot access file "+e)}function er(e){var r=Object.keys(e),t=[];for(var a=0;a<r.length;++a)if(Object.prototype.hasOwnProperty.call(e,r[a]))t.push(r[a]);return t}function rr(e,r){var t=[],a=er(e);for(var n=0;n!==a.length;++n)if(t[e[a[n]][r]]==null)t[e[a[n]][r]]=a[n];return t}function tr(e){var r=[],t=er(e);for(var a=0;a!==t.length;++a)r[e[t[a]]]=t[a];return r}function ar(e){var r=[],t=er(e);for(var a=0;a!==t.length;++a)r[e[t[a]]]=parseInt(t[a],10);return r}function nr(e){var r=[],t=er(e);for(var a=0;a!==t.length;++a){if(r[e[t[a]]]==null)r[e[t[a]]]=[];r[e[t[a]]].push(t[a])}return r}var ir=new Date(1899,11,30,0,0,0);function sr(e,r){var t=e.getTime();if(r)t-=1462*24*60*60*1e3;var a=ir.getTime()+(e.getTimezoneOffset()-ir.getTimezoneOffset())*6e4;return(t-a)/(24*60*60*1e3)}var lr=new Date;var or=ir.getTime()+(lr.getTimezoneOffset()-ir.getTimezoneOffset())*6e4;var cr=lr.getTimezoneOffset();function fr(e){var r=new Date;r.setTime(e*24*60*60*1e3+or);if(r.getTimezoneOffset()!==cr){r.setTime(r.getTime()+(r.getTimezoneOffset()-cr)*6e4)}return r}function ur(e){var r=0,t=0,a=false;var n=e.match(/P([0-9\.]+Y)?([0-9\.]+M)?([0-9\.]+D)?T([0-9\.]+H)?([0-9\.]+M)?([0-9\.]+S)?/);if(!n)throw new Error("|"+e+"| is not an ISO8601 Duration");for(var i=1;i!=n.length;++i){if(!n[i])continue;t=1;if(i>3)a=true;switch(n[i].slice(n[i].length-1)){case"Y":throw new Error("Unsupported ISO Duration Field: "+n[i].slice(n[i].length-1));case"D":t*=24;case"H":t*=60;case"M":if(!a)throw new Error("Unsupported ISO Duration Field: M");else t*=60;case"S":break;}r+=t*parseInt(n[i],10)}return r}var hr=new Date("2017-02-19T19:06:09.000Z");var pr=isNaN(hr.getFullYear())?new Date("2/19/17"):hr;var dr=pr.getFullYear()==2017;function mr(e,r){var t=new Date(e);if(dr){if(r>0)t.setTime(t.getTime()+t.getTimezoneOffset()*60*1e3);else if(r<0)t.setTime(t.getTime()-t.getTimezoneOffset()*60*1e3);return t}if(e instanceof Date)return e;if(pr.getFullYear()==1917&&!isNaN(t.getFullYear())){var a=t.getFullYear();if(e.indexOf(""+a)>-1)return t;t.setFullYear(t.getFullYear()+100);return t}var n=e.match(/\d+/g)||["2017","2","19","0","0","0"];var i=new Date(+n[0],+n[1]-1,+n[2],+n[3]||0,+n[4]||0,+n[5]||0);if(e.indexOf("Z")>-1)i=new Date(i.getTime()-i.getTimezoneOffset()*60*1e3);return i}function vr(e,r){if(y&&Buffer.isBuffer(e)){if(r){if(e[0]==255&&e[1]==254)return ct(e.slice(2).toString("utf16le"));if(e[1]==254&&e[2]==255)return ct(u(e.slice(2).toString("binary")));
@@ -67,20 +67,20 @@ break;case"<bookViews":;case"<bookViews>":;case"</bookViews>":break;case"<workbo
   --hw-orange-dark: #d9621a;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',sans-serif;background:#f5f5f5;color:#222;font-size:13px;}
+body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',sans-serif;background:#f5f5f5;color:#222;font-size:17px;}
 
 /* Header */
-.page-header{background:#fff;color:#222;padding:0 28px;display:flex;align-items:stretch;justify-content:space-between;border-bottom:3px solid var(--c-orange);box-shadow:0 1px 6px rgba(0,0,0,0.07);}
-.page-header .title{font-size:15px;font-weight:700;letter-spacing:-0.5px;padding:16px 0 13px;color:#222;}
-.page-header .sub{font-size:11px;color:#999;margin-top:2px;}
+.page-header{background:#fff;color:#222;padding:0 28px;display:flex;align-items:stretch;justify-content:space-between;border-bottom:3px solid var(--c-orange);box-shadow:0 1px 6px rgba(0,0,0,0.07);min-height:84px;}
+.page-header .title{font-size:32px;font-weight:800;letter-spacing:-1px;padding:16px 0 13px;color:#222;}
+.page-header .sub{font-size:13px;color:#999;margin-top:3px;}
 
 /* Upload */
 .upload-area{max-width:640px;margin:48px auto;background:#fff;border-radius:20px;border:2px dashed #e0e0e0;padding:56px 32px;text-align:center;cursor:pointer;position:relative;transition:all .2s;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
 .upload-area:hover,.upload-area.drag{border-color:var(--c-orange);background:#fff8f4;}
 .upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;}
 .upload-area .u-icon{font-size:48px;margin-bottom:14px;}
-.upload-area h2{font-size:16px;font-weight:700;margin-bottom:6px;color:#222;}
-.upload-area p{color:#aaa;font-size:12px;}
+.upload-area h2{font-size:17px;font-weight:700;margin-bottom:6px;color:#222;}
+.upload-area p{color:#aaa;font-size:17px;}
 
 /* Main layout */
 .main{max-width:1080px;margin:0 auto;padding:24px 20px;}
@@ -91,23 +91,23 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 .loading-overlay.show{display:flex;}
 .loading-spinner{width:44px;height:44px;border:4px solid #eee;border-top-color:var(--c-orange);border-radius:50%;animation:spin .7s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.loading-label{font-size:13px;font-weight:600;color:#444;}
+.loading-label{font-size:17px;font-weight:600;color:#444;}
 .loading-bar-wrap{width:260px;background:#eee;border-radius:6px;height:5px;overflow:hidden;}
 .loading-bar-fill{height:100%;background:var(--c-orange);border-radius:6px;transition:width .3s ease;width:0%;}
 
 /* Period/meta bar */
 .meta-bar{background:#fff;border-radius:16px;padding:14px 20px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
 .meta-item{display:flex;align-items:center;gap:8px;}
-.meta-item label{font-size:11px;color:#aaa;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
-.meta-item input[type=text],.meta-item input[type=number]{padding:6px 12px;border:1.5px solid #ebebeb;border-radius:10px;font-size:12px;font-family:inherit;color:#222;background:#f9f9f9;width:min(160px,100%);}
+.meta-item label{font-size:17px;color:#aaa;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+.meta-item input[type=text],.meta-item input[type=number]{padding:6px 12px;border:1.5px solid #ebebeb;border-radius:10px;font-size:17px;font-family:inherit;color:#222;background:#f9f9f9;width:min(160px,100%);}
 .meta-item input[type=number]{width:90px;}
 .meta-item input:focus{outline:none;border-color:var(--c-orange);background:#fff;}
-.btn{padding:8px 20px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;transition:all .15s;}
+.btn{padding:8px 20px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;font-size:17px;font-weight:700;transition:all .15s;}
 .btn-primary{background:var(--c-orange);color:#fff;}.btn-primary:hover{background:#d9621a;}
 .btn-ghost{background:#fff;color:var(--c-orange);border:1.5px solid var(--c-orange);}.btn-ghost:hover{background:#fff8f4;}
 
 /* Section title */
-.sec-title{font-size:14px;font-weight:700;color:#222;margin-bottom:12px;margin-top:24px;padding-bottom:0;border-bottom:none;letter-spacing:-.3px;}
+.sec-title{font-size:17px;font-weight:700;color:#222;margin-bottom:12px;margin-top:24px;padding-bottom:0;border-bottom:none;letter-spacing:-.3px;}
 
 /* KPI row */
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
@@ -119,36 +119,36 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 .kpi.green::after{background:#3a7d5a;}
 .kpi.orange::after{background:var(--c-orange);}
 .kpi.red::after{background:#c0392b;}
-.kpi .kv{font-size:26px;font-weight:700;line-height:1;color:#222;}
+.kpi .kv{font-size:28px;font-weight:700;line-height:1;color:#222;}
 .kpi.orange .kv{color:var(--c-orange);}
 .kpi.green .kv{color:#3a7d5a;}
 .kpi.red .kv{color:#c0392b;}
-.kpi .kl{font-size:11px;color:#aaa;margin-top:5px;}
+.kpi .kl{font-size:17px;color:#aaa;margin-top:5px;}
 
 /* Main score table */
 .table-card{background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);overflow:hidden;margin-bottom:16px;}.table-card-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .table-card table{width:100%;border-collapse:collapse;}
-.table-card th{background:#f8f8f8;color:#666;font-size:11px;font-weight:700;padding:11px 14px;border-bottom:1px solid #ebebeb;text-align:center;white-space:nowrap;letter-spacing:.2px;}
+.table-card th{background:#f8f8f8;color:#666;font-size:17px;font-weight:700;padding:11px 14px;border-bottom:1px solid #ebebeb;text-align:center;white-space:nowrap;letter-spacing:.2px;}
 .table-card th.left{text-align:left;}
-.table-card td{padding:11px 14px;border-bottom:1px solid #f5f5f5;text-align:center;vertical-align:middle;}
+.table-card td{padding:13px 16px;border-bottom:1px solid #f5f5f5;text-align:center;vertical-align:middle;font-size:14px;}
 .table-card td.left{text-align:left;font-weight:600;}
 .table-card tr:last-child td{border-bottom:none;}
 .table-card tr:hover td{background:#fff8f4;}
-.score-chip{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;}
+.score-chip{display:inline-block;padding:3px 10px;border-radius:20px;font-size:17px;font-weight:700;}
 .chip-gold{background:#fef3c7;color:#92400e;}
 .chip-blue{background:#eef0fb;color:var(--c-navy);}
 .chip-green{background:#d1fae5;color:#065f46;}
 .chip-gray{background:#f3f4f6;color:#374151;}
-.rank-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;background:#f3f4f6;color:#aaa;}
+.rank-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:17px;font-weight:700;background:#f3f4f6;color:#aaa;}
 .rank-badge.r1{background:#fef3c7;color:#92400e;}
 .rank-badge.r2{background:#e5e7eb;color:#374151;}
 .rank-badge.r3{background:#fde8d8;color:#9a3412;}
 
 /* Star dist table */
 .dist-table{width:100%;border-collapse:collapse;}
-.dist-table th{background:#f8f8f8;color:#666;font-size:11px;font-weight:700;padding:10px 12px;border-bottom:1px solid #ebebeb;text-align:center;}
+.dist-table th{background:#f8f8f8;color:#666;font-size:17px;font-weight:700;padding:10px 12px;border-bottom:1px solid #ebebeb;text-align:center;}
 .dist-table th.left{text-align:left;}
-.dist-table td{padding:9px 12px;border-bottom:1px solid #f5f5f5;text-align:center;font-size:12px;}
+.dist-table td{padding:9px 12px;border-bottom:1px solid #f5f5f5;text-align:center;font-size:17px;}
 .dist-table td.left{text-align:left;font-weight:600;}
 .dist-table tr:last-child td{border-bottom:none;}
 .star-bar{display:flex;align-items:center;gap:6px;}
@@ -165,55 +165,55 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 .opinion-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
 @media(max-width:700px){.opinion-grid{grid-template-columns:1fr;}}
 .opinion-card{background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);padding:16px;}
-.opinion-card .oc-name{font-size:12px;font-weight:700;color:var(--c-navy);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #f0f0f0;}
+.opinion-card .oc-name{font-size:17px;font-weight:700;color:var(--c-navy);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #f0f0f0;}
 .opinion-row{margin-bottom:8px;}
-.opinion-row .or-star{display:inline-block;width:28px;height:20px;border-radius:4px;font-size:10px;font-weight:700;text-align:center;line-height:20px;margin-right:6px;flex-shrink:0;}
+.opinion-row .or-star{display:inline-block;width:28px;height:20px;border-radius:4px;font-size:17px;font-weight:700;text-align:center;line-height:20px;margin-right:6px;flex-shrink:0;}
 .or-1{background:#fee2e2;color:#991b1b;}.or-2{background:#fde8d8;color:#9a3412;}.or-3{background:#fef3c7;color:#92400e;}.or-4{background:#d1fae5;color:#065f46;}.or-5{background:#dbeafe;color:#1e40af;}
-.opinion-row .or-text{font-size:11px;color:#666;line-height:1.5;}
+.opinion-row .or-text{font-size:17px;color:#666;line-height:1.5;}
 
 /* Summary section */
-.summary-card{background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);padding:18px 20px;margin-bottom:16px;line-height:1.8;font-size:13px;}
+.summary-card{background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);padding:18px 20px;margin-bottom:16px;line-height:1.8;font-size:17px;}
 
 /* Topbar */
 .top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
-.file-badge{font-size:11px;color:var(--c-orange);background:#fff4ee;padding:4px 12px;border-radius:20px;font-weight:700;border:1px solid #fdd9c4;}
+.file-badge{font-size:17px;color:var(--c-orange);background:#fff4ee;padding:4px 12px;border-radius:20px;font-weight:700;border:1px solid #fdd9c4;}
 
 /* Tab */
 .tab-bar{display:flex;gap:0;border-bottom:1.5px solid #ebebeb;margin-bottom:18px;}
-.tab-btn{padding:11px 22px;font-size:12px;font-weight:600;color:#bbb;background:none;border:none;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1.5px;transition:all .15s;font-family:inherit;}
+.tab-btn{padding:11px 22px;font-size:17px;font-weight:600;color:#bbb;background:none;border:none;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1.5px;transition:all .15s;font-family:inherit;}
 .tab-btn.active{color:var(--c-orange);border-bottom-color:var(--c-orange);font-weight:700;}
 .tab-pane{display:none;}.tab-pane.active{display:block;}
 
-.note{font-size:11px;color:#ccc;margin-top:8px;font-style:italic;}
+.note{font-size:17px;color:#ccc;margin-top:8px;font-style:italic;}
 
 /* ── 모바일 반응형 ── */
 @media(max-width:600px){
   .main{padding:12px 10px;}
   .page-header{padding:0 14px;}
-  .page-header .title{font-size:13px;}
+  .page-header .title{font-size:22px;}
   .meta-bar{gap:10px;padding:10px 12px;}
   .meta-item input[type=text]{width:120px;}
-  .tab-btn{padding:9px 12px;font-size:11px;}
+  .tab-btn{padding:9px 12px;font-size:17px;}
   .kpi-row{grid-template-columns:1fr 1fr;gap:8px;}
   .kpi .kv{font-size:20px;}
   .opinion-layout{grid-template-columns:1fr;}
   .opinion-ctrl-bar{flex-direction:column;}
 }
 @media(max-width:480px){
-  .tab-btn{padding:8px 10px;font-size:10px;}
+  .tab-btn{padding:8px 10px;font-size:17px;}
   .kpi-row{grid-template-columns:1fr 1fr;}
 }
-.formula-box{background:#fff8f4;border:1px solid #fdd9c4;border-radius:12px;padding:10px 14px;font-size:11px;color:#c05000;margin-bottom:16px;}
+.formula-box{background:#fff8f4;border:1px solid #fdd9c4;border-radius:12px;padding:10px 14px;font-size:17px;color:#c05000;margin-bottom:16px;}
 
 /* Opinion tab */
 .opinion-ctrl-bar{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 1px 6px rgba(0,0,0,0.06);margin-bottom:16px;}
 .opinion-ctrl-left,.opinion-ctrl-right{display:flex;flex-direction:column;gap:8px;}
-.ctrl-label{font-size:11px;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:.5px;}
+.ctrl-label{font-size:17px;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:.5px;}
 .agent-btn-group{display:flex;gap:6px;flex-wrap:wrap;max-width:100%;}
-.agent-op-btn{padding:5px 16px;border-radius:20px;border:1.5px solid #ebebeb;background:#f9f9f9;color:#aaa;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}
+.agent-op-btn{padding:5px 16px;border-radius:20px;border:1.5px solid #ebebeb;background:#f9f9f9;color:#aaa;font-size:17px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}
 .agent-op-btn.active{background:var(--c-orange);color:#fff;border-color:var(--c-orange);}
 .star-btn-group{display:flex;gap:6px;}
-.star-btn{padding:5px 12px;border-radius:20px;border:1.5px solid #ebebeb;background:#f9f9f9;color:#aaa;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}
+.star-btn{padding:5px 12px;border-radius:20px;border:1.5px solid #ebebeb;background:#f9f9f9;color:#aaa;font-size:17px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}
 .star-btn.active{border-color:var(--c-orange);background:#fff4ee;color:var(--c-orange);}
 .star-btn.s1.active{background:#fee2e2;color:#991b1b;border-color:#fca5a5;}
 .star-btn.s2.active{background:#fde8d8;color:#9a3412;border-color:#fdba74;}
@@ -226,36 +226,36 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 .opinion-list-wrap{background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);padding:16px;min-height:200px;}
 .op-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #f5f5f5;}
 .op-item:last-child{border-bottom:none;}
-.op-badge{flex-shrink:0;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.op-badge{flex-shrink:0;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;}
 .op-badge.b1{background:#fee2e2;color:#991b1b;}
 .op-badge.b2{background:#fde8d8;color:#9a3412;}
 .op-badge.b3{background:#fef3c7;color:#92400e;}
 .op-badge.b4{background:#d1fae5;color:#065f46;}
 .op-badge.b5{background:#dbeafe;color:#1e40af;}
-.op-text{font-size:13px;color:#333;line-height:1.6;flex:1;}
-.op-empty-msg{text-align:center;padding:32px;color:#ccc;font-size:13px;}
+.op-text{font-size:17px;color:#333;line-height:1.6;flex:1;}
+.op-empty-msg{text-align:center;padding:32px;color:#ccc;font-size:17px;}
 
 .opinion-summary-wrap{background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);padding:16px;position:sticky;top:16px;}
-.op-summary-title{font-size:12px;font-weight:700;color:#222;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--c-orange);}
-.op-summary-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f5f5f5;font-size:12px;}
+.op-summary-title{font-size:17px;font-weight:700;color:#222;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--c-orange);}
+.op-summary-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f5f5f5;font-size:17px;}
 .op-summary-row:last-child{border-bottom:none;}
 .op-summary-row .sr-label{color:#aaa;}
 .op-summary-row .sr-val{font-weight:700;color:#222;}
 .op-stat-bars{margin-top:12px;}
-.op-stat-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:11px;}
+.op-stat-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:17px;}
 
 /* Agent filter */
 .agent-filter-box{background:#fff;border-radius:16px;padding:14px 18px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);border-left:4px solid var(--c-orange);}
 .af-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-height:32px;}
-.af-tag{display:inline-flex;align-items:center;gap:6px;background:#fff4ee;color:var(--c-orange);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid #fdd9c4;}
-.af-tag .remove{cursor:pointer;font-size:14px;line-height:1;color:#f9a07a;}
+.af-tag{display:inline-flex;align-items:center;gap:6px;background:#fff4ee;color:var(--c-orange);padding:4px 12px;border-radius:20px;font-size:17px;font-weight:600;border:1px solid #fdd9c4;}
+.af-tag .remove{cursor:pointer;font-size:17px;line-height:1;color:#f9a07a;}
 .af-tag .remove:hover{color:var(--c-orange);}
 .af-input-wrap{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center;}
-.af-input-wrap input{padding:6px 12px;border:1.5px solid #ebebeb;border-radius:10px;font-size:12px;font-family:inherit;color:#222;background:#f9f9f9;outline:none;width:160px;transition:border-color .15s;}
+.af-input-wrap input{padding:6px 12px;border:1.5px solid #ebebeb;border-radius:10px;font-size:17px;font-family:inherit;color:#222;background:#f9f9f9;outline:none;width:160px;transition:border-color .15s;}
 .af-input-wrap input:focus{border-color:var(--c-orange);}
-.af-hint{font-size:11px;color:#ccc;}
+.af-hint{font-size:17px;color:#ccc;}
 .af-all-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-.af-suggest{display:inline-block;padding:3px 9px;border-radius:14px;font-size:11px;background:#f5f5f5;border:1px solid #ebebeb;color:#aaa;cursor:pointer;transition:all .15s;}
+.af-suggest{display:inline-block;padding:3px 9px;border-radius:14px;font-size:17px;background:#f5f5f5;border:1px solid #ebebeb;color:#aaa;cursor:pointer;transition:all .15s;}
 .af-suggest:hover{background:#fff4ee;border-color:var(--c-orange);color:var(--c-orange);}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -270,7 +270,7 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
   <div style="display:flex;align-items:center;gap:12px;padding:12px 0 10px;flex-wrap:wrap;">
     <div style="background:var(--hw-orange);width:4px;height:38px;border-radius:2px;flex-shrink:0;"></div>
     <div>
-      <div class="title">앱상담 품질평가 대시보드</div>
+      <div class="title">디지털상담 AI 품질평가툴</div>
       <div class="sub">한화손해보험 캐롯 · 엑셀 업로드 자동 계산</div>
     </div>
   </div>
@@ -314,7 +314,7 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
   <div class="agent-filter-box">
     <div class="af-title">👤 집계 대상 상담원 설정</div>
     <div class="af-tags" id="af-tags">
-      <span style="font-size:12px;color:var(--muted2)" id="af-empty-msg">파일 업로드 후 상담원이 자동 감지됩니다</span>
+      <span style="font-size:17px;color:var(--muted2)" id="af-empty-msg">파일 업로드 후 상담원이 자동 감지됩니다</span>
     </div>
     <div class="af-input-wrap">
       <input type="text" id="af-input" placeholder="상담원명 직접 입력 후 Enter" onkeydown="afKeydown(event)">
@@ -323,6 +323,12 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
       <button class="btn btn-ghost" onclick="afClearAll()">전체 해제</button>
       <span class="af-hint" id="af-count-hint"></span>
     </div>
+  </div>
+
+  <!-- 월 선택 필터 바 -->
+  <div id="month-filter-bar" style="display:none;background:#fff;border-radius:14px;padding:12px 18px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,0.06);align-items:center;gap:10px;flex-wrap:wrap;">
+    <span style="font-size:13px;color:#aaa;font-weight:600;flex-shrink:0;">기간 선택</span>
+    <div id="month-filter-btns" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
   </div>
 
   <div class="tab-bar">
@@ -334,25 +340,29 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
   <!-- Tab1: 평가 현황 (종합점수 + 평점분포 통합) -->
   <div class="tab-pane active" id="tab1">
 
-    <div class="formula-box">
-      📐 <strong>계산 공식</strong> &nbsp;|&nbsp;
-      만족도점수(50점) = 만족도평균 / 100 × 50 &nbsp;|&nbsp;
-      처리건수점수(50점) = 처리건수 / 월평균처리건수 × 50 (최대 50점) &nbsp;|&nbsp;
-      종합점수 = 만족도점수 + 처리건수점수
-    </div>
+    <details style="margin-bottom:14px;">
+      <summary style="background:#fff8f4;border:1px solid #fdd9c4;border-radius:10px;padding:11px 16px;font-size:14px;color:#c05000;cursor:pointer;list-style:none;font-weight:600;">▶ 계산 공식 보기</summary>
+      <div style="background:#fff8f4;border:1px solid #fdd9c4;border-top:none;border-radius:0 0 10px 10px;padding:12px 16px;font-size:14px;color:#c05000;line-height:1.7;">
+        만족도점수(50점) = 만족도평균 / 100 × 50 &nbsp;|&nbsp;
+        처리건수점수(50점) = 처리건수 / 월평균처리건수 × 50 (최대 50점) &nbsp;|&nbsp;
+        종합점수 = 만족도점수 + 처리건수점수
+      </div>
+    </details>
 
     <!-- KPI -->
     <div class="sec-title">1. 평가 개요</div>
     <div class="kpi-row" id="kpi-row"></div>
 
+    <div id="top3-row" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;"></div>
+
     <!-- 실적 비교 그래프 -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:16px;">
       <div style="background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);border-left:3px solid var(--c-orange);padding:16px 20px;">
-        <div style="font-size:11px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">처리건수 (월평균 기준선)</div>
+        <div style="font-size:17px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">처리건수 (월평균 기준선)</div>
         <div style="position:relative;height:200px;"><canvas id="chart-cnt" style="position:absolute;inset:0;width:100%!important;height:100%!important;"></canvas></div>
       </div>
       <div style="background:#fff;border-radius:16px;box-shadow:0 1px 6px rgba(0,0,0,0.06);border-left:3px solid var(--c-orange);padding:16px 20px;">
-        <div style="font-size:11px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">만족도점수 (50점 환산 · 전체 평균선)</div>
+        <div style="font-size:17px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">만족도점수 (50점 환산 · 전체 평균선)</div>
         <div style="position:relative;height:200px;"><canvas id="chart-sat" style="position:absolute;inset:0;width:100%!important;height:100%!important;"></canvas></div>
       </div>
     </div>
@@ -393,7 +403,7 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
     <!-- 마스킹 진행 중 배너 -->
     <div id="mask-status-banner" style="display:none;align-items:center;gap:12px;background:#fff4ee;border:1px solid #fdd9c4;border-radius:12px;padding:12px 18px;margin-bottom:14px;">
       <div style="width:18px;height:18px;border:3px solid #b0b4e0;border-top-color:var(--c-navy);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;"></div>
-      <span style="font-size:12px;color:var(--c-orange);font-weight:600;">🔒 개인정보 마스킹 처리 중입니다. 잠시만 기다려주세요...</span>
+      <span style="font-size:17px;color:var(--c-orange);font-weight:600;">🔒 개인정보 마스킹 처리 중입니다. 잠시만 기다려주세요...</span>
     </div>
 
 
@@ -434,6 +444,7 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 
 <script>
 let DATA=[], FNAME='', ALL_AGENTS=[], SELECTED_AGENTS=new Set();
+window._SELECTED = SELECTED_AGENTS;
 
 // ─── Loading ──────────────────────────────────────────────────
 function showLoading(msg='처리 중...', pct=0){
@@ -683,7 +694,7 @@ function renderDistChartBtns(agentList, activeIdx){
       padding:5px 14px;border-radius:20px;border:1.5px solid ${i===activeIdx?'var(--c-orange)':'var(--border)'};
       background:${i===activeIdx?'var(--c-orange)':'var(--surface)'};
       color:${i===activeIdx?'#fff':'var(--muted)'};
-      font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;
+      font-size:17px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;
     ">${a.name}</button>`
   ).join('');
   renderDistCharts(activeIdx);
@@ -767,7 +778,226 @@ function renderDistCharts(idx){
   }
 }
 
+
+// ── 월 선택 필터 ──────────────────────────────────────────────────────
+let _selectedMonth = 'all';  // 'all' 또는 'YYYY-MM'
+let _fullAgentList = [];     // 전체 기간 agentList 캐시
+let _fullAvgCnt = 0;
+
+function initMonthFilter(months, agentList, avgCnt){
+  _fullAgentList = agentList;
+  _fullAvgCnt = avgCnt;
+  _selectedMonth = 'all';
+
+  const bar = document.getElementById('month-filter-bar');
+  const btnWrap = document.getElementById('month-filter-btns');
+  if(!bar || !btnWrap) return;
+
+  // 월이 2개 이상일 때만 표시
+  if(months.length < 2){
+    bar.style.display = 'none';
+    return;
+  }
+
+  bar.style.display = 'flex';
+
+  // 버튼 생성: 전체기간 + 각 월
+  const btns = ['all', ...months];
+  btnWrap.innerHTML = btns.map(m => {
+    const label = m === 'all' ? '전체 기간' : m;
+    const active = m === 'all';
+    return '<button onclick="selectMonth(\'' + m + '\')" id="mfbtn-' + m + '" style="'
+      + 'padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;'
+      + 'border:1.5px solid ' + (active ? '#F37321' : '#ebebeb') + ';'
+      + 'background:' + (active ? '#F37321' : '#fff') + ';'
+      + 'color:' + (active ? '#fff' : '#aaa') + ';'
+      + '">' + label + '</button>';
+  }).join('');
+}
+
+function selectMonth(ym){
+  _selectedMonth = ym;
+
+  // 버튼 스타일 갱신
+  const btnWrap = document.getElementById('month-filter-btns');
+  if(btnWrap) btnWrap.querySelectorAll('button').forEach(b => {
+    const id = b.id.replace('mfbtn-','');
+    const active = id === ym;
+    b.style.background   = active ? '#F37321' : '#fff';
+    b.style.borderColor  = active ? '#F37321' : '#ebebeb';
+    b.style.color        = active ? '#fff'    : '#aaa';
+  });
+
+  if(ym === 'all'){
+    // 전체 기간 — buildAll 결과 재사용
+    renderTabsWithAgentList(_fullAgentList, _fullAvgCnt);
+  } else {
+    // 특정 월 — 해당 월 데이터로 agentList 재구성
+    // ops1(의견) 포함된 원시 데이터 우선, 없으면 점수 데이터 사용
+    const rawData  = (window._monthlyData  || {})[ym] || {};
+    const scoreData = (window._monthlyScores || {})[ym] || {};
+    // 두 소스 병합: 점수는 scoreData, ops1은 rawData에서
+    const monthData = {};
+    Object.keys(scoreData).forEach(n => {
+      monthData[n] = Object.assign({}, scoreData[n], {
+        ops1: rawData[n] ? (rawData[n].ops1 || []) : [],
+        scores1: rawData[n] ? (rawData[n].scores1 || []) : [],
+      });
+    });
+    if(!Object.keys(monthData).length){
+      alert(ym + ' 데이터가 없습니다.');
+      return;
+    }
+    // SELECTED_AGENTS 필터 적용
+    const agentList = Object.values(monthData)
+      .filter(a => window._SELECTED && window._SELECTED.size > 0
+        ? window._SELECTED.has(a.name) : true)
+      .map(a => ({
+        name: a.name,
+        cnt: a.cnt,
+        satAvg: a.satAvg,
+        satScore: a.satScore,
+        cntScore: a.cntScore,
+        total: a.total,
+        evalCnt: [1,2,3,4,5].reduce((s,k) => s+(a.dist1[k]||0), 0),
+        dist1: a.dist1 || {1:0,2:0,3:0,4:0,5:0},
+        ops1: a.ops1 || [],
+        ops2: [],
+        scores1: a.scores1 || [],
+      }));
+    agentList.sort((a,b) => b.total - a.total);
+    agentList._avgCnt = _fullAvgCnt;
+    renderTabsWithAgentList(agentList, _fullAvgCnt);
+  }
+}
+
+function renderTabsWithAgentList(agentList, avgCnt){
+  // KPI
+  const totalCnt   = agentList.reduce((s,a) => s+a.cnt, 0);
+  const totalEval  = agentList.reduce((s,a) => s+a.evalCnt, 0);
+  const period     = _selectedMonth === 'all'
+    ? document.getElementById('m-period').value
+    : _selectedMonth;
+
+  document.getElementById('kpi-row').innerHTML = [
+    {l:'대상 기간',           v: period,                        u:'',  cls:'blue'},
+    {l:'처리 건수',            v: totalCnt.toLocaleString(),     u:'건', cls:'green'},
+    {l:'평가 건수(만족도)',     v: totalEval.toLocaleString(),    u:'건', cls:'orange'},
+    {l:'월평균처리건수 기준',   v: Math.round(avgCnt).toLocaleString(), u:'건', cls:'blue'},
+  ].map(c => '<div class="kpi '+c.cls+'"><div class="kv">'+c.v+'</div><div class="kl">'+c.l+(c.u?' ('+c.u+')':'')+'</div></div>').join('');
+
+  // top3 카드
+  const sorted3 = [...agentList].sort((a,b)=>b.total-a.total).slice(0,3);
+  const medals  = ['🥇','🥈','🥉'];
+  const top3El  = document.getElementById('top3-row');
+  if(top3El){
+    top3El.innerHTML = sorted3.map(function(a,i){
+      var border = i===0 ? '2px solid #F37321' : '0.5px solid #ebebeb';
+      return '<div style="background:#fff;border-radius:14px;border:'+border+';padding:18px 16px;text-align:center;">'
+        + '<div style="font-size:26px;margin-bottom:6px;">'+medals[i]+'</div>'
+        + '<div style="font-size:16px;font-weight:700;color:#222;margin-bottom:4px;">'+a.name+'</div>'
+        + '<div style="font-size:24px;font-weight:800;color:#F37321;margin-bottom:4px;">'+a.total.toFixed(1)+'점</div>'
+        + '<div style="font-size:13px;color:#aaa;">처리 '+a.cnt+'건 &nbsp;·&nbsp; 만족도 '+a.satAvg.toFixed(2)+'</div>'
+        + '</div>';
+    }).join('');
+  }
+
+  // 점수 테이블
+  const thead = '<thead><tr>'
+    + '<th class="left">상담원명</th>'
+    + '<th>만족도평균</th><th>만족도<br>평가건수</th>'
+    + '<th>만족도점수<br>(50점)</th>'
+    + '<th>처리건수</th>'
+    + '<th>처리건수<br>(50점)</th>'
+    + '<th>종합점수<br>(100점)</th>'
+    + '</tr></thead>';
+  const tbody = agentList.map((a,i) => {
+    const rankCls  = ['r1','r2','r3'][i] || '';
+    const totalCls = a.total>=85?'chip-gold':a.total>=75?'chip-blue':a.total>=65?'chip-green':'chip-gray';
+    return '<tr>'
+      + '<td class="left"><span class="rank-badge '+rankCls+'">'+(i+1)+'</span> '+a.name+'</td>'
+      + '<td>'+a.satAvg.toFixed(1)+'</td>'
+      + '<td>'+a.evalCnt.toLocaleString()+'</td>'
+      + '<td><div class="score-bar"><div class="score-bar-track"><div class="score-bar-fill" style="width:'+(a.satScore/50*100).toFixed(0)+'%"></div></div>'+a.satScore.toFixed(1)+'</div></td>'
+      + '<td>'+a.cnt.toLocaleString()+'</td>'
+      + '<td><div class="score-bar"><div class="score-bar-track"><div class="score-bar-fill" style="width:'+(a.cntScore/50*100).toFixed(0)+'%;background:#10b981"></div></div>'+a.cntScore.toFixed(1)+'</div></td>'
+      + '<td><span class="score-chip '+totalCls+'">'+a.total.toFixed(1)+'</span></td>'
+      + '</tr>';
+  }).join('');
+  document.getElementById('score-table').innerHTML = thead + '<tbody>' + tbody + '</tbody>';
+
+  // 평점 분포 테이블
+  const dhead = '<thead><tr>'
+    + '<th class="left">상담원명</th>'
+    + '<th>1점<br>⭐</th><th>2점<br>⭐⭐</th><th>3점<br>⭐⭐⭐</th><th>4점<br>⭐⭐⭐⭐</th><th>5점<br>⭐⭐⭐⭐⭐</th>'
+    + '<th>평가건수</th>'
+    + '</tr></thead>';
+  const dtbody = agentList.map(a => {
+    const total = [1,2,3,4,5].reduce((s,k) => s+(a.dist1[k]||0), 0);
+    return '<tr>'
+      + '<td class="left">'+a.name+'</td>'
+      + [1,2,3,4,5].map(s => {
+          const c = a.dist1[s]||0;
+          const pct = total ? (c/total*100).toFixed(0) : 0;
+          const colors = ['','#ef4444','#f97316','#f59e0b','#84cc16','#10b981'];
+          return '<td>'
+            + '<div class="star-bar">'
+            + '<div class="star-bar-track"><div class="star-bar-fill '+['','s1','s2','s3','s4','s5'][s]+'-color" style="width:'+pct+'%"></div></div>'
+            + c
+            + '</div></td>';
+        }).join('')
+      + '<td>'+total+'</td>'
+      + '</tr>';
+  }).join('');
+  const distEl = document.getElementById('dist-table-el');
+  if(distEl) distEl.innerHTML = dhead + '<tbody>' + dtbody + '</tbody>';
+
+  // 차트 업데이트
+  agentList._avgCnt = avgCnt;
+  renderCharts(agentList);
+
+  // _opData 갱신 — 의견 분석 / 개인별 리포트 탭에서 사용
+  // 전체기간: ops1(의견) 포함, 특정월: 의견 없이 점수만
+  window._opData = {};
+  agentList.forEach(function(a){
+    var byScore = {1:[],2:[],3:[],4:[],5:[]};
+    // ops1이 있으면(전체기간) 의견 분류
+    if(a.ops1 && a.ops1.length){
+      a.ops1.forEach(function(o){
+        var si = o.score<=10?1:o.score<=25?2:o.score<=50?3:o.score<=75?4:5;
+        if(o.text) byScore[si].push(o.text);
+      });
+    }
+    window._opData[a.name] = {
+      name:     a.name,
+      cnt:      a.cnt,
+      evalCnt:  a.evalCnt,
+      satAvg:   a.satAvg,
+      satScore: a.satScore,
+      cntScore: a.cntScore,
+      total:    a.total,
+      byScore:  byScore
+    };
+  });
+  // 의견 탭 버튼 재생성
+  var opBtns = document.getElementById('op-agent-btns');
+  if(opBtns && agentList.length){
+    opBtns.innerHTML = agentList.map(function(a,i){
+      return '<button class="agent-op-btn'+(i===0?' active':'')+'" onclick="opSetAgent(\''+a.name.replace(/'/g,"\\'")+'\',this)">'+a.name+'</button>';
+    }).join('');
+    window._opAgent = agentList[0].name;
+    window._opStar  = 0;
+    opRender();
+  }
+  // 개인별 리포트 버튼 재생성
+  if(typeof initReportTab === 'function') initReportTab();
+  // 마스킹 초기화 (월 변경 시 재마스킹 필요)
+  _maskingDone = false;
+}
+
+
 function buildAll(){
+  window._SELECTED = SELECTED_AGENTS;
   _maskingDone = false;  // 재계산 시 마스킹 초기화
   showLoading('통계 계산 중...', 30);
   setTimeout(()=>{
@@ -778,10 +1008,13 @@ function buildAll(){
 
   // --- 상담원별 집계 (선택된 상담원만) ---
   const agents={};
+  // 월별 분리 집계 (전달 비교용) — VOC 등록일 기준
+  const agentsByMonth={};  // { 'YYYY-MM': { name: {...} } }
+
   DATA.forEach(r=>{
     const name=col(r,'처리자명')||col(r,'담당자명')||col(r,'상담원명');
     if(!name)return;
-    if(SELECTED_AGENTS.size>0 && !SELECTED_AGENTS.has(name))return; // 필터 적용
+    if(SELECTED_AGENTS.size>0 && !SELECTED_AGENTS.has(name))return;
     if(!agents[name])agents[name]={name,scores1:[],scores2:[],cnt:0,ops1:[],ops2:[],dist1:{1:0,2:0,3:0,4:0,5:0}};
     agents[name].cnt++;
     const s1=numCol(r,'만족도1 점수');
@@ -790,14 +1023,36 @@ function buildAll(){
     const op2=col(r,'만족도2 의견');
     if(s1!==null&&s1>0){
       agents[name].scores1.push(s1);
-      // 0~100점 → 별점 분포 매핑: ≤10→1점, ≤25→2점, ≤50→3점, ≤75→4점, 100→5점
       const si=s1<=10?1:s1<=25?2:s1<=50?3:s1<=75?4:5;
       agents[name].dist1[si]++;
     }
     if(s2!==null&&s2>0)agents[name].scores2.push(s2);
     if(op1)agents[name].ops1.push({score:s1,text:op1});
     if(op2)agents[name].ops2.push({score:s2,text:op2});
+
+    // 월별 집계
+    const vd = col(r,'VOC 등록일');
+    if(vd){
+      let d = vd instanceof Date ? vd : new Date(String(vd).replace(/\.+/g,'-').replace(' ','T'));
+      if(!isNaN(d)){
+        const ym = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+        if(!agentsByMonth[ym]) agentsByMonth[ym]={};
+        if(!agentsByMonth[ym][name]) agentsByMonth[ym][name]={name,scores1:[],cnt:0,dist1:{1:0,2:0,3:0,4:0,5:0},ops1:[]};
+        agentsByMonth[ym][name].cnt++;
+        if(s1!==null&&s1>0){
+          agentsByMonth[ym][name].scores1.push(s1);
+          const msi=s1<=10?1:s1<=25?2:s1<=50?3:s1<=75?4:5;
+          agentsByMonth[ym][name].dist1[msi]++;
+        }
+        if(op1) agentsByMonth[ym][name].ops1.push({score:s1, text:op1});
+      }
+    }
   });
+
+  // 월 목록 정렬 → 이번달/전달 구분
+  const months = Object.keys(agentsByMonth).sort();
+  window._monthlyData = agentsByMonth;
+  window._months = months;
 
   const agentList=Object.values(agents);
   const totalCnt=agentList.reduce((s,a)=>s+a.cnt,0);
@@ -817,104 +1072,40 @@ function buildAll(){
   });
   agentList.sort((a,b)=>b.total-a.total);
 
+  // 월별 점수 계산 (전달 비교용)
+  const monthlyScores = {}; // { 'YYYY-MM': { name: {cnt,satAvg,satScore,cntScore,total} } }
+  Object.entries(agentsByMonth).forEach(([ym, agMap])=>{
+    monthlyScores[ym] = {};
+    Object.values(agMap).forEach(ma=>{
+      const mSatAvg = ma.scores1.length ? ma.scores1.reduce((x,y)=>x+y,0)/ma.scores1.length : 0;
+      const mSatScore = mSatAvg/100*50;
+      const mCntScore = Math.min(50, ma.cnt/avgCnt*50);
+      monthlyScores[ym][ma.name] = {
+        name: ma.name,
+        cnt: ma.cnt,
+        satAvg: mSatAvg,
+        satScore: mSatScore,
+        cntScore: mCntScore,
+        total: mSatScore + mCntScore,
+        dist1: ma.dist1 || {1:0,2:0,3:0,4:0,5:0}
+      };
+    });
+  });
+  window._monthlyScores = monthlyScores;
+  window._avgCntForReport = avgCnt;
+
   const totalEval=agentList.reduce((s,a)=>s+a.evalCnt,0);
   const overallSatAvg=agentList.reduce((s,a)=>s+a.satAvg*a.evalCnt,0)/Math.max(1,totalEval);
 
-  // KPI
-  document.getElementById('kpi-row').innerHTML=[
-    {l:'대상 기간',v:period,u:'',cls:'blue'},
-    {l:'처리 건수',v:totalCnt.toLocaleString(),u:'건',cls:'green'},
-    {l:'평가 건수(만족도)',v:totalEval.toLocaleString(),u:'건',cls:'orange'},
-    {l:'월평균처리건수 기준',v:Math.round(avgCnt).toLocaleString(),u:'건',cls:'blue'},
-  ].map(c=>`<div class="kpi ${c.cls}"><div class="kv">${c.v}</div><div class="kl">${c.l}${c.u?' ('+c.u+')':''}</div></div>`).join('');
+  // KPI/테이블/차트 렌더 → renderTabsWithAgentList 위임
+  renderTabsWithAgentList(agentList, avgCnt);
 
-  // Main score table
-  const thead=`<thead><tr>
-    <th class="left">상담원명</th>
-    <th>만족도평균</th><th>만족도<br>평가건수</th>
-    <th>만족도점수<br>(50점)</th>
-    <th>처리건수</th>
-    <th>처리건수<br>(50점)</th>
-    <th>종합점수<br>(100점)</th>
-  </tr></thead>`;
-  const tbody=agentList.map((a,i)=>{
-    const rankCls=['r1','r2','r3'][i]||'';
-    const totalCls=a.total>=85?'chip-gold':a.total>=75?'chip-blue':a.total>=65?'chip-green':'chip-gray';
-    return `<tr>
-      <td class="left"><span class="rank-badge ${rankCls}">${i+1}</span> ${a.name}</td>
-      <td>${a.satAvg.toFixed(1)}</td>
-      <td>${a.evalCnt.toLocaleString()}</td>
-      <td>
-        <div class="score-bar">
-          <div class="score-bar-track"><div class="score-bar-fill" style="width:${(a.satScore/50*100).toFixed(0)}%"></div></div>
-          ${a.satScore.toFixed(1)}
-        </div>
-      </td>
-      <td>${a.cnt.toLocaleString()}</td>
-      <td>
-        <div class="score-bar">
-          <div class="score-bar-track"><div class="score-bar-fill" style="width:${(a.cntScore/50*100).toFixed(0)}%;background:#10b981"></div></div>
-          ${a.cntScore.toFixed(1)}
-        </div>
-      </td>
-      <td><span class="score-chip ${totalCls}">${a.total.toFixed(1)}</span></td>
-    </tr>`;
-  }).join('');
-  document.getElementById('score-table').innerHTML=thead+`<tbody>${tbody}</tbody>`;
-
-  // --- 평점 분포 ---
-  const dhead=`<thead><tr>
-    <th class="left">상담원명</th>
-    <th colspan="2">1점 ★☆☆☆☆</th><th colspan="2">2점 ★★☆☆☆</th>
-    <th colspan="2">3점 ★★★☆☆</th><th colspan="2">4점 ★★★★☆</th>
-    <th colspan="2">5점 ★★★★★</th>
-  </tr>
-  <tr>
-    <th class="left"></th>
-    <th>건</th><th>%</th><th>건</th><th>%</th>
-    <th>건</th><th>%</th><th>건</th><th>%</th>
-    <th>건</th><th>%</th>
-  </tr></thead>`;
-  const dtbody=agentList.map(a=>{
-    const tot=a.evalCnt||1;
-    const bars=[1,2,3,4,5].map(s=>{
-      const c=a.dist1[s]||0;
-      const p=(c/tot*100).toFixed(1);
-      const colors=['s1','s2','s3','s4','s5'];
-      return `<td>${c}</td><td>
-        <div class="star-bar">
-          <div class="star-bar-track"><div class="star-bar-fill ${colors[s-1]}-color" style="width:${p}%"></div></div>
-          <span>${p}%</span>
-        </div>
-      </td>`;
-    }).join('');
-    return `<tr><td class="left">${a.name}</td>${bars}</tr>`;
-  }).join('');
-  document.getElementById('dist-table-el').innerHTML=dhead+`<tbody>${dtbody}</tbody>`;
-
-  // --- 의견 데이터 저장 ---
-  window._opData = {};
-  agentList.forEach(a=>{
-    const byScore={1:[],2:[],3:[],4:[],5:[]};
-    a.ops1.forEach(o=>{
-      const si=o.score<=10?1:o.score<=25?2:o.score<=50?3:o.score<=75?4:5;
-      if(o.text)byScore[si].push(o.text);
-    });
-    window._opData[a.name]={byScore, evalCnt:a.evalCnt, satAvg:a.satAvg, satScore:a.satScore, cntScore:a.cntScore, total:a.total, cnt:a.cnt};
-  });
-
-  // 상담원 버튼 생성 (첫 번째 자동 선택)
-  const opAgentBtns = document.getElementById('op-agent-btns');
-  opAgentBtns.innerHTML = agentList.map((a,i)=>
-    `<button class="agent-op-btn${i===0?' active':''}" onclick="opSetAgent('${a.name.replace(/'/g,"\\'")}',this)">${a.name}</button>`
-  ).join('');
-  window._opAgent = agentList[0]?.name || '';
-  window._opStar  = 0;
-  opRender();
-
-  // 차트 렌더 (월평균 기준값 전달)
+    // 차트 렌더 (월평균 기준값 전달)
   agentList._avgCnt = avgCnt;
   renderCharts(agentList);
+
+  // 월 필터 바 초기화
+  initMonthFilter(months, agentList, avgCnt);
 
   hideLoading();
   },50);
@@ -1110,7 +1301,7 @@ function saveAsHTML(){
       var agentsJSON=JSON.stringify(agentKeys);
 
       var agentTags=Array.from(SELECTED_AGENTS).map(function(n){
-        return '<span style="display:inline-flex;background:#dbeafe;color:#1e40af;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;">'+n+'</span>';
+        return '<span style="display:inline-flex;background:#dbeafe;color:#1e40af;padding:3px 10px;border-radius:20px;font-size:17px;font-weight:600;">'+n+'</span>';
       }).join(' ');
 
       var SC='["#ef4444","#f97316","#f59e0b","#10b981","#3b82f6"]';
@@ -1122,21 +1313,21 @@ function saveAsHTML(){
         +'\n<title>앱상담 품질평가 결과 - '+period+'</title>\n'
         +styles
         +'\n<style>'
-        +'\nbody{background:#f4f6fb;font-family:\'Malgun Gothic\',\'맑은 고딕\',sans-serif;font-size:13px;}'
+        +'\nbody{background:#f4f6fb;font-family:\'Malgun Gothic\',\'맑은 고딕\',sans-serif;font-size:17px;}'
         +'\n.s-wrap{max-width:1100px;margin:0 auto;padding:24px 20px;}'
         +'\n.s-header{background:#1a56db;color:#fff;padding:16px 24px;border-radius:12px;margin-bottom:20px;}'
-        +'\n.s-title{font-size:17px;font-weight:700;}.s-sub{font-size:11px;opacity:.8;margin-top:4px;}'
-        +'\n.s-meta{display:flex;gap:20px;flex-wrap:wrap;background:#fff;border-radius:10px;padding:12px 20px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,.08);font-size:12px;}'
+        +'\n.s-title{font-size:17px;font-weight:700;}.s-sub{font-size:17px;opacity:.8;margin-top:4px;}'
+        +'\n.s-meta{display:flex;gap:20px;flex-wrap:wrap;background:#fff;border-radius:10px;padding:12px 20px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,.08);font-size:17px;}'
         +'\n.s-meta span{color:#6b7280;}.s-meta strong{color:#1e2440;}'
-        +'\n.s-agents{background:#fff;border-radius:10px;padding:12px 18px;margin-bottom:20px;box-shadow:0 1px 6px rgba(0,0,0,.08);border-left:4px solid #1a56db;font-size:12px;}'
-        +'\n.s-sec{font-size:12px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.8px;margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid #e2e6f0;}'
+        +'\n.s-agents{background:#fff;border-radius:10px;padding:12px 18px;margin-bottom:20px;box-shadow:0 1px 6px rgba(0,0,0,.08);border-left:4px solid #1a56db;font-size:17px;}'
+        +'\n.s-sec{font-size:17px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.8px;margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid #e2e6f0;}'
         +'\n.tab-pane{display:block!important;}'
         +'\n.opinion-ctrl-bar,.af-input-wrap,.no-print{display:none!important;}'
         +'\n.op-ctrl{background:#fff;border-radius:10px;padding:14px 18px;box-shadow:0 1px 6px rgba(0,0,0,.08);margin-bottom:16px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;}'
-        +'\n.op-ctrl-label{font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}'
-        +'\n.op-abtn{padding:5px 14px;border-radius:20px;border:1.5px solid #e2e6f0;background:#f4f6fb;color:#6b7280;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}'
+        +'\n.op-ctrl-label{font-size:17px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}'
+        +'\n.op-abtn{padding:5px 14px;border-radius:20px;border:1.5px solid #e2e6f0;background:#f4f6fb;color:#6b7280;font-size:17px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}'
         +'\n.op-abtn.active{background:#1a56db;color:#fff;border-color:#1a56db;}'
-        +'\n.op-sbtn{padding:5px 12px;border-radius:20px;border:1.5px solid #e2e6f0;background:#f4f6fb;color:#6b7280;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}'
+        +'\n.op-sbtn{padding:5px 12px;border-radius:20px;border:1.5px solid #e2e6f0;background:#f4f6fb;color:#6b7280;font-size:17px;font-weight:600;cursor:pointer;font-family:inherit;}'
         +'\n.op-sbtn.active{border-color:#1a56db;background:#eff5ff;color:#1a56db;}'
         +'\n.op-sbtn.s1.active{background:#fee2e2;color:#991b1b;border-color:#fca5a5;}'
         +'\n.op-sbtn.s2.active{background:#fde8d8;color:#9a3412;border-color:#fdba74;}'
@@ -1146,10 +1337,10 @@ function saveAsHTML(){
         +'\n.op-star-btns{display:flex;gap:6px;}'
         +'\n.op-layout{display:grid;grid-template-columns:1fr 260px;gap:16px;align-items:start;}'
         +'\n.op-list-wrap{background:#fff;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.08);padding:16px;min-height:120px;}'
-        +'\n.op-empty{text-align:center;padding:32px;color:#9ca3af;font-size:13px;}'
+        +'\n.op-empty{text-align:center;padding:32px;color:#9ca3af;font-size:17px;}'
         +'\n.op-summary-wrap{background:#fff;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.08);padding:16px;position:sticky;top:16px;}'
-        +'\n.op-sum-title{font-size:12px;font-weight:700;color:#1a56db;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e2e6f0;}'
-        +'\n.op-sum-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #e2e6f0;font-size:12px;}'
+        +'\n.op-sum-title{font-size:17px;font-weight:700;color:#1a56db;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e2e6f0;}'
+        +'\n.op-sum-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #e2e6f0;font-size:17px;}'
         +'\n.op-sum-row:last-child{border-bottom:none;}'
         +'\n.sl{color:#6b7280;}.sv{font-weight:700;color:#1e2440;}'
         +'\n</style>\n</head>\n<body>\n<div class="s-wrap">'
@@ -1161,7 +1352,7 @@ function saveAsHTML(){
         +'\n  <div><span>파일 </span><strong>'+FNAME+'</strong></div>'
         +'\n</div>'
         +'\n<div class="s-agents">'
-        +'\n  <span style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-right:10px;">집계 대상 상담원</span>'
+        +'\n  <span style="font-size:17px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin-right:10px;">집계 대상 상담원</span>'
         +'\n  '+agentTags
         +'\n</div>'
         +'\n<div class="s-sec">📊 종합 점수</div><div>'+tab1HTML+'</div>'
@@ -1229,15 +1420,15 @@ function saveAsHTML(){
         +'\n    lEl.innerHTML=items.map(function(x){'
         +'\n      var si=x.s-1;'
         +'\n      return "<div style=\\"display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #f3f4f6\\">"'
-        +'\n        +"<div style=\\"flex-shrink:0;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:"+_BG[si]+";color:"+_FG[si]+"\\">" +x.s+ "점</div>"'
-        +'\n        +"<div style=\\"font-size:13px;color:#1e2440;line-height:1.6;flex:1\\">"+x.t+"</div></div>";'
+        +'\n        +"<div style=\\"flex-shrink:0;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;background:"+_BG[si]+";color:"+_FG[si]+"\\">" +x.s+ "점</div>"'
+        +'\n        +"<div style=\\"font-size:17px;color:#1e2440;line-height:1.6;flex:1\\">"+x.t+"</div></div>";'
         +'\n    }).join("");'
         +'\n  }'
         +'\n  var tot=[1,2,3,4,5].reduce(function(a,k){return a+(ag.byScore[k]?ag.byScore[k].length:0);},0);'
         +'\n  var bars=[1,2,3,4,5].map(function(s){'
         +'\n    var c=ag.byScore[s]?ag.byScore[s].length:0;'
         +'\n    var p=tot?c/tot*100:0;'
-        +'\n    return "<div style=\\"display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:11px\\">"'
+        +'\n    return "<div style=\\"display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:17px\\">"'
         +'\n      +"<div style=\\"width:24px;text-align:right;color:#6b7280;font-weight:600\\">"+s+"점</div>"'
         +'\n      +"<div style=\\"flex:1;background:#e5e7eb;border-radius:3px;height:8px;overflow:hidden\\">"'
         +'\n      +"<div style=\\"height:100%;border-radius:3px;width:"+p.toFixed(0)+"%;background:"+_SC[s-1]+"\\">"+"</div></div>"'
@@ -1270,19 +1461,22 @@ function saveAsHTML(){
 
 // ── 개인별 리포트 탭 ───────────────────────────────────────────────
 let _reportAgent = '';
-let _reportCache = {};  // 에이전트별 LLM 분석 캐시
+let _reportCache = {};
+let _profileCache = {};  // 상담원 인사정보 캐시  // 에이전트별 LLM 분석 캐시
 
 function initReportTab(){
   const data = window._opData;
   if(!data || !Object.keys(data).length) return;
   const agents = Object.keys(data);
+  // 인사정보 미리 로드
+  loadAgentProfiles();
 
   // 상담원 버튼 생성
   const btnWrap = document.getElementById('report-agent-btns');
   if(!btnWrap) return;
   btnWrap.innerHTML = agents.map((name,i) =>
     `<button onclick="selectReportAgent('${name.replace(/'/g,"\\'")}',this)" style="
-      padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;
+      padding:6px 16px;border-radius:20px;font-size:17px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;
       border:1.5px solid ${i===0?'var(--c-orange)':'var(--border)'};
       background:${i===0?'var(--c-orange)':'var(--surface)'};
       color:${i===0?'#fff':'var(--muted)'};
@@ -1307,96 +1501,438 @@ function selectReportAgent(name, btn){
   renderReport(name);
 }
 
+
+
+// ── 인사정보 로드 ──────────────────────────────────────────────────
+async function loadAgentProfiles(){
+  // 이미 로드됐으면 스킵
+  if(Object.keys(_profileCache).length > 0) return _profileCache;
+  try {
+    const rows = await supaFetch('/agent_profiles?select=*');
+    if(rows && rows.length){
+      rows.forEach(r => { _profileCache[r.name] = r; });
+    }
+  } catch(e){
+    console.warn('인사정보 로드 실패:', e);
+  }
+  return _profileCache;
+}
+
+function getProfileHTML(name){
+  const p = _profileCache[name];
+  const initial = name ? name[0] : '?';
+
+  // 사진 영역
+  const photoHTML = p && p.photo_url
+    ? '<img src="'+p.photo_url+'" alt="'+name+'" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid #ebebeb;">'
+    : '<div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#F37321,#F89B6C);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;flex-shrink:0;">'+initial+'</div>';
+
+  // 인사정보 영역
+  const dept     = p ? (p.department || '') : '';
+  const position = p ? (p.position   || '') : '';
+  const email    = p ? (p.email      || '') : '';
+
+  return '<div style="display:flex;align-items:center;gap:16px;">'
+    + photoHTML
+    + '<div>'
+      + '<div style="font-size:22px;font-weight:800;color:#222;line-height:1.1;">'+name+'</div>'
+      + (dept||position ? '<div style="font-size:14px;color:#aaa;margin-top:4px;">'+(dept?dept:'')+(dept&&position?' · ':'')+( position?position:'')+'</div>' : '')
+      + (email ? '<div style="font-size:13px;color:#888;margin-top:3px;">✉ '+email+'</div>' : '')
+    + '</div>'
+  + '</div>';
+}
+
+// ── 전달 비교 HTML 생성 함수 (템플릿 리터럴 중첩 오류 방지) ──────────
+function buildCompareHTML(hasCompare, prevMonth, currMonth, prevData, currData){
+  if(!hasCompare){
+    return '<div style="background:#f9f9f9;border-radius:12px;padding:14px;margin-bottom:20px;border:0.5px solid #ebebeb;font-size:14px;color:#bbb;text-align:center;">데이터가 1개월분이면 전달 비교를 표시할 수 없습니다.</div>';
+  }
+
+  // 지표 카드
+  var metrics = [
+    {l:'종합점수',    curr:currData.total,    prev:prevData.total,    unit:'점'},
+    {l:'만족도점수',   curr:currData.satScore, prev:prevData.satScore, unit:'점'},
+    {l:'처리건수점수', curr:currData.cntScore, prev:prevData.cntScore, unit:'점'},
+    {l:'처리건수',    curr:currData.cnt,       prev:prevData.cnt,      unit:'건'},
+  ];
+  var cardsHTML = metrics.map(function(item){
+    var dv = item.curr - item.prev;
+    var isInt = item.unit === '건';
+    var color = dv>0 ? '#3a7d5a' : dv<0 ? '#c0392b' : '#aaa';
+    var arrow = dv>0 ? '▲' : dv<0 ? '▼' : '─';
+    var sign  = dv>0 ? '+' : '';
+    var dispCurr = isInt ? Math.round(item.curr) : item.curr.toFixed(1);
+    var dispDiff = isInt ? Math.round(dv) : dv.toFixed(1);
+    return '<div style="background:#f9f9f9;border-radius:12px;padding:12px 14px;border:0.5px solid #ebebeb;text-align:center;">'
+      + '<div style="font-size:12px;color:#aaa;margin-bottom:4px;">' + item.l + '</div>'
+      + '<div style="font-size:20px;font-weight:800;color:#222;">' + dispCurr + '<span style="font-size:13px;">' + item.unit + '</span></div>'
+      + '<div style="font-size:13px;color:' + color + ';font-weight:700;margin-top:3px;">' + arrow + ' ' + sign + dispDiff + item.unit + '</div>'
+      + '</div>';
+  }).join('');
+
+  // 평점 분포 변화
+  var starColors = {1:'#ef4444', 2:'#f97316', 3:'#f59e0b', 4:'#84cc16', 5:'#10b981'};
+  var prevDist = prevData.dist1 || {1:0,2:0,3:0,4:0,5:0};
+  var currDist = currData.dist1 || {1:0,2:0,3:0,4:0,5:0};
+  var prevTotal = [1,2,3,4,5].reduce(function(a,k){ return a+(prevDist[k]||0); }, 0) || 1;
+  var currTotal = [1,2,3,4,5].reduce(function(a,k){ return a+(currDist[k]||0); }, 0) || 1;
+
+  var distHTML = [5,4,3,2,1].map(function(s){
+    var prevCnt = prevDist[s] || 0;
+    var currCnt = currDist[s] || 0;
+    var prevPct = Math.round(prevCnt / prevTotal * 100);
+    var currPct = Math.round(currCnt / currTotal * 100);
+    var diff = currPct - prevPct;
+    var diffColor = s>=4 ? (diff>0?'#3a7d5a':diff<0?'#c0392b':'#aaa') : (diff<0?'#3a7d5a':diff>0?'#c0392b':'#aaa');
+    var diffArrow = diff>0 ? '▲' : diff<0 ? '▼' : '─';
+    var diffSign  = diff>0 ? '+' : '';
+    var sc = starColors[s];
+    return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'
+      + '<span style="font-size:13px;color:#aaa;width:26px;text-align:right;flex-shrink:0;">' + s + '점</span>'
+      + '<div style="flex:1;display:flex;flex-direction:column;gap:3px;">'
+        + '<div style="display:flex;align-items:center;gap:4px;">'
+          + '<div style="width:52px;font-size:11px;color:#bbb;flex-shrink:0;">' + prevMonth + '</div>'
+          + '<div style="flex:1;background:#ebebeb;border-radius:3px;height:8px;overflow:hidden;">'
+            + '<div style="width:' + prevPct + '%;height:100%;background:' + sc + ';opacity:0.35;border-radius:3px;"></div>'
+          + '</div>'
+          + '<span style="font-size:12px;color:#aaa;width:32px;text-align:right;">' + prevCnt + '건</span>'
+        + '</div>'
+        + '<div style="display:flex;align-items:center;gap:4px;">'
+          + '<div style="width:52px;font-size:11px;color:#555;font-weight:600;flex-shrink:0;">' + currMonth + '</div>'
+          + '<div style="flex:1;background:#ebebeb;border-radius:3px;height:8px;overflow:hidden;">'
+            + '<div style="width:' + currPct + '%;height:100%;background:' + sc + ';border-radius:3px;"></div>'
+          + '</div>'
+          + '<span style="font-size:12px;color:#444;font-weight:600;width:32px;text-align:right;">' + currCnt + '건</span>'
+        + '</div>'
+      + '</div>'
+      + '<div style="font-size:13px;color:' + diffColor + ';font-weight:700;width:48px;text-align:right;flex-shrink:0;">' + diffArrow + diffSign + diff + '%</div>'
+      + '</div>';
+  }).join('');
+
+  return '<div style="margin-bottom:20px;">'
+    + '<div style="font-size:15px;font-weight:700;color:#222;margin-bottom:10px;">' + prevMonth + ' → ' + currMonth + ' 전달 대비</div>'
+    + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px;">' + cardsHTML + '</div>'
+    + '<div style="position:relative;height:180px;margin-bottom:16px;">'
+      + '<canvas id="chart-compare-' + window._reportName + '" style="position:absolute;inset:0;width:100%!important;height:100%!important;"></canvas>'
+    + '</div>'
+    + '<div style="margin-top:0;">'
+      + '<div style="font-size:14px;font-weight:700;color:#222;margin-bottom:10px;">평점 분포 변화</div>'
+      + '<div style="background:#f9f9f9;border-radius:12px;padding:14px;border:0.5px solid #ebebeb;">' + distHTML + '</div>'
+    + '</div>'
+    + '</div>';
+}
+
 function renderReport(name){
+  window._reportName = name;
   const d = window._opData[name];
   if(!d) return;
 
+  const isMonthMode = _selectedMonth !== 'all';
+  const selMonth    = _selectedMonth; // 'YYYY-MM' or 'all'
+
+  // 전체 기간 데이터 (fullAgentList에서 해당 상담원)
+  const fullAgent = (_fullAgentList||[]).find(a=>a.name===name) || d;
+
+  // 월별 점수 전체 (추이용)
+  const months        = window._months || [];
+  const monthlyScores = window._monthlyScores || {};
+  const allMonthData  = months.map(m => ({
+    month: m,
+    data:  monthlyScores[m] && monthlyScores[m][name] ? monthlyScores[m][name] : null
+  })).filter(x => x.data);
+
+  // 전달 비교 (전체기간: 최근 2개월, 특정월: 해당월 vs 직전월)
+  let prevMonth, currMonth, prevData, currData;
+  if(isMonthMode){
+    const idx = months.indexOf(selMonth);
+    currMonth = selMonth;
+    prevMonth = idx > 0 ? months[idx-1] : null;
+    currData  = monthlyScores[currMonth] && monthlyScores[currMonth][name] ? monthlyScores[currMonth][name] : null;
+    prevData  = prevMonth && monthlyScores[prevMonth] && monthlyScores[prevMonth][name] ? monthlyScores[prevMonth][name] : null;
+  } else {
+    const recentMonths = months.slice(-2);
+    prevMonth = recentMonths.length >= 2 ? recentMonths[0] : null;
+    currMonth = recentMonths.length >= 1 ? recentMonths[recentMonths.length-1] : null;
+    prevData  = prevMonth && monthlyScores[prevMonth] && monthlyScores[prevMonth][name] ? monthlyScores[prevMonth][name] : null;
+    currData  = currMonth && monthlyScores[currMonth] && monthlyScores[currMonth][name] ? monthlyScores[currMonth][name] : null;
+  }
+  const hasCompare = !!(prevData && currData);
+
+  // 전체 평균 (전체기간 agentList 기준)
+  const fullList = _fullAgentList || [];
+  const fullAvgTotal   = fullList.length ? fullList.reduce((s,a)=>s+a.total,0)/fullList.length : 0;
+  const fullAvgSat     = fullList.length ? fullList.reduce((s,a)=>s+a.satScore,0)/fullList.length : 0;
+  const fullAvgCnt     = fullList.length ? fullList.reduce((s,a)=>s+a.cntScore,0)/fullList.length : 0;
+
+  // 현재 모드 점수
+  const scoreTotal   = d.total   || 0;
+  const scoreSat     = d.satScore|| 0;
+  const scoreCnt     = d.cntScore|| 0;
+  const scoreCntRaw  = d.cnt     || 0;
+  const scoreSatAvg  = d.satAvg  || 0;
+  const scoreEval    = d.evalCnt || 0;
+
+  // 전체 평균 대비 diff
+  function vsDiff(val, avg){
+    const dv = val - avg;
+    const color = dv>0?'#3a7d5a':dv<0?'#c0392b':'#aaa';
+    const arrow = dv>0?'▲':dv<0?'▼':'─';
+    const sign  = dv>0?'+':'';
+    return '<span style="font-size:12px;color:'+color+';font-weight:700;margin-left:4px;">'+arrow+sign+dv.toFixed(1)+'</span>';
+  }
+
+  // 의견 데이터
   const allTexts = [1,2,3,4,5].flatMap(s => d.byScore[s]||[]).filter(Boolean);
   const starDist = [1,2,3,4,5].map(s => ({star:s, cnt:(d.byScore[s]||[]).length}));
   const totalEval = starDist.reduce((s,x)=>s+x.cnt,0);
+  const cached = _reportCache[name + (isMonthMode?'_'+selMonth:'')];
 
-  const cached = _reportCache[name];
+  // ── 헤더 배지 ──
+  function mkBadge(label, val, sub, color){
+    const bg = color==='orange'?'#F37321':'#f0f0f0';
+    const fg = color==='orange'?'#fff':'#444';
+    return '<div style="background:'+bg+';color:'+fg+';padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;text-align:center;">'
+      +'<div style="opacity:.8;font-size:11px;">'+label+'</div>'
+      +'<div>'+val+(sub?'<span style="font-size:11px;opacity:.7;margin-left:4px;">'+sub+'</span>':'')+'</div>'
+      +'</div>';
+  }
 
-  document.getElementById('report-content').innerHTML = `
-    <div style="background:#fff;border-radius:20px;border-top:none;box-shadow:0 1px 8px rgba(0,0,0,0.08);padding:24px;margin-bottom:16px;border-left:4px solid var(--c-orange);">
+  // ── 지표 카드 ──
+  function mkMetric(label, val, vsAvg){
+    return '<div style="background:#f9f9f9;border-radius:12px;padding:14px;text-align:center;border:0.5px solid #ebebeb;">'
+      +'<div style="font-size:20px;font-weight:800;color:#222;line-height:1.1;">'+val+'</div>'
+      +(vsAvg ? '<div style="font-size:12px;color:#aaa;margin-top:2px;">전체평균 대비 '+vsAvg+'</div>' : '')
+      +'<div style="font-size:12px;color:#aaa;margin-top:3px;">'+label+'</div>'
+      +'</div>';
+  }
 
-      <!-- 상단: 이름 + 실적 배지 -->
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #f0f0f0;">
-        <div>
-          <div style="font-size:18px;font-weight:800;color:var(--c-dark);">${name}</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">개인별 평가 리포트</div>
-        </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          ${badge('종합점수', (d.total||0).toFixed(1)+'점', 'orange')}
-          ${badge('만족도점수', (d.satScore||0).toFixed(1)+'점', 'stone')}
-          ${badge('처리건수점수', (d.cntScore||0).toFixed(1)+'점', 'stone')}
-        </div>
-      </div>
+  // ── 평점 분포 바 ──
+  const colors = {1:'#e05252',2:'#F89B6C',3:'#f5c842',4:'#6bbf7a',5:'#F37321'};
+  const distBarsHTML = starDist.map(function({star,cnt}){
+    const pct = totalEval ? (cnt/totalEval*100).toFixed(0) : 0;
+    // 전체기간 분포 (특정월 모드일 때 비교)
+    const fullD = fullAgent.dist1 || {};
+    const fullTotal = [1,2,3,4,5].reduce((s,k)=>s+(fullD[k]||0),0)||1;
+    const fullPct = Math.round((fullD[star]||0)/fullTotal*100);
+    const showFull = isMonthMode && fullTotal > 1;
+    return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">'
+      +'<span style="font-size:13px;color:#aaa;width:26px;text-align:right;">'+star+'점</span>'
+      +'<div style="flex:1;">'
+        + (showFull ? '<div style="display:flex;align-items:center;gap:4px;margin-bottom:2px;">'
+            +'<span style="font-size:11px;color:#bbb;width:44px;">전체</span>'
+            +'<div style="flex:1;background:#f0f0f0;border-radius:3px;height:7px;overflow:hidden;">'
+              +'<div style="width:'+fullPct+'%;height:100%;background:'+colors[star]+';opacity:.3;border-radius:3px;"></div>'
+            +'</div><span style="font-size:11px;color:#bbb;width:28px;text-align:right;">'+(fullD[star]||0)+'건</span>'
+          +'</div>' : '')
+        +'<div style="display:flex;align-items:center;gap:4px;">'
+          +(showFull?'<span style="font-size:11px;color:#555;font-weight:600;width:44px;">'+selMonth.slice(5)+'월</span>':'')
+          +'<div style="flex:1;background:#f0f0f0;border-radius:3px;height:'+(showFull?'9':'12')+'px;overflow:hidden;">'
+            +'<div style="width:'+pct+'%;height:100%;background:'+colors[star]+';border-radius:3px;transition:width .4s;"></div>'
+          +'</div>'
+          +'<span style="font-size:'+(showFull?'12':'14')+'px;color:#222;font-weight:600;width:28px;text-align:right;">'+cnt+'건</span>'
+          +'<span style="font-size:12px;color:#aaa;width:34px;">'+pct+'%</span>'
+        +'</div>'
+      +'</div>'
+      +'</div>';
+  }).join('');
 
-      <!-- 실적 지표 그리드 -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:20px;">
-        ${metricBox('처리건수', (d.cnt||0).toLocaleString()+'건')}
-        ${metricBox('평가건수', (totalEval||0)+'건')}
-        ${metricBox('만족도 평균', (d.satAvg||0).toFixed(1)+'점')}
-        ${metricBox('만족도점수', (d.satScore||0).toFixed(1)+'/50점')}
-      </div>
+  // ── HTML 조립 ──
+  const vsTotal = isMonthMode ? vsDiff(scoreTotal, fullAvgTotal) : '';
+  const vsSat   = isMonthMode ? vsDiff(scoreSat,   fullAvgSat)   : '';
+  const vsCnt   = isMonthMode ? vsDiff(scoreCnt,   fullAvgCnt)   : '';
 
-      <!-- 평점 분포 바 -->
-      <div style="margin-bottom:20px;">
-        <div style="font-size:11px;font-weight:700;color:var(--c-dark);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;">평점 분포</div>
-        <div style="display:flex;flex-direction:column;gap:5px;">
-          ${starDist.map(({star,cnt}) => {
-            const pct = totalEval ? (cnt/totalEval*100).toFixed(0) : 0;
-            const colors = {1:'#e05252',2:'#F89B6C',3:'#f5c842',4:'#6bbf7a',5:'#F37321'};
-            return `<div style="display:flex;align-items:center;gap:8px;">
-              <span style="font-size:11px;color:var(--muted);width:24px;text-align:right;">${star}점</span>
-              <div style="flex:1;background:#f0f0f0;border-radius:4px;height:12px;overflow:hidden;">
-                <div style="width:${pct}%;height:100%;background:${colors[star]};border-radius:4px;transition:width .4s;"></div>
-              </div>
-              <span style="font-size:11px;color:var(--c-dark);font-weight:600;width:28px;">${cnt}건</span>
-              <span style="font-size:11px;color:var(--muted);width:36px;">${pct}%</span>
-            </div>`;
-          }).join('')}
-        </div>
-      </div>
+  document.getElementById('report-content').innerHTML =
+    '<div style="background:#fff;border-radius:20px;box-shadow:0 1px 8px rgba(0,0,0,0.08);padding:24px;margin-bottom:16px;border-left:4px solid var(--c-orange);">'
 
-      <!-- 종합 의견 섹션 -->
-      <div>
-        <div style="font-size:11px;font-weight:700;color:var(--c-dark);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;">AI 종합 의견</div>
-        <div id="report-feedback-${name.replace(/\s/g,'_')}" style="background:#f9f9f9;border-radius:12px;border-left:3px solid var(--c-orange);padding:14px 16px;font-size:13px;line-height:1.7;color:var(--c-dark);min-height:60px;">
-          ${cached
-            ? `<span>${cached}</span>`
-            : allTexts.length === 0
-              ? '<span style="color:var(--muted);">분석할 의견 데이터가 없습니다.</span>'
-              : `<div style="display:flex;align-items:center;gap:10px;">
-                  <div style="width:16px;height:16px;border:2.5px solid var(--border);border-top-color:var(--c-orange);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;"></div>
-                  <span style="color:var(--muted);font-size:12px;">AI가 의견을 분석 중입니다...</span>
-                </div>`
+    // 헤더 (인사정보 포함)
+    +'<div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #f0f0f0;">'
+      +'<div style="display:flex;flex-direction:column;gap:8px;">'
+        +getProfileHTML(name)
+        +'<div style="font-size:13px;color:#aaa;margin-left:88px;margin-top:-4px;">'+(isMonthMode ? selMonth+' 월별 리포트' : '전체 기간 리포트')+'</div>'
+      +'</div>'
+      +'<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start;">'
+        +mkBadge('종합점수', scoreTotal.toFixed(1)+'점', isMonthMode?'전체평균 '+fullAvgTotal.toFixed(1):'', 'orange')
+        +mkBadge('만족도점수', scoreSat.toFixed(1)+'점', '', '')
+        +mkBadge('처리건수점수', scoreCnt.toFixed(1)+'점', '', '')
+      +'</div>'
+    +'</div>'
+
+    // 지표 그리드
+    +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:20px;">'
+      +mkMetric('처리건수', scoreCntRaw.toLocaleString()+'건', isMonthMode ? vsDiff(scoreCntRaw, fullList.reduce((s,a)=>s+a.cnt,0)/Math.max(1,fullList.length)):'')
+      +mkMetric('평가건수', scoreEval+'건', '')
+      +mkMetric('만족도 평균', scoreSatAvg.toFixed(2)+'점', '')
+      +mkMetric('만족도점수', scoreSat.toFixed(1)+'/50점', isMonthMode?vsSat:'')
+    +'</div>'
+
+    // 특정월: 전체 평균 대비 요약 배너
+    +(isMonthMode ? '<div style="background:#f9f9f9;border-radius:12px;padding:12px 16px;margin-bottom:20px;border-left:3px solid '+(scoreTotal>=fullAvgTotal?'#3a7d5a':'#c0392b')+';font-size:14px;color:#444;">'
+      +'<b>'+selMonth+'</b> 종합점수 <b>'+scoreTotal.toFixed(1)+'점</b> — '
+      +'전체 기간 평균 <b>'+fullAvgTotal.toFixed(1)+'점</b>보다 '
+      +'<span style="color:'+(scoreTotal>=fullAvgTotal?'#3a7d5a':'#c0392b')+';font-weight:700;">'
+      +(scoreTotal>=fullAvgTotal?'▲ '+Math.abs(scoreTotal-fullAvgTotal).toFixed(1)+'점 높음':'▼ '+Math.abs(scoreTotal-fullAvgTotal).toFixed(1)+'점 낮음')
+      +'</span></div>' : '')
+
+    // 월별 추이 차트 (2개월 이상)
+    +(allMonthData.length >= 2 ?
+      '<div style="margin-bottom:20px;">'
+        +'<div style="font-size:15px;font-weight:700;color:#222;margin-bottom:10px;">'+(isMonthMode?'월별 추이':'전체 월별 추이')+'</div>'
+        +'<div style="position:relative;height:160px;">'
+          +'<canvas id="chart-trend-'+name.replace(/\s/g,'_')+'" style="position:absolute;inset:0;width:100%!important;height:100%!important;"></canvas>'
+        +'</div>'
+      +'</div>' : '')
+
+    // 평점 분포
+    +'<div style="margin-bottom:20px;">'
+      +'<div style="font-size:15px;font-weight:700;color:#222;margin-bottom:10px;">평점 분포'+(isMonthMode?' ('+selMonth+' vs 전체기간)':'')+'</div>'
+      +'<div style="display:flex;flex-direction:column;gap:4px;">'+distBarsHTML+'</div>'
+    +'</div>'
+
+    // 전달 비교
+    +buildCompareHTML(hasCompare, prevMonth, currMonth, prevData, currData)
+
+    // AI 종합 의견
+    +'<div>'
+      +'<div style="font-size:15px;font-weight:700;color:#222;margin-bottom:10px;">AI 종합 의견'+(isMonthMode?' ('+selMonth+')':'')+'</div>'
+      +'<div id="report-feedback-'+name.replace(/\s/g,'_')+'" style="background:#f9f9f9;border-radius:12px;border-left:3px solid var(--c-orange);padding:14px 16px;font-size:14px;line-height:1.7;color:#333;min-height:60px;">'
+        +(cached ? '<span>'+cached+'</span>'
+          : allTexts.length === 0 ? '<span style="color:#aaa;">분석할 의견 데이터가 없습니다.</span>'
+          : '<div style="display:flex;align-items:center;gap:10px;">'
+              +'<div style="width:16px;height:16px;border:2.5px solid #eee;border-top-color:var(--c-orange);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;"></div>'
+              +'<span style="color:#aaa;font-size:14px;">AI가 의견을 분석 중입니다...</span>'
+            +'</div>')
+      +'</div>'
+    +'</div>'
+
+    +'</div>';
+
+  // AI 피드백 (캐시키: 이름+월)
+  const cacheKey = name + (isMonthMode ? '_'+selMonth : '');
+  if(!_reportCache[cacheKey] && allTexts.length > 0){
+    generateFeedbackWithKey(cacheKey, name, allTexts, starDist, d, isMonthMode ? selMonth : null);
+  }
+
+  // 월별 추이 차트
+  if(allMonthData.length >= 2){
+    setTimeout(()=>{
+      const ctxEl = document.getElementById('chart-trend-'+name.replace(/\s/g,'_'));
+      if(!ctxEl) return;
+      new Chart(ctxEl, {
+        type: 'line',
+        data: {
+          labels: allMonthData.map(x=>x.month),
+          datasets: [{
+            label: '종합점수',
+            data: allMonthData.map(x=>parseFloat(x.data.total.toFixed(1))),
+            borderColor: '#F37321',
+            backgroundColor: 'rgba(243,115,33,0.08)',
+            borderWidth: 2.5,
+            pointRadius: allMonthData.map(x => x.month===selMonth ? 7 : 4),
+            pointBackgroundColor: allMonthData.map(x => x.month===selMonth ? '#F37321' : '#fff'),
+            pointBorderColor: '#F37321',
+            pointBorderWidth: 2,
+            tension: 0.3,
+            fill: true,
+          },{
+            label: '만족도점수',
+            data: allMonthData.map(x=>parseFloat(x.data.satScore.toFixed(1))),
+            borderColor: '#35386B',
+            borderWidth: 1.5,
+            borderDash: [4,3],
+            pointRadius: 3,
+            pointBackgroundColor: '#35386B',
+            tension: 0.3,
+            fill: false,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position:'top', labels:{font:{size:12}, boxWidth:12, color:'#444'} },
+            tooltip: { callbacks:{ label: ctx => ' '+ctx.dataset.label+': '+ctx.parsed.y+'점' } }
+          },
+          scales: {
+            x: { grid:{display:false}, ticks:{color:'#aaa', font:{size:11}} },
+            y: { min:0, max:100, grid:{color:'#f5f5f5'}, ticks:{color:'#aaa', font:{size:11}} }
           }
-        </div>
-      </div>
-    </div>
-  `;
+        }
+      });
+    }, 100);
+  }
 
-  // 캐시 없으면 LLM 호출
-  if(!cached && allTexts.length > 0){
-    generateFeedback(name, allTexts, starDist, d);
+  // 전달 비교 차트
+  if(hasCompare){
+    setTimeout(()=>{
+      const ctxId = 'chart-compare-'+name.replace(/\s/g,'_');
+      const ctxEl = document.getElementById(ctxId);
+      if(!ctxEl) return;
+      new Chart(ctxEl, {
+        type: 'bar',
+        data: {
+          labels: ['종합점수','만족도점수','처리건수점수'],
+          datasets: [
+            { label: prevMonth, data: [parseFloat(prevData.total.toFixed(1)), parseFloat(prevData.satScore.toFixed(1)), parseFloat(prevData.cntScore.toFixed(1))], backgroundColor: '#E1D4C9', borderRadius:6, barThickness:28 },
+            { label: currMonth, data: [parseFloat(currData.total.toFixed(1)), parseFloat(currData.satScore.toFixed(1)), parseFloat(currData.cntScore.toFixed(1))], backgroundColor: '#F37321', borderRadius:6, barThickness:28 }
+          ]
+        },
+        options: {
+          responsive:true, maintainAspectRatio:false,
+          plugins: { legend:{position:'top',labels:{font:{size:12},boxWidth:12,color:'#444'}}, tooltip:{callbacks:{label:ctx=>' '+ctx.dataset.label+': '+ctx.parsed.y+'점'}} },
+          scales: { x:{grid:{display:false},ticks:{color:'#444',font:{size:12}}}, y:{min:0,max:100,grid:{color:'#f0f0f0'},ticks:{color:'#aaa',font:{size:11}}} }
+        }
+      });
+    }, 150);
   }
 }
 
 function badge(label, value, type){
   const bg = type==='orange' ? 'var(--c-orange)' : '#f0ece8';
   const color = type==='orange' ? '#fff' : 'var(--c-dark)';
-  return `<div style="background:${bg};color:${color};padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;">
+  return `<div style="background:${bg};color:${color};padding:5px 12px;border-radius:20px;font-size:17px;font-weight:700;">
     <span style="opacity:.8;">${label}</span> ${value}
   </div>`;
 }
 
 function metricBox(label, value){
   return `<div style="background:#f5f5f5;border-radius:12px;padding:12px;text-align:center;border:1px solid #ebebeb;">
-    <div style="font-size:18px;font-weight:800;color:var(--c-dark);">${value}</div>
-    <div style="font-size:10px;color:var(--muted);margin-top:2px;">${label}</div>
+    <div style="font-size:20px;font-weight:800;color:var(--c-dark);">${value}</div>
+    <div style="font-size:17px;color:var(--muted);margin-top:2px;">${label}</div>
   </div>`;
+}
+
+async function generateFeedbackWithKey(cacheKey, name, texts, starDist, d, monthLabel){
+  const elId = 'report-feedback-' + name.replace(/\s/g,'_');
+  try {
+    const totalEval = starDist.reduce((s,x)=>s+x.cnt,0);
+    const distSummary = starDist.map(x=>x.star+'점:'+x.cnt+'건').join(', ');
+    const opinionSample = texts.slice(0,40).join('\n');
+    const periodNote = monthLabel ? monthLabel+' 월 데이터 기준' : '전체 기간 데이터 기준';
+
+    const res = await fetch('/api/mask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        _mode: 'feedback',
+        agentName: name,
+        satAvg: d.satAvg,
+        satScore: d.satScore,
+        evalCnt: totalEval,
+        distSummary,
+        opinions: opinionSample,
+        periodNote
+      })
+    });
+    if(!res.ok) throw new Error('API ' + res.status);
+    const json = await res.json();
+    const feedback = json.feedback || '분석 결과를 가져오지 못했습니다.';
+    _reportCache[cacheKey] = feedback;
+    const el = document.getElementById(elId);
+    if(el) el.innerHTML = '<span>'+feedback+'</span>';
+  } catch(e){
+    const el = document.getElementById(elId);
+    if(el) el.innerHTML = '<span style="color:var(--red);">분석 오류: '+e.message+'</span>';
+  }
 }
 
 async function generateFeedback(name, texts, starDist, d){
@@ -1508,14 +2044,14 @@ function showShareBanner(url, period){
   if(!banner){
     banner = document.createElement('div');
     banner.id = 'share-banner';
-    banner.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:14px 20px;border-radius:12px;display:flex;align-items:center;gap:12px;z-index:9999;box-shadow:0 4px 24px rgba(0,0,0,.3);font-size:13px;max-width:90vw;';
+    banner.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:14px 20px;border-radius:12px;display:flex;align-items:center;gap:12px;z-index:9999;box-shadow:0 4px 24px rgba(0,0,0,.3);font-size:17px;max-width:90vw;';
     document.body.appendChild(banner);
   }
   banner.innerHTML = `
     <span>✅ <b>${period}</b> 평가 저장 완료</span>
-    <input id="share-url-input" value="${url}" readonly style="width:260px;padding:4px 8px;border-radius:6px;border:none;font-size:11px;color:#1e293b;">
-    <button onclick="copyShareUrl()" style="padding:4px 12px;background:#3b82f6;border:none;border-radius:6px;color:#fff;cursor:pointer;font-size:12px;">복사</button>
-    <button onclick="document.getElementById('share-banner').remove()" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:16px;">✕</button>
+    <input id="share-url-input" value="${url}" readonly style="width:260px;padding:4px 8px;border-radius:6px;border:none;font-size:17px;color:#1e293b;">
+    <button onclick="copyShareUrl()" style="padding:4px 12px;background:#3b82f6;border:none;border-radius:6px;color:#fff;cursor:pointer;font-size:17px;">복사</button>
+    <button onclick="document.getElementById('share-banner').remove()" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:17px;">✕</button>
   `;
   setTimeout(()=>{ if(banner.parentNode) banner.remove(); }, 10000);
 }
