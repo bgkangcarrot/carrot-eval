@@ -1280,13 +1280,15 @@ async function _doMasking(){
       banner.querySelector('span').textContent = isQuota
         ? '⚠️ Gemini API 무료 사용량이 일시적으로 초과되었습니다. 잠시 후 다시 시도해주세요.'
         : '⚠️ 마스킹 오류: ' + err.message;
+      banner._isError = true;
       banner.style.display='flex';
-      setTimeout(()=>{ banner.style.display='none'; banner.style.background=''; banner.style.borderColor=''; }, isQuota ? 12000 : 6000);
+      setTimeout(()=>{ banner.style.display='none'; banner.style.background=''; banner.style.borderColor=''; banner._isError=false; }, isQuota ? 12000 : 6000);
       return;
     }
   } finally {
     _maskingInProgress = false;
-    if(banner && banner.style.display !== 'none') banner.style.display='none';
+    // 오류 배너는 catch에서 관리하므로 정상 완료 시에만 숨김
+    if(banner && !banner._isError) banner.style.display='none';
   }
 }
 
