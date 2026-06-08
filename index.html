@@ -345,6 +345,33 @@ body{
 </head>
 <body>
 <div class="dist-tooltip" id="dist-tooltip"></div>
+<div id="email-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:10000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:28px 28px 24px;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+    <div style="font-size:16px;font-weight:700;color:#1A1A1A;margin-bottom:6px;" id="email-modal-title">이메일 전송</div>
+    <div style="font-size:13px;color:#999;margin-bottom:20px;" id="email-modal-sub"></div>
+    <div id="email-modal-registered" style="display:none;margin-bottom:12px;">
+      <label style="font-size:13px;color:#555;font-weight:600;display:block;margin-bottom:6px;">등록된 이메일</label>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <input type="radio" name="email-choice" id="email-radio-reg" value="reg" checked style="width:16px;height:16px;accent-color:#F89B6C;">
+        <label for="email-radio-reg" id="email-label-reg" style="font-size:14px;color:#1A1A1A;cursor:pointer;"></label>
+      </div>
+    </div>
+    <div style="margin-bottom:20px;">
+      <label style="font-size:13px;color:#555;font-weight:600;display:block;margin-bottom:6px;">직접 입력</label>
+      <div style="display:flex;align-items:center;gap:8px;" id="email-direct-row">
+        <input type="radio" name="email-choice" id="email-radio-direct" value="direct" style="width:16px;height:16px;accent-color:#F89B6C;flex-shrink:0;">
+        <input type="email" id="email-input-direct" placeholder="example@email.com"
+          style="flex:1;padding:9px 12px;border:1.5px solid #8A8682;border-radius:10px;font-size:14px;font-family:inherit;outline:none;"
+          onfocus="document.getElementById('email-radio-direct').checked=true"
+          onclick="document.getElementById('email-radio-direct').checked=true">
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button onclick="closeEmailModal()" style="padding:9px 20px;background:#fff;color:#555;border:1.5px solid #8A8682;border-radius:10px;font-size:14px;font-family:inherit;cursor:pointer;">취소</button>
+      <button onclick="confirmEmailSend()" style="padding:9px 20px;background:#F89B6C;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;">전송</button>
+    </div>
+  </div>
+</div>
 <div class="loading-overlay" id="loadingOverlay">
   <div class="loading-spinner"></div>
   <div class="loading-label" id="loadingLabel">처리 중...</div>
@@ -1635,17 +1662,45 @@ function printReport(){
 async function emailReport(){
   const name = _reportName;
   const profile = _profileCache[name] || {};
-  const email = profile.email || '';
+  const regEmail = profile.email || '';
 
-  if(!email){
-    const input = prompt(name + '의 이메일 주소를 입력하세요:');
-    if(!input || !input.includes('@')){ alert('올바른 이메일 주소를 입력해주세요.'); return; }
-    if(profile) profile.email = input;
-    sendReportEmail(name, input);
+  // 모달 설정
+  document.getElementById('email-modal-title').textContent = name + ' 리포트 이메일 전송';
+  document.getElementById('email-modal-sub').textContent = '전송할 이메일 주소를 선택하거나 직접 입력하세요.';
+  document.getElementById('email-input-direct').value = '';
+
+  const regRow = document.getElementById('email-modal-registered');
+  if(regEmail){
+    regRow.style.display = 'block';
+    document.getElementById('email-label-reg').textContent = regEmail;
+    document.getElementById('email-radio-reg').checked = true;
   } else {
-    if(!confirm(email + ' 으로 리포트를 전송하시겠습니까?')) return;
-    sendReportEmail(name, email);
+    regRow.style.display = 'none';
+    document.getElementById('email-radio-direct').checked = true;
   }
+
+  document.getElementById('email-modal').style.display = 'flex';
+}
+
+function closeEmailModal(){
+  document.getElementById('email-modal').style.display = 'none';
+}
+
+function confirmEmailSend(){
+  const choice = document.querySelector('input[name="email-choice"]:checked')?.value;
+  let to = '';
+  if(choice === 'reg'){
+    to = document.getElementById('email-label-reg').textContent.trim();
+  } else {
+    to = document.getElementById('email-input-direct').value.trim();
+  }
+  if(!to || !to.includes('@')){
+    document.getElementById('email-input-direct').style.borderColor = '#c0392b';
+    document.getElementById('email-input-direct').focus();
+    return;
+  }
+  closeEmailModal();
+  sendReportEmail(_reportName, to);
 }
 
 async function sendReportEmail(name, to){
