@@ -314,20 +314,17 @@ body{
 
 /* ── 인쇄 ── */
 @media print {
+  * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
   body { background:#fff !important; }
   .page-header, .top-bar, .tab-bar, .month-filter-bar,
   .meta-bar, .agent-filter-box, #report-agent-btns,
   .report-action-bar, .loading-overlay, #report-action-bar { display:none !important; }
   #app { display:block !important; }
-  .tab-pane { display:block !important; }
-  #tab1, #tab3 { display:none !important; }
+  .tab-pane { display:none !important; }
   #tab4 { display:block !important; }
   #report-content { padding:0; }
   * { box-shadow:none !important; }
-  canvas { display:none !important; }
-  .print-canvas-img { display:block !important; width:100% !important; }
-  .dbar span { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
-  .distrow .dbar { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  canvas[data-chartjs] { display:none !important; }
 }
 
 
@@ -1595,32 +1592,44 @@ function saveAsHTML(){
 
 // ── 개인별 리포트 출력 / 이메일 ──────────────────────────────────
 function printReport(){
-  // canvas → img 변환 (인쇄 시 공란 방지)
-  var canvases = document.querySelectorAll('#report-content canvas');
+  var reportEl = document.getElementById('report-content');
+  if(!reportEl) return;
+
+  // 1. canvas → img 변환
   var imgs = [];
-  canvases.forEach(function(c){
+  reportEl.querySelectorAll('canvas').forEach(function(c){
     try {
-      var img = document.createElement('img');
-      img.src = c.toDataURL('image/png');
-      img.className = 'print-canvas-img';
-      img.style.cssText = 'display:none;width:100%;max-width:100%;';
-      c.parentNode.insertBefore(img, c.nextSibling);
-      imgs.push(img);
-    } catch(e){}
+      // canvas가 실제로 그려진 경우만 변환
+      var dataUrl = c.toDataURL('image/png');
+      if(dataUrl && dataUrl !== 'data:,'){
+        var img = document.createElement('img');
+        img.src = dataUrl;
+        img.style.cssText = 'width:100%;max-width:100%;display:block;';
+        img.setAttribute('data-print-img', '1');
+        c.style.display = 'none';
+        c.parentNode.appendChild(img);
+        imgs.push({img: img, canvas: c});
+      }
+    } catch(e){ console.warn('canvas export failed', e); }
   });
 
-  // 평점분포 바 색상 강제 적용
-  document.querySelectorAll('.dbar span, .distrow .dbar span').forEach(function(s){
+  // 2. 평점분포 바 색상 강제
+  reportEl.querySelectorAll('.dbar span').forEach(function(s){
     s.style.printColorAdjust = 'exact';
     s.style.webkitPrintColorAdjust = 'exact';
   });
 
-  window.print();
-
-  // 인쇄 후 img 제거
+  // 3. 인쇄
   setTimeout(function(){
-    imgs.forEach(function(img){ if(img.parentNode) img.parentNode.removeChild(img); });
-  }, 1000);
+    window.print();
+    // 4. 복원
+    setTimeout(function(){
+      imgs.forEach(function(item){
+        item.canvas.style.display = '';
+        if(item.img.parentNode) item.img.parentNode.removeChild(item.img);
+      });
+    }, 500);
+  }, 200);
 }
 
 async function emailReport(){
