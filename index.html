@@ -324,6 +324,10 @@ body{
   #tab4 { display:block !important; }
   #report-content { padding:0; }
   * { box-shadow:none !important; }
+  canvas { display:none !important; }
+  .print-canvas-img { display:block !important; width:100% !important; }
+  .dbar span { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  .distrow .dbar { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
 }
 
 
@@ -1591,7 +1595,32 @@ function saveAsHTML(){
 
 // ── 개인별 리포트 출력 / 이메일 ──────────────────────────────────
 function printReport(){
+  // canvas → img 변환 (인쇄 시 공란 방지)
+  var canvases = document.querySelectorAll('#report-content canvas');
+  var imgs = [];
+  canvases.forEach(function(c){
+    try {
+      var img = document.createElement('img');
+      img.src = c.toDataURL('image/png');
+      img.className = 'print-canvas-img';
+      img.style.cssText = 'display:none;width:100%;max-width:100%;';
+      c.parentNode.insertBefore(img, c.nextSibling);
+      imgs.push(img);
+    } catch(e){}
+  });
+
+  // 평점분포 바 색상 강제 적용
+  document.querySelectorAll('.dbar span, .distrow .dbar span').forEach(function(s){
+    s.style.printColorAdjust = 'exact';
+    s.style.webkitPrintColorAdjust = 'exact';
+  });
+
   window.print();
+
+  // 인쇄 후 img 제거
+  setTimeout(function(){
+    imgs.forEach(function(img){ if(img.parentNode) img.parentNode.removeChild(img); });
+  }, 1000);
 }
 
 async function emailReport(){
