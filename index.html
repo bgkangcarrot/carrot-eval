@@ -257,6 +257,21 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
 .af-all-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
 .af-suggest{display:inline-block;padding:3px 9px;border-radius:14px;font-size:17px;background:#F7F1E9;border:1px solid #8A8682;color:#aaa;cursor:pointer;transition:all .15s;}
 .af-suggest:hover{background:#F7F1E9;border-color:#ccc;color:#1A1A1A;}
+
+/* ── 인쇄 스타일 ── */
+@media print {
+  body { background:#fff !important; }
+  .page-header, .top-bar, .tab-bar, .month-filter-bar,
+  .meta-bar, .agent-filter-box, #report-agent-btns,
+  .report-action-bar, .loading-overlay { display:none !important; }
+  #app { display:block !important; }
+  .tab-pane { display:block !important; }
+  #tab1, #tab3 { display:none !important; }
+  #tab4 { display:block !important; }
+  #report-content { padding:0; }
+  .report-action-bar { display:none !important; }
+  * { box-shadow:none !important; }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
@@ -394,6 +409,15 @@ body{font-family:'HanwhaGothic','Malgun Gothic','맑은 고딕','Apple SD Gothic
   <!-- Tab4: 개인별 리포트 -->
   <div class="tab-pane" id="tab4">
     <div id="report-agent-btns" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;"></div>
+    <div id="report-action-bar" style="display:none;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
+      <button onclick="printReport()" style="display:flex;align-items:center;gap:6px;padding:9px 18px;background:#fff;color:#1A1A1A;border:1.5px solid #8A8682;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;">
+        🖨️ 인쇄 / PDF 저장
+      </button>
+      <button onclick="emailReport()" id="btn-email-report" style="display:flex;align-items:center;gap:6px;padding:9px 18px;background:#F89B6C;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;">
+        ✉️ 이메일 전송
+      </button>
+      <span id="email-status" style="font-size:13px;color:#999;"></span>
+    </div>
     <div id="report-content"></div>
   </div>
   <!-- Tab3: 의견 분석 -->
@@ -1465,6 +1489,99 @@ function saveAsHTML(){
   },100);
 }
 
+
+// ── 개인별 리포트 출력 / 이메일 ──────────────────────────────────
+function printReport(){
+  window.print();
+}
+
+async function emailReport(){
+  const name = _reportName;
+  const profile = _profileCache[name] || {};
+  const email = profile.email || '';
+
+  if(!email){
+    const input = prompt(name + '의 이메일 주소를 입력하세요:');
+    if(!input || !input.includes('@')){ alert('올바른 이메일 주소를 입력해주세요.'); return; }
+    if(profile) profile.email = input;
+    sendReportEmail(name, input);
+  } else {
+    if(!confirm(email + ' 으로 리포트를 전송하시겠습니까?')) return;
+    sendReportEmail(name, email);
+  }
+}
+
+async function sendReportEmail(name, to){
+  const btn = document.getElementById('btn-email-report');
+  const status = document.getElementById('email-status');
+  if(btn){ btn.disabled = true; btn.textContent = '⏳ 전송 중...'; }
+  if(status) status.textContent = '';
+
+  // 리포트 HTML 추출 (report-content 내부)
+  const reportEl = document.getElementById('report-content');
+  if(!reportEl){ alert('리포트를 먼저 불러와주세요.'); return; }
+
+  // 이메일용 간소화 HTML 생성
+  const d = window._opData[name] || {};
+  const profile = _profileCache[name] || {};
+  const isMonthMode = _selectedMonth !== 'all';
+  const period = isMonthMode ? _selectedMonth : document.getElementById('m-period')?.value || '';
+  const cached = _reportCache[name + (isMonthMode ? '_' + _selectedMonth : '')];
+
+  const starDist = [1,2,3,4,5].map(s => ({ star:s, cnt:(d.byScore[s]||[]).length }));
+  const totalEval = starDist.reduce((s,x)=>s+x.cnt,0)||1;
+  const starColors = {1:'#e05252',2:'#f97316',3:'#f59e0b',4:'#84cc16',5:'#10b981'};
+
+  const distHTML = starDist.map(({star,cnt}) => {
+    const pct = Math.round(cnt/totalEval*100);
+    return `<div class="dist-row">
+      <span style="font-size:12px;color:#999;width:26px;text-align:right;">${star}점</span>
+      <div class="dist-bar-wrap"><div class="dist-bar" style="width:${pct}%;background:${starColors[star]};"></div></div>
+      <span style="font-size:12px;color:#1A1A1A;width:30px;">${cnt}건</span>
+      <span style="font-size:12px;color:#999;">${pct}%</span>
+    </div>`;
+  }).join('');
+
+  const emailHtml = `
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #E1D4C9;">
+      <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#F89B6C,#FBB584);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#fff;flex-shrink:0;">${name[0]}</div>
+      <div>
+        <div style="font-size:20px;font-weight:800;color:#1A1A1A;">${name}</div>
+        <div style="font-size:13px;color:#999;margin-top:2px;">${profile.department||''} ${profile.position||''} · ${isMonthMode ? _selectedMonth+' 월별 리포트' : '전체 기간 리포트'}</div>
+      </div>
+    </div>
+    <div class="badge-row">
+      <div class="badge">종합점수 ${(d.total||0).toFixed(1)}점</div>
+      <div class="badge sub">만족도점수 ${(d.satScore||0).toFixed(1)}점</div>
+      <div class="badge sub">처리건수점수 ${(d.cntScore||0).toFixed(1)}점</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="val">${(d.cnt||0).toLocaleString()}건</div><div class="lbl">처리건수</div></div>
+      <div class="metric"><div class="val">${totalEval}건</div><div class="lbl">평가건수</div></div>
+      <div class="metric"><div class="val">${(d.satAvg||0).toFixed(2)}점</div><div class="lbl">만족도 평균</div></div>
+      <div class="metric"><div class="val">${(d.satScore||0).toFixed(1)}/50점</div><div class="lbl">만족도점수</div></div>
+    </div>
+    <div class="section-title">평점 분포</div>
+    ${distHTML}
+    ${cached ? `<div class="section-title">AI 종합 의견</div><div class="feedback-box">${cached}</div>` : ''}
+  `;
+
+  try {
+    const res = await fetch('/api/sendreport', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ to, name, period, html: emailHtml })
+    });
+    const json = await res.json();
+    if(!res.ok) throw new Error(json.error || '전송 실패');
+    if(status){ status.textContent = '✅ ' + to + ' 으로 전송 완료!'; status.style.color='#3a7d5a'; }
+  } catch(err) {
+    if(status){ status.textContent = '❌ 전송 실패: ' + err.message; status.style.color='#c0392b'; }
+  } finally {
+    if(btn){ btn.disabled = false; btn.textContent = '✉️ 이메일 전송'; }
+  }
+}
+
 // ── 개인별 리포트 탭 ───────────────────────────────────────────────
 let _reportAgent = '';
 let _reportCache = {};
@@ -1505,6 +1622,9 @@ function selectReportAgent(name, btn){
   });
 
   renderReport(name);
+  // 액션 바 표시
+  var bar = document.getElementById("report-action-bar");
+  if(bar) bar.style.display = "flex";
 }
 
 
