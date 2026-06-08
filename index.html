@@ -1273,13 +1273,15 @@ async function _doMasking(){
 
   } catch(err){
     console.error('마스킹 오류:', err);
-    // 배너에 오류 표시
     if(banner){
-      banner.style.background='#fdecea';
-      banner.style.borderColor='#f5c2c7';
-      banner.querySelector('span').textContent = '⚠️ 마스킹 오류: ' + err.message;
+      const isQuota = isQuotaError(err.message);
+      banner.style.background = isQuota ? '#fff8f0' : '#fdecea';
+      banner.style.borderColor = isQuota ? '#F89B6C' : '#f5c2c7';
+      banner.querySelector('span').textContent = isQuota
+        ? '⚠️ Gemini API 무료 사용량이 일시적으로 초과되었습니다. 잠시 후 다시 시도해주세요.'
+        : '⚠️ 마스킹 오류: ' + err.message;
       banner.style.display='flex';
-      setTimeout(()=>{ banner.style.display='none'; banner.style.background=''; banner.style.borderColor=''; }, 6000);
+      setTimeout(()=>{ banner.style.display='none'; banner.style.background=''; banner.style.borderColor=''; }, isQuota ? 12000 : 6000);
       return;
     }
   } finally {
@@ -1580,6 +1582,16 @@ async function sendReportEmail(name, to){
   } finally {
     if(btn){ btn.disabled = false; btn.textContent = '✉️ 이메일 전송'; }
   }
+}
+
+
+function isQuotaError(msg){
+  return msg && (msg.includes('429') || msg.includes('quota') || msg.includes('RESOURCE_EXHAUSTED') || msg.includes('rate') || msg.includes('limit'));
+}
+function quotaNotice(){
+  return '<div style="background:#fff8f0;border:1px solid #F89B6C;border-radius:10px;padding:14px 16px;font-size:14px;color:#555;">'
+    + '⚠️ Gemini API 무료 사용량이 일시적으로 초과되었습니다. 잠시 후 다시 시도해주세요.'
+    + '</div>';
 }
 
 // ── 개인별 리포트 탭 ───────────────────────────────────────────────
@@ -2057,7 +2069,9 @@ async function generateFeedbackWithKey(cacheKey, name, texts, starDist, d, month
     if(el) el.innerHTML = '<span>'+feedback+'</span>';
   } catch(e){
     const el = document.getElementById(elId);
-    if(el) el.innerHTML = '<span style="color:var(--red);">분석 오류: '+e.message+'</span>';
+    if(el) el.innerHTML = isQuotaError(e.message)
+      ? quotaNotice()
+      : '<span style="color:#c0392b;">분석 오류: '+e.message+'</span>';
   }
 }
 
@@ -2092,7 +2106,7 @@ async function generateFeedback(name, texts, starDist, d){
 
   } catch(e) {
     const el = document.getElementById(elId);
-    if(el) el.innerHTML = `<span style="color:var(--red);">분석 오류: ${e.message}</span>`;
+    if(el) el.innerHTML = isQuotaError(e.message) ? quotaNotice() : `<span style="color:#c0392b;">분석 오류: ${e.message}</span>`;
   }
 }
 
