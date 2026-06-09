@@ -5,7 +5,21 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const body = req.body || {};
+  // 디버그: body 상태 확인
+  const bodyType = typeof req.body;
+  const bodyKeys = req.body ? Object.keys(req.body) : [];
+  const bodyStr = JSON.stringify(req.body);
+  const contentType = req.headers['content-type'] || 'none';
+
+  // body가 비어있으면 디버그 정보 반환
+  if (!req.body || bodyKeys.length === 0) {
+    return res.status(400).json({
+      error: 'empty body',
+      debug: { bodyType, bodyKeys, bodyStr, contentType }
+    });
+  }
+
+  const body = req.body;
   const mode = body._mode;
 
   if (mode === 'feedback') {
