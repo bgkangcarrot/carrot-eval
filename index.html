@@ -2247,8 +2247,8 @@ async function generateFeedbackWithKey(cacheKey, name, texts, starDist, d, month
         periodNote
       })
     });
-    if(!res.ok) throw new Error('API ' + res.status);
     const json = await res.json();
+    if(!res.ok) throw new Error('API ' + res.status + ' | ' + JSON.stringify(json));
     const feedback = json.feedback || '분석 결과를 가져오지 못했습니다.';
     _reportCache[cacheKey] = feedback;
     const el = document.getElementById(elId);
@@ -2282,8 +2282,8 @@ async function generateFeedback(name, texts, starDist, d){
       })
     });
 
-    if(!res.ok) throw new Error('API ' + res.status);
     const json = await res.json();
+    if(!res.ok) throw new Error('API ' + res.status + ' | ' + JSON.stringify(json));
     const feedback = json.feedback || '분석 결과를 가져오지 못했습니다.';
 
     _reportCache[name] = feedback;
